@@ -61,7 +61,7 @@ fun QuestionScreen(
     val context = LocalContext.current
     val lang = state.language
     val isKids = state.pack.ageGroup == GameMode.KIDS
-    val totalTime = state.question.timeLimitSeconds.toFloat().coerceAtLeast(1f)
+    val totalTime = remember(state.question.id) { state.secondsRemaining.toFloat().coerceAtLeast(1f) }
     val remaining = state.secondsRemaining.toFloat()
     val progress by animateFloatAsState(
         targetValue = (remaining / totalTime).coerceIn(0f, 1f),

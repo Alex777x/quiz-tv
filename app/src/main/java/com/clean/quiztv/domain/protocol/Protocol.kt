@@ -113,6 +113,10 @@ sealed interface ClientMessage {
     @Serializable
     @SerialName("PLAY_AGAIN")
     data object PlayAgain : ClientMessage
+
+    @Serializable
+    @SerialName("PING")
+    data object Ping : ClientMessage
 }
 
 @OptIn(ExperimentalSerializationApi::class)

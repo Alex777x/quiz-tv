@@ -54,9 +54,11 @@ fun SetupScreen(
     currentLanguage: AppLanguage,
     selectedMode: GameMode,
     selectedFormat: GameFormat,
+    selectedRoundDuration: Int,
     onLanguageSelect: (AppLanguage) -> Unit,
     onModeSelect: (GameMode) -> Unit,
     onFormatSelect: (GameFormat) -> Unit,
+    onRoundDurationSelect: (Int) -> Unit,
     onProceedToLobby: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -65,7 +67,7 @@ fun SetupScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 64.dp, vertical = 38.dp),
+            .padding(horizontal = 48.dp, vertical = 34.dp),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -100,10 +102,10 @@ fun SetupScreen(
             )
         }
 
-        // --- 3 Interactive Parameter Cards ---
+        // --- 4 Interactive Parameter Cards ---
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(28.dp)
+            horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
             // 1. Language Card
             SetupSectionCard(
@@ -160,6 +162,48 @@ fun SetupScreen(
                     isSelected = selectedFormat == GameFormat.TEAMS,
                     accentColor = Color(0xFFF43F5E),
                     onClick = { onFormatSelect(GameFormat.TEAMS) }
+                )
+            }
+
+            // 4. Round Timer Card (Configurable response time for discussions)
+            SetupSectionCard(
+                title = if (lang == AppLanguage.PL) "CZAS NA ODPOWIEDŹ" else "ВРЕМЯ НА ОТВЕТ",
+                modifier = Modifier.weight(1f)
+            ) {
+                val isFastSelected = selectedRoundDuration in listOf(15, 20)
+                val fastTitle = if (selectedRoundDuration == 15) {
+                    if (lang == AppLanguage.PL) "⚡ 15s (Blitz)" else "⚡ 15с (Блиц)"
+                } else {
+                    if (lang == AppLanguage.PL) "⚡ 20s (Klasyk)" else "⚡ 20с (Стандарт)"
+                }
+                SetupOptionButton(
+                    title = fastTitle,
+                    isSelected = isFastSelected,
+                    accentColor = NeonEmerald,
+                    onClick = {
+                        val next = if (selectedRoundDuration == 20) 15 else 20
+                        onRoundDurationSelect(next)
+                    }
+                )
+                Spacer(modifier = Modifier.height(14.dp))
+                val isDiscussionSelected = selectedRoundDuration in listOf(30, 45, 60)
+                val discTitle = when (selectedRoundDuration) {
+                    30 -> if (lang == AppLanguage.PL) "⏱ 30s (Drużyny)" else "⏱ 30с (Командный)"
+                    60 -> if (lang == AppLanguage.PL) "⏱ 60s (Burza)" else "⏱ 60с (Штурм)"
+                    else -> if (lang == AppLanguage.PL) "⏱ 45s (Dyskusja)" else "⏱ 45с (Обсуждение)"
+                }
+                SetupOptionButton(
+                    title = discTitle,
+                    isSelected = isDiscussionSelected,
+                    accentColor = NeonViolet,
+                    onClick = {
+                        val next = when (selectedRoundDuration) {
+                            30 -> 45
+                            45 -> 60
+                            else -> 30
+                        }
+                        onRoundDurationSelect(next)
+                    }
                 )
             }
         }

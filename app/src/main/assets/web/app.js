@@ -425,8 +425,43 @@
 
     function scheduleReconnect() {
         clearTimeout(reconnectTimer);
-        reconnectTimer = setTimeout(connectSocket, 2000);
+        reconnectTimer = setTimeout(connectSocket, 1500);
     }
+
+    function checkAndResync() {
+        if (!socket || socket.readyState !== WebSocket.OPEN) {
+            connectSocket();
+        } else if (myPlayerId) {
+            send({
+                type: 'RECONNECT',
+                playerId: myPlayerId
+            });
+        }
+    }
+
+    // Auto-resync when mobile screen wakes up or user returns to tab
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+            checkAndResync();
+        }
+    });
+
+    window.addEventListener('focus', () => {
+        checkAndResync();
+    });
+
+    window.addEventListener('online', () => {
+        checkAndResync();
+    });
+
+    // Heartbeat: keeps mobile WebSockets alive and immediately detects dropouts
+    setInterval(() => {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            send({ type: 'PING' });
+        } else if (myPlayerId && (!socket || socket.readyState === WebSocket.CLOSED)) {
+            connectSocket();
+        }
+    }, 8000);
 
     function send(msgObj) {
         if (socket && socket.readyState === WebSocket.OPEN) {

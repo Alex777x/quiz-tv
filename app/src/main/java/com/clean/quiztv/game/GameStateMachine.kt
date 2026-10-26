@@ -44,7 +44,8 @@ sealed interface GameState {
         override val gameFormat: GameFormat = GameFormat.INDIVIDUAL,
         override val language: AppLanguage = AppLanguage.RU,
         val step: LobbyStep = LobbyStep.SETUP,
-        val teams: List<Team> = emptyList()
+        val teams: List<Team> = emptyList(),
+        val roundDurationSeconds: Int = 20
     ) : GameState
 
     data class QuestionRound(
@@ -107,6 +108,17 @@ class GameStateMachine(
     var currentMode: GameMode = GameMode.ADULTS
         private set
 
+    var roundDurationSeconds: Int = 20
+
+    suspend fun setRoundDuration(seconds: Int) = mutex.withLock {
+        roundDurationSeconds = seconds
+        val current = _state.value
+        if (current is GameState.Lobby) {
+            _state.value = current.copy(roundDurationSeconds = seconds)
+            broadcastLobbyUpdate()
+        }
+    }
+
     private val _state = MutableStateFlow<GameState>(GameState.Lobby())
     val state: StateFlow<GameState> = _state.asStateFlow()
 
@@ -144,9 +156,18 @@ class GameStateMachine(
 
     suspend fun selectFormat(format: GameFormat) = mutex.withLock {
         currentFormat = format
+        if (format == GameFormat.TEAMS && roundDurationSeconds == 20) {
+            roundDurationSeconds = 30
+        } else if (format == GameFormat.INDIVIDUAL && roundDurationSeconds == 30) {
+            roundDurationSeconds = 20
+        }
         val current = _state.value
         if (current is GameState.Lobby) {
-            _state.value = current.copy(gameFormat = format, teams = getTeamsList())
+            _state.value = current.copy(
+                gameFormat = format,
+                teams = getTeamsList(),
+                roundDurationSeconds = roundDurationSeconds
+            )
             broadcastLobbyUpdate()
         }
     }
@@ -397,13 +418,14 @@ class GameStateMachine(
 
         val question = pack.questions[index]
         val totalPlayers = playersMap.values.count { it.isConnected }
+        val timeLimit = if (roundDurationSeconds > 0) roundDurationSeconds else question.timeLimitSeconds
 
         _state.value = GameState.QuestionRound(
             players = playersMap.values.toList(),
             pack = pack,
             questionIndex = index,
             question = question,
-            secondsRemaining = question.timeLimitSeconds,
+            secondsRemaining = timeLimit,
             answersReceived = 0,
             totalPlayers = totalPlayers,
             gameFormat = currentFormat,
@@ -421,7 +443,7 @@ class GameStateMachine(
                 questionId = question.id,
                 questionIndex = index + 1,
                 totalQuestions = pack.questions.size,
-                timeLimitSeconds = question.timeLimitSeconds,
+                timeLimitSeconds = timeLimit,
                 text = question.localizedText(currentLanguage),
                 options = question.localizedOptions(currentLanguage),
                 gameMode = pack.ageGroup,
@@ -431,7 +453,7 @@ class GameStateMachine(
         )
 
         // Launch timer countdown
-        startRoundTimer(question.timeLimitSeconds)
+        startRoundTimer(timeLimit)
     }
 
     private fun startRoundTimer(seconds: Int) {
@@ -758,7 +780,7 @@ class GameStateMachine(
         .mapIndexed { idx, ts -> ts.copy(rank = idx + 1) }
     }
 
-    private suspend fun syncPlayerState(playerId: String) {
+    suspend fun syncPlayerState(playerId: String) {
         val p = playersMap[playerId] ?: return
         when (val s = _state.value) {
             is GameState.Lobby -> {

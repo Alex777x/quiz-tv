@@ -95,6 +95,7 @@ class MainActivity : ComponentActivity() {
                                             currentLanguage = s.language,
                                             selectedMode = s.selectedMode,
                                             selectedFormat = s.gameFormat,
+                                            selectedRoundDuration = stateMachine.roundDurationSeconds,
                                             onLanguageSelect = { lang ->
                                                 scope.launch { stateMachine.setLanguage(lang) }
                                             },
@@ -103,6 +104,9 @@ class MainActivity : ComponentActivity() {
                                             },
                                             onFormatSelect = { format ->
                                                 scope.launch { stateMachine.selectFormat(format) }
+                                            },
+                                            onRoundDurationSelect = { duration ->
+                                                scope.launch { stateMachine.setRoundDuration(duration) }
                                             },
                                             onProceedToLobby = {
                                                 scope.launch { stateMachine.setLobbyStep(LobbyStep.CONNECT) }

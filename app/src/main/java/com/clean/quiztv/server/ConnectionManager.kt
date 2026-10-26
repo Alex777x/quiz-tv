@@ -74,17 +74,28 @@ class ConnectionManager(
             is ClientMessage.Join -> {
                 val player = stateMachine.handleJoin(message.playerId, message.name, message.avatar)
                 registerPlayerSession(player.id, session)
+                stateMachine.syncPlayerState(player.id)
             }
             is ClientMessage.Reconnect -> {
+                registerPlayerSession(message.playerId, session)
                 val success = stateMachine.handleReconnect(message.playerId)
-                if (success) {
-                    registerPlayerSession(message.playerId, session)
-                } else {
+                if (!success) {
+                    mutex.withLock {
+                        if (activeSessions[message.playerId] == session) {
+                            activeSessions.remove(message.playerId)
+                        }
+                    }
+                    sessionToPlayerId.remove(session)
                     // Session unknown or expired
                     val err = ServerMessage.Error("Сессия не найдена. Пожалуйста, войдите снова.")
                     val raw = json.encodeToString(ServerMessage.serializer(), err)
-                    session.send(Frame.Text(raw))
+                    try {
+                        session.send(Frame.Text(raw))
+                    } catch (_: Exception) {}
                 }
+            }
+            is ClientMessage.Ping -> {
+                // Heartbeat keepalive: connection is active
             }
             is ClientMessage.SetLanguage -> {
                 stateMachine.setLanguage(message.language)
@@ -180,32 +191,36 @@ class ConnectionManager(
     private suspend fun onSessionClosed(session: DefaultWebSocketServerSession) {
         val playerId = sessionToPlayerId.remove(session)
         if (playerId != null) {
-            mutex.withLock {
+            val wasActive = mutex.withLock {
                 if (activeSessions[playerId] == session) {
                     activeSessions.remove(playerId)
+                    true
+                } else {
+                    false
                 }
             }
-            stateMachine.handleDisconnect(playerId)
+            if (wasActive) {
+                stateMachine.handleDisconnect(playerId)
+            }
         }
     }
 
     private suspend fun sendToPlayer(playerId: String, jsonText: String) {
         val session = activeSessions[playerId] ?: return
-        try {
-            session.send(Frame.Text(jsonText))
-        } catch (e: Exception) {
-            e.printStackTrace()
+        coroutineScope.launch {
+            try {
+                session.send(Frame.Text(jsonText))
+            } catch (_: Exception) {}
         }
     }
 
     private suspend fun broadcast(jsonText: String) {
-        val frame = Frame.Text(jsonText)
-        val sessions: Collection<DefaultWebSocketServerSession> = activeSessions.values
+        val sessions = activeSessions.values.toList()
         for (session in sessions) {
-            try {
-                session.send(frame)
-            } catch (_: Exception) {
-                // Individual failed session handled by handleSession finally
+            coroutineScope.launch {
+                try {
+                    session.send(Frame.Text(jsonText))
+                } catch (_: Exception) {}
             }
         }
     }
