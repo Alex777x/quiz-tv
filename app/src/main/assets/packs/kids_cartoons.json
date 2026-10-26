@@ -1,0 +1,433 @@
+{
+  "id": "kids_cartoons",
+  "version": 3,
+  "title": "Мировые мультфильмы и герои 🎈",
+  "titlePl": "Światowe bajki i bohaterowie 🎈",
+  "description": "Paw Patrol, Bluey, SpongeBob, Disney, Pixar, Shrek и любимые приключения!",
+  "descriptionPl": "Psi Patrol, Bluey, SpongeBob, Disney, Pixar, Shrek i ulubione przygody!",
+  "ageGroup": "KIDS",
+  "category": "Cartoons",
+  "accentColor": "#F59E0B",
+  "questions": [
+    {
+      "id": "kc_1",
+      "text": "Как зовут щенка-полицейского в синей фуражке из «Щенячьего патруля» (Paw Patrol)?",
+      "textPl": "Jak wabi się piesek-policjant w niebieskiej czapce z Psiego Patrolu (Paw Patrol)?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Маршалл (Marshall)",
+        "Чейз (Chase)",
+        "Крепыш (Rubble)",
+        "Рокки (Rocky)"
+      ],
+      "optionsPl": [
+        "Marshall",
+        "Chase",
+        "Rubble",
+        "Rocky"
+      ],
+      "correctIndex": 1,
+      "funFact": "Чейз — немецкая овчарка и прирожденный лидер патруля. Его девиз: «Смело за дело!»",
+      "funFactPl": "Chase to owczarek niemiecki i urodzony przywódca patrolu. Jego motto to: «Chase zawsze na służbie!»"
+    },
+    {
+      "id": "kc_2",
+      "text": "Какая любимая игрушка у младшего братика Свинки Пеппы — Джорджа?",
+      "textPl": "Jaka jest ulubiona zabawka małego braciszka Świnki Peppy — George'a?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Гоночная машинка",
+        "Зеленый Динозавр (Dinozaur)",
+        "Космическая ракета",
+        "Плюшевый мишка"
+      ],
+      "optionsPl": [
+        "Wyścigówka",
+        "Zielony Dinozaur",
+        "Rakieta kosmiczna",
+        "Pluszowy miś"
+      ],
+      "correctIndex": 1,
+      "funFact": "Джордж почти в любой ситуации восклицает: «Динозавр! Гррр!» и никогда с ним не расстается.",
+      "funFactPl": "George w każdej sytuacji woła «Dinozaur! Grrr!» i nigdy się z nim nie rozstaje."
+    },
+    {
+      "id": "kc_3",
+      "text": "Какая порода собаки у австралийской синей собачки Блуи (Bluey)?",
+      "textPl": "Jakiej rasy jest urocza niebieska suczka Bluey z bajki dla dzieci i rodziców?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Австралийский пастуший пес (Blue Heeler)",
+        "Золотистый ретривер",
+        "Французский бульдог",
+        "Такса"
+      ],
+      "optionsPl": [
+        "Australian Cattle Dog (Blue Heeler)",
+        "Golden Retriever",
+        "Buldog francuski",
+        "Jamnik"
+      ],
+      "correctIndex": 0,
+      "funFact": "Блуи и ее сестренка Бинго — австралийские хилеры. Этот мультфильм обожают и дети, и взрослые по всему миру!",
+      "funFactPl": "Bluey i jej siostra Bingo to australijskie psy pasterskie (Blue Heeler i Red Heeler). Bajka jest hitem na całym świecie!"
+    },
+    {
+      "id": "kc_4",
+      "text": "В каком подводном городе живет Губка Боб Квадратные Штаны со своей улиткой Гэри?",
+      "textPl": "W jakim podwodnym miasteczku mieszka SpongeBob Kanciastoporty ze ślimakiem Gacusiem?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Атлантида",
+        "Бикини Боттом (Bikini Dolne)",
+        "Океан Сити",
+        "Коралловый Риф"
+      ],
+      "optionsPl": [
+        "Atlantyda",
+        "Bikini Dolne (Bikini Bottom)",
+        "Ocean City",
+        "Rafa Koralowa"
+      ],
+      "correctIndex": 1,
+      "funFact": "Губка Боб живет в доме-ананасе на улице Ракушечной и работает шеф-поваром в «Красти Крабе»!",
+      "funFactPl": "SpongeBob mieszka w ananasie na dnie oceanu i smaży kraboburgery w Pod Tłustym Krabem!"
+    },
+    {
+      "id": "kc_5",
+      "text": "Как зовут дружелюбного живого снеговика из мультфильма «Холодное сердце» (Kraina Lodu)?",
+      "textPl": "Jak ma na imię sympatyczny bałwanek z bajki «Kraina Lodu» (Frozen)?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Свен (Sven)",
+        "Олаф (Olaf)",
+        "Кристофф",
+        "Ханс"
+      ],
+      "optionsPl": [
+        "Sven",
+        "Olaf",
+        "Kristoff",
+        "Hans"
+      ],
+      "correctIndex": 1,
+      "funFact": "Олаф обожает жаркие объятия и мечтает погреться на летнем солнышке!",
+      "funFactPl": "Olaf uwielbia gorące uściski i marzy o lecie, nie wiedząc, że ciepło roztapia śnieg."
+    },
+    {
+      "id": "kc_6",
+      "text": "Какой зеленый великан живет на болоте и дружит с говорящим Осликом?",
+      "textPl": "Jaki zielony ogr mieszka na bagnie i podróżuje z gadającym Osłem?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Халк",
+        "Шрек (Shrek)",
+        "Гринч",
+        "Майк Вазовски"
+      ],
+      "optionsPl": [
+        "Hulk",
+        "Shrek",
+        "Grinch",
+        "Mike Wazowski"
+      ],
+      "correctIndex": 1,
+      "funFact": "Шрек объяснял Ослику, что огры как лук: у них есть слои!",
+      "funFactPl": "Shrek tłumaczył Osłu, że ogry są jak cebula — mają warstwy!"
+    },
+    {
+      "id": "kc_7",
+      "text": "Какой гоночный номер нарисован на боку у молнии Маккуина в мультфильме «Тачки» (Auta)?",
+      "textPl": "Jaki numer startowy widnieje na karoserii Zygzaka McQueena w filmie «Auta» (Cars)?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "№ 43",
+        "№ 95",
+        "№ 86",
+        "№ 99"
+      ],
+      "optionsPl": [
+        "Nr 43",
+        "Nr 95",
+        "Nr 86",
+        "Nr 99"
+      ],
+      "correctIndex": 1,
+      "funFact": "Номер 95 был выбран в честь 1995 года, когда студия Pixar выпустила первый мультфильм «История игрушек».",
+      "funFactPl": "Numer 95 nawiązuje do 1995 roku, premiery pierwszej animacji Pixara «Toy Story»."
+    },
+    {
+      "id": "kc_8",
+      "text": "Какая рыбка-клоун потерялась в океане и искала путь домой к папе Марлину?",
+      "textPl": "Jaka mała rybka błazenek zgubiła się w oceanie i trafiła do akwarium w Sydney?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Дори (Dory)",
+        "Немо (Nemo)",
+        "Флаундер",
+        "Брюс"
+      ],
+      "optionsPl": [
+        "Dory",
+        "Nemo",
+        "Florek",
+        "Bruce"
+      ],
+      "correctIndex": 1,
+      "funFact": "Синяя рыбка Дори страдает кратковременной потерей памяти, но отлично умеет говорить по-китовьи!",
+      "funFactPl": "Niebieska rybka Dory ma problem z pamięcią krótkotrwałą, ale świetnie naśladuje mowę wielorybów."
+    },
+    {
+      "id": "kc_9",
+      "text": "Какое любимое лакомство у забавных желтых миньонов из «Гадкого я» (Jak ukraść księżyc)?",
+      "textPl": "Jaki jest ulubiony przysmak żółtych Minionków z filmu «Minionki» i «Jak ukraść księżyc»?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Яблоки",
+        "Бананы («Banana!»)",
+        "Мороженое",
+        "Пицца"
+      ],
+      "optionsPl": [
+        "Jabłka",
+        "Banany («Banana!»)",
+        "Lody",
+        "Pizza"
+      ],
+      "correctIndex": 1,
+      "funFact": "Миньоны говорят на смеси английского, испанского, французского, итальянского и индонезийского языков!",
+      "funFactPl": "Język Minionków (Minionese) to wesoły miks słów z angielskiego, hiszpańskiego, włoskiego i innych."
+    },
+    {
+      "id": "kc_10",
+      "text": "Какая большая панда стала Воином Дракона и мастером кунг-фу под руководством мастера Шифу?",
+      "textPl": "Jaka pulchna panda została Smoczym Wojownikiem i mistrzem kung-fu w filmie DreamWorks?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Тай Лунг",
+        "По (Po)",
+        "Обезьяна",
+        "Богомол"
+      ],
+      "optionsPl": [
+        "Tai Lung",
+        "Po",
+        "Małpa",
+        "Modliszka"
+      ],
+      "correctIndex": 1,
+      "funFact": "Любимое блюдо По — лапша по секретному рецепту его папы гуся господина Пинга.",
+      "funFactPl": "Ulubione danie Po to miska pysznych klusek z sekretnego przepisu jego taty pana Pinga."
+    },
+    {
+      "id": "kc_11",
+      "text": "Как зовут храбрую полинезийскую принцессу, которая отправилась через океан вернуть сердце Те Фити?",
+      "textPl": "Jak ma na imię odważna polinezyjska dziewczyna, która wyruszyła ocalić ocean wraz z półbogiem Maui?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Покахонтас",
+        "Моана (Vaiana)",
+        "Мерида",
+        "Жасмин"
+      ],
+      "optionsPl": [
+        "Pocahontas",
+        "Moana (w Europie: Vaiana)",
+        "Merida",
+        "Jasmine"
+      ],
+      "correctIndex": 1,
+      "funFact": "В большинстве европейских стран, включая Польшу, мультфильм вышел под названием «Ваяна» (Vaiana).",
+      "funFactPl": "W Europie ze względów znaków towarowych bohaterka i film noszą tytuł «Vaiana: Skarb oceanu»."
+    },
+    {
+      "id": "kc_12",
+      "text": "Какое животное служило лучшим другом и охранником принцессы Жасмин в «Аладдине»?",
+      "textPl": "Jakie zwierzę było wiernym przyjacielem i obrońcą księżniczki Dżasminy w «Aladynie»?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Мартышка Абу",
+        "Тигр Раджа (Radża)",
+        "Попугай Яго",
+        "Слон"
+      ],
+      "optionsPl": [
+        "Małpka Abu",
+        "Tygrys Radża",
+        "Papuga Jago",
+        "Słoń"
+      ],
+      "correctIndex": 1,
+      "funFact": "Тигр Раджа ведет себя с Жасмин как ласковый котенок, но грозно рычит на всех незваных женихов.",
+      "funFactPl": "Tygrys Radża jest łagodny jak kotek wobec Jasmine, lecz przegania natrętnych zalotników z pałacu."
+    },
+    {
+      "id": "kc_13",
+      "text": "В каком мультфильме львенок Симба учится у суриката Тимона и бородавочника Пумбы?",
+      "textPl": "W jakiej bajce małe lwiątko Simba uczy się życia od surykatki Timona i guźca Pumby?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "«Мадагаскар»",
+        "«Король Лев» (Król Lew)",
+        "«Тарзан»",
+        "«Зверополис»"
+      ],
+      "optionsPl": [
+        "«Madagaskar»",
+        "«Król Lew»",
+        "«Tarzan»",
+        "«Zwierzogród»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Имена Симба, Сараби и Рафики взяты из языка суахили: «Симба» переводится как «Лев», а «Рафики» — «Друг».",
+      "funFactPl": "W języku suahili słowo «Simba» oznacza po prostu «Lwa», a «Rafiki» — «Przyjaciela»."
+    },
+    {
+      "id": "kc_14",
+      "text": "Какая крольчиха стала первым офицером полиции в городе животных «Зверополис» (Zwierzogród)?",
+      "textPl": "Jaka energiczna króliczka została pierwszą policjantką w wielkim mieście Zwierzogród (Zootopia)?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Газель",
+        "Джуди Хоппс (Judy Hopps)",
+        "Беллвезер",
+        "Фру-Фру"
+      ],
+      "optionsPl": [
+        "Gazelle",
+        "Judy Hops (Judy Hopps)",
+        "Obłoczek",
+        "Fru Fru"
+      ],
+      "correctIndex": 1,
+      "funFact": "Ее напарником в раскрытии тайны стал хитрый, но добрый рыжий лис Ник Уайлд.",
+      "funFactPl": "Jej policyjnym partnerem został sprytny, lecz ostatecznie lojalny lis Nick Bajer (Nick Wilde)."
+    },
+    {
+      "id": "kc_15",
+      "text": "Какая эмоция с синими волосами и в желтом платье главная в голове девочки Райли в мультфильме «Головоломка» (W głowie się nie mieści)?",
+      "textPl": "Która wesoła emocja z niebieskimi włosami zarządzała konsolą w głowie dziewczynki Riley w filmie Pixara?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Печаль",
+        "Радость (Radość)",
+        "Гнев",
+        "Брезгливость"
+      ],
+      "optionsPl": [
+        "Smutek",
+        "Radość (Joy)",
+        "Gniew",
+        "Odraza"
+      ],
+      "correctIndex": 1,
+      "funFact": "Создатели мультфильма консультировались с нейробиологами и психологами, чтобы точно показать работу детской памяти.",
+      "funFactPl": "Twórcy konsultowali fabułę z psychologami, by pokazać, jak ważną rolę w dorastaniu pełni każda emocja."
+    },
+    {
+      "id": "kc_16",
+      "text": "Как зовут зебру, которая мечтала сбежать из зоопарка Нью-Йорка в дикую природу в «Мадагаскаре»?",
+      "textPl": "Jak ma na imię zebra marząca o wolności z nowojorskiego zoo w animacji «Madagaskar»?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Алекс",
+        "Марти (Marty)",
+        "Глория",
+        "Мелман"
+      ],
+      "optionsPl": [
+        "Alex",
+        "Marty",
+        "Gloria",
+        "Melman"
+      ],
+      "correctIndex": 1,
+      "funFact": "Марти так и не смог выяснить, черный ли он в белую полоску или белый в черную!",
+      "funFactPl": "Marty w filmie zastanawiał się bez końca, czy jest czarny w białe paski, czy biały w czarne!"
+    },
+    {
+      "id": "kc_17",
+      "text": "Как зовут собачку-девочку с розовым вертолетом и рюкзаком с крыльями в «Щенячьем патруле»?",
+      "textPl": "Jak ma na imię mała suczka latająca różowym helikopterem w Psim Patrolu?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Эверест (Everest)",
+        "Скай (Skye)",
+        "Либерти (Liberty)",
+        "Кэти"
+      ],
+      "optionsPl": [
+        "Everest",
+        "Skye",
+        "Liberty",
+        "Katie"
+      ],
+      "correctIndex": 1,
+      "funFact": "Скай — помесь кокер-спаниеля и пуделя (кокапу). Ее девиз: «Небо зовет в полет!»",
+      "funFactPl": "Skye to piesek rasy cockapoo. Jej zawołanie to: «Niebo to mój żywioł!»"
+    },
+    {
+      "id": "kc_18",
+      "text": "Какая добрая мышка живет в замке Золушки и шьет ей бальное платье вместе с Жаком?",
+      "textPl": "Jaka gruba, pocieszna myszka w żółtej koszulce pomaga Kopciuszkowi w bajce Disneya?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Микки",
+        "Гас (Gus-Gus)",
+        "Джерри",
+        "Стюарт Литтл"
+      ],
+      "optionsPl": [
+        "Miki",
+        "Kajtek (Gus / Gus-Gus)",
+        "Jerry",
+        "Stuart Malutki"
+      ],
+      "correctIndex": 1,
+      "funFact": "Гас всегда набирает полные лапки кукурузных зерен и с трудом убегает от вредного кота Люцифера.",
+      "funFactPl": "Gus zawsze pakuje za dużo ziaren kukurydzy do kieszeni i ucieka przed kotem Lucyferem."
+    },
+    {
+      "id": "kc_19",
+      "text": "Какая волшебная песня Эльзы завоевала премию «Оскар» и стала мировым гимном свободы?",
+      "textPl": "Jaka oscarowa piosenka Elsy stała się światowym hitem wszech czasów z «Krainy Lodu»?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "«Do You Want to Build a Snowman?»",
+        "«Отпусти и забудь» («Let It Go» / «Mam tę moc»)",
+        "«Into the Unknown»",
+        "«Show Yourself»"
+      ],
+      "optionsPl": [
+        "«Ulepimy dziś bałwana?»",
+        "«Mam tę moc» («Let It Go»)",
+        "«Chcę uwierzyć snom»",
+        "«Pokaż się»"
+      ],
+      "correctIndex": 1,
+      "funFact": "В польском дубляже песню «Mam tę moc» исполнила талантливая певица Катажина Ласка.",
+      "funFactPl": "Polska wersja «Mam tę moc» w wykonaniu Katarzyny Łaski zebrała ponad 150 milionów wyświetleń na YouTube."
+    },
+    {
+      "id": "kc_20",
+      "text": "В каком мультфильме маленькая зеленая улитка Турбо мечтает выиграть знаменитую автогонку «Индианаполис 500»?",
+      "textPl": "W jakiej bajce DreamWorks mały ślimak ogrodowy zyskuje superszybkość i startuje w wyścigu Indianapolis 500?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "«Подводная братва»",
+        "«Турбо» (Turbo)",
+        "«Тачки»",
+        "«Муравей Антц»"
+      ],
+      "optionsPl": [
+        "«Rybki z ferajny»",
+        "«Turbo»",
+        "«Auta»",
+        "«Mrówka Z»"
+      ],
+      "correctIndex": 1,
+      "funFact": "После случайного попадания в двигатель спорткара с закисью азота Турбо стал разгоняться до 360 км/ч!",
+      "funFactPl": "Wpadając do silnika z podtlenkiem azotu ślimak zyskał zdolność rozwijania prędkości ponad 360 km/h!"
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "id": "kids_logic",
+  "version": 2,
+  "title": "Загадки и ребусы для детей 🧩",
+  "titlePl": "Zagadki i rebusy dla dzieci 🧩",
+  "description": "Веселые каверзные загадки, задачки на смекалку и забавные ребусы!",
+  "descriptionPl": "Wesołe podchwytliwe pytania, logiczne łamigłówki i sprytne zagadki!",
+  "ageGroup": "KIDS",
+  "category": "Kids Logic",
+  "accentColor": "#8B5CF6",
+  "questions": [
+    {
+      "id": "kl_1",
+      "text": "Что всегда идет вперед, но никогда не делает ни шагу назад?",
+      "textPl": "Co zawsze idzie do przodu i nigdy nie cofa się ani o sekundę?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Поезд",
+        "Время и часы (Czas)",
+        "Река",
+        "Автомобиль"
+      ],
+      "optionsPl": [
+        "Pociąg",
+        "Czas i zegar",
+        "Rzeka",
+        "Samochód"
+      ],
+      "correctIndex": 1,
+      "funFact": "Даже когда стрелки сломанных часов стоят на месте, само время продолжает неумолимо идти вперед!",
+      "funFactPl": "Nawet gdy zegar się zepsuje, sam czas nieubłaganie płynie do przodu!"
+    },
+    {
+      "id": "kl_2",
+      "text": "Сколько месяцев в году имеют 28 дней?",
+      "textPl": "Ile miesięcy w roku ma 28 dni?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Только один (февраль)",
+        "Все 12 месяцев",
+        "Шесть месяцев",
+        "Четыре месяца"
+      ],
+      "optionsPl": [
+        "Tylko jeden (luty)",
+        "Wszystkie 12 miesięcy",
+        "Sześć miesięcy",
+        "Cztery miesiące"
+      ],
+      "correctIndex": 1,
+      "funFact": "В каждом месяце есть 28 дней, просто в большинстве из них дней еще больше — 30 или 31!",
+      "funFactPl": "W każdym miesiącu mija 28 dni, po prostu większość ma ich jeszcze więcej (30 lub 31)!"
+    },
+    {
+      "id": "kl_3",
+      "text": "Что становится мокрым, когда само сушит другие вещи?",
+      "textPl": "Co robi się mokre, gdy samo suszy inne rzeczy?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Фен",
+        "Полотенце (Ręcznik)",
+        "Губка",
+        "Солнце"
+      ],
+      "optionsPl": [
+        "Suszarka",
+        "Ręcznik",
+        "Gąbka",
+        "Słońce"
+      ],
+      "correctIndex": 1,
+      "funFact": "Чем лучше полотенце вытирает капли воды после душа, тем более влажным оно становится само!",
+      "funFactPl": "Im dokładniej ręcznik wyciera wodę po kąpieli, tym bardziej sam staje się wilgotny!"
+    },
+    {
+      "id": "kl_4",
+      "text": "У фермера было 10 овец. Все, кроме трех, убежали в лес. Сколько овец осталось у фермера?",
+      "textPl": "Rolnik miał 10 owieczek. Wszystkie oprócz trzech uciekły do lasu. Ile owieczek zostało rolnikowi?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "7 овец",
+        "3 овечки",
+        "0 овец",
+        "10 овец"
+      ],
+      "optionsPl": [
+        "7 owieczek",
+        "3 owieczki",
+        "0 owieczek",
+        "10 owieczek"
+      ],
+      "correctIndex": 1,
+      "funFact": "Внимательно слушай условие: ведь сказано же, что «все, кроме трех, убежали»!",
+      "funFactPl": "Klucz tkwi w treści pytania: «oprócz trzech» oznacza, że dokładnie trzy owce zostały w zagrodzie!"
+    },
+    {
+      "id": "kl_5",
+      "text": "Что имеет один глаз, но совсем ничего им не может видеть?",
+      "textPl": "Co ma jedno małe «uszko» (oczko), ale nie potrafi niczego zobaczyć?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Картошка",
+        "Иголка для шитья (Igła)",
+        "Пуговица",
+        "Булавка"
+      ],
+      "optionsPl": [
+        "Ziemniak",
+        "Igła do szycia",
+        "Guzik",
+        "Szpilka"
+      ],
+      "correctIndex": 1,
+      "funFact": "Отверстие в иголке, куда продевают нитку, называют игольным ушком или глазком!",
+      "funFactPl": "Otwór w igle, przez który przewleka się nitkę, nazywany jest uszkiem igielnym!"
+    },
+    {
+      "id": "kl_6",
+      "text": "Что поднимается в небо, когда с неба начинает капать дождь?",
+      "textPl": "Co wędruje w górę i otwiera się, gdy z nieba zaczyna kapać deszcz?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Сапоги",
+        "Зонтик (Parasol)",
+        "Лужа",
+        "Радуга"
+      ],
+      "optionsPl": [
+        "Kalosze",
+        "Parasol",
+        "Kałuża",
+        "Tęcza"
+      ],
+      "correctIndex": 1,
+      "funFact": "Первые зонтики в древнем мире изобрели для защиты от палящего солнца, а не от дождя!",
+      "funFactPl": "Pierwsze parasole w starożytności służyły do ochrony przed słońcem, a nie przed ulewą!"
+    },
+    {
+      "id": "kl_7",
+      "text": "Что может путешествовать по всему миру, оставаясь сидеть в одном углу конверта?",
+      "textPl": "Co potrafi podróżować po całym świecie, cały czas tkwiąc w jednym rogu koperty?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Письмо",
+        "Почтовая марка (Znaczek)",
+        "Открытка",
+        "Печать"
+      ],
+      "optionsPl": [
+        "List",
+        "Znaczek pocztowy",
+        "Pocztówka",
+        "Pieczątka"
+      ],
+      "correctIndex": 1,
+      "funFact": "Первая в мире самоклеящаяся почтовая марка «Черный пенни» появилась в Великобритании в 1840 году.",
+      "funFactPl": "Pierwszy znaczek pocztowy «Penny Black» wydano w Wielkiej Brytanii w 1840 roku."
+    },
+    {
+      "id": "kl_8",
+      "text": "У кого есть шея, но нет головы?",
+      "textPl": "Co posiada szyjkę, ale nie ma głowy ani oczu?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Рубашка",
+        "Стеклянная бутылка (Butelka)",
+        "Жираф",
+        "Гитара"
+      ],
+      "optionsPl": [
+        "Koszula",
+        "Szklana butelka",
+        "Żyrafa",
+        "Gitara"
+      ],
+      "correctIndex": 1,
+      "funFact": "У бутылки есть горлышко и донышко, но совершенно нет головы!",
+      "funFactPl": "Butelka ma szyjkę i dno, lecz brakuje jej jakiejkolwiek głowy!"
+    },
+    {
+      "id": "kl_9",
+      "text": "Что можно разбить, даже не прикасаясь к нему руками?",
+      "textPl": "Co można łatwo złamać lub przerwać, wcale go nie dotykając?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Стекло",
+        "Обещание или тишину (Obietnica)",
+        "Тарелку",
+        "Зеркало"
+      ],
+      "optionsPl": [
+        "Szybę",
+        "Obietnicę lub ciszę",
+        "Talerz",
+        "Lustro"
+      ],
+      "correctIndex": 1,
+      "funFact": "Достаточно шепота, чтобы нарушить тишину, и доброго сердца, чтобы сдержать обещание!",
+      "funFactPl": "Wystarczy jedno słowo, by przerwać ciszę, i uczciwość, by dotrzymać danego słowa!"
+    },
+    {
+      "id": "kl_10",
+      "text": "Какой банан больше: половина банана или 50% банана?",
+      "textPl": "Który banan jest większy: połowa banana czy 50% banana?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Половина банана",
+        "Они абсолютно одинаковые",
+        "50% банана",
+        "Зависит от банана"
+      ],
+      "optionsPl": [
+        "Połowa banana",
+        "Są dokładnie takie same",
+        "50% banana",
+        "To zależy od skórki"
+      ],
+      "correctIndex": 1,
+      "funFact": "50% — это математическая запись ровно половины от любого целого числа!",
+      "funFactPl": "50 procent to po prostu inny zapis matematyczny dokładnie jednej drugiej całości!"
+    },
+    {
+      "id": "kl_11",
+      "text": "Что всегда идет за тобой по пятам в солнечный день, но исчезает в темноте?",
+      "textPl": "Co zawsze wiernie podąża za Tobą w słoneczny dzień, lecz znika bez śladu po zmroku?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Собака",
+        "Твоя тень (Cień)",
+        "Ветер",
+        "Эхо"
+      ],
+      "optionsPl": [
+        "Pies",
+        "Twój własny cień",
+        "Wiatr",
+        "Echo"
+      ],
+      "correctIndex": 1,
+      "funFact": "В полдень, когда солнце стоит прямо над головой в зените, тень становится самой короткой!",
+      "funFactPl": "W samo południe, gdy słońce świeci najwyżej na niebie, cień staje się najkrótszy!"
+    },
+    {
+      "id": "kl_12",
+      "text": "Сколько концов у двух обычных палок? А у двух с половиной палок?",
+      "textPl": "Ile końców mają dwie zwykłe drewniane pałeczki? A dwie i pół pałeczki?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "5 концов",
+        "6 концов (u połówki też są dwa!)",
+        "4 конца",
+        "7 концов"
+      ],
+      "optionsPl": [
+        "5 końców",
+        "6 końców (połówka też ma dwa!)",
+        "4 końce",
+        "7 końców"
+      ],
+      "correctIndex": 1,
+      "funFact": "Даже если палку разломать пополам, у половинки все равно будет два конца, итого 2 + 2 + 2 = 6!",
+      "funFactPl": "Gdy przełamiesz patyk na pół, połówka nadal ma 2 końce! Zatem 2 + 2 + 2 = 6 końców!"
+    },
+    {
+      "id": "kl_13",
+      "text": "Какой цвет получится, если смешать синюю и желтую краски?",
+      "textPl": "Jaki kolor powstanie, gdy dokładnie wymieszasz ze sobą farbę niebieską i żółtą?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Красный",
+        "Зеленый (Zielony)",
+        "Фиолетовый",
+        "Оранжевый"
+      ],
+      "optionsPl": [
+        "Czerwony",
+        "Zielony",
+        "Fioletowy",
+        "Pomarańczowy"
+      ],
+      "correctIndex": 1,
+      "funFact": "Синий и желтый — первичные цвета, а их смесь дает чудесный травянисто-зеленый оттенок!",
+      "funFactPl": "Niebieski i żółty to kolory podstawowe, a ich połączenie daje kolor zielony!"
+    },
+    {
+      "id": "kl_14",
+      "text": "Что имеет много зубов, но никогда никого не кусает?",
+      "textPl": "Co ma mnóstwo ząbków, ale nigdy nikogo nie ugryzie?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Акула",
+        "Расческа (Grzebień)",
+        "Крокодил",
+        "Пила"
+      ],
+      "optionsPl": [
+        "Rekin",
+        "Grzebień do włosów",
+        "Krokodyl",
+        "Piła"
+      ],
+      "correctIndex": 1,
+      "funFact": "Зубчики расчески помогают распутывать непослушные волосы каждое утро!",
+      "funFactPl": "Ząbki grzebienia służą do rozczesywania niesfornych kosmyków włosów o poranku!"
+    },
+    {
+      "id": "kl_15",
+      "text": "Что тяжелее: один килограмм железа или один килограмм пушистых перьев?",
+      "textPl": "Co waży więcej: jeden kilogram żelaza czy jeden kilogram miękkich piór?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Железо",
+        "Они весят абсолютно одинаково (по 1 кг)",
+        "Перья",
+        "Зависит от магнита"
+      ],
+      "optionsPl": [
+        "Żelazo",
+        "Ważą dokładnie tyle samo (po 1 kg)",
+        "Pióra",
+        "To zależy od wiatru"
+      ],
+      "correctIndex": 1,
+      "funFact": "И то, и другое весит ровно 1 килограмм, просто перьев понадобится целый огромный мешок!",
+      "funFactPl": "Zarówno żelazo, jak i pióra ważą równo 1 kg — tylko pióra zajmą wielki worek!"
+    },
+    {
+      "id": "kl_16",
+      "text": "Какое колесо автомобиля совсем не крутится во время езды по ровной дороге?",
+      "textPl": "Które koło w jadącym samochodzie w ogóle się nie obraca podczas jazdy?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Левое переднее",
+        "Запасное колесо в багажнике (Zapasowe)",
+        "Правое заднее",
+        "Рулевое колесо"
+      ],
+      "optionsPl": [
+        "Lewe przednie",
+        "Koło zapasowe w bagażniku",
+        "Prawe tylne",
+        "Kierownica"
+      ],
+      "correctIndex": 1,
+      "funFact": "Запасное колесо спокойно отдыхает в багажнике и ждет своего часа!",
+      "funFactPl": "Koło zapasowe leży bezpiecznie w bagażniku i nie dotyka asfaltu podczas jazdy!"
+    },
+    {
+      "id": "kl_17",
+      "text": "Что можно поймать, но совсем невозможно бросить?",
+      "textPl": "Co można łatwo «złapać» jesienią, ale nie da się tego rzucić jak piłki?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Мячик",
+        "Простуду или насморк (Przeziębienie)",
+        "Бабочку",
+        "Мыльные пузыри"
+      ],
+      "optionsPl": [
+        "Piłkę",
+        "Przeziębienie lub katar",
+        "Motyla",
+        "Bańki mydlane"
+      ],
+      "correctIndex": 1,
+      "funFact": "Поэтому зимой всегда нужно надевать теплую шапку и мыть ручки с мылом!",
+      "funFactPl": "Dlatego jesienią warto nosić ciepłą czapkę i pamiętać o myciu rąk ciepłą wodą z mydłem!"
+    },
+    {
+      "id": "kl_18",
+      "text": "Если у тебя есть три яблока и ты забрал два яблока, сколько яблок теперь у тебя?",
+      "textPl": "Jeśli na stole leżą trzy jabłka i weźmiesz do ręki dwa, ile jabłek masz teraz?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "1 яблоко",
+        "2 яблока (ты же их взял!)",
+        "3 яблока",
+        "0 яблок"
+      ],
+      "optionsPl": [
+        "1 jabłko",
+        "2 jabłka (przecież je wziąłeś!)",
+        "3 jabłka",
+        "0 jabłek"
+      ],
+      "correctIndex": 1,
+      "funFact": "Ты взял два яблока, значит именно два яблока теперь в твоих руках!",
+      "funFactPl": "Wziąłeś do ręki dwa jabłka, więc dokładnie te dwa jabłka trzymasz teraz!"
+    },
+    {
+      "id": "kl_19",
+      "text": "Какая комната в доме не имеет ни стен, ни дверей, ни окон, ни пола?",
+      "textPl": "Jaki leśny «pokój» ma nóżkę i kapelusz, ale nie ma ani drzwi, ani ścian?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Ванная комната",
+        "Гриб (в англ. mushroom = комната гриба)",
+        "Чердак",
+        "Подвал"
+      ],
+      "optionsPl": [
+        "Łazienka",
+        "Grzyb (ang. mushroom = grzyb)",
+        "Strych",
+        "Piwnica"
+      ],
+      "correctIndex": 1,
+      "funFact": "Это знаменитая игра слов в английском языке: «Mushroom» содержит слово «room» (комната)!",
+      "funFactPl": "To słynna zagadka językowa z angielskiego słowa «mushroom» (grzyb), zawierającego człon «room» (pokój)!"
+    },
+    {
+      "id": "kl_20",
+      "text": "Что всегда увеличивается с каждым прожитым годом, но никогда не уменьшается?",
+      "textPl": "Co rośnie z każdym rokiem Twojego życia, ale nigdy nie może zmaleć?",
+      "timeLimitSeconds": 25,
+      "options": [
+        "Рост",
+        "Твой возраст (Wiek)",
+        "Размер обуви",
+        "Количество игрушек"
+      ],
+      "optionsPl": [
+        "Wzrost",
+        "Twój wiek (lata)",
+        "Rozmiar buta",
+        "Liczba zabawek"
+      ],
+      "correctIndex": 1,
+      "funFact": "Каждый день рождения мы становимся на один год старше, умнее и опытнее!",
+      "funFactPl": "Każde urodziny oznaczają, że jesteśmy o rok starsi, mądrzejsi i bardziej doświadczeni!"
+    }
+  ]
+}

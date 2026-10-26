@@ -1,0 +1,433 @@
+{
+  "id": "adults_cinema",
+  "version": 2,
+  "title": "Культовое кино и сериалы 🎬",
+  "titlePl": "Kultowe filmy i seriale 🎬",
+  "description": "Шедевры мирового кино, легендарные режиссеры, сериалы и яркие цитаты!",
+  "descriptionPl": "Arcydzieła światowego kina, wybitni reżyserzy, kultowe seriale i cytaty!",
+  "ageGroup": "ADULTS",
+  "category": "Cinema & TV",
+  "accentColor": "#6366F1",
+  "questions": [
+    {
+      "id": "cin_1",
+      "text": "Как в Париже называют «Четвертьфунтовый чизбургер» согласно Винсенту Веге в «Криминальном чтиве»?",
+      "textPl": "Jak według Vincenta Vegi w «Pulp Fiction» nazywa się w Paryżu burger «Quarter Pounder with Cheese»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Биг Бургер",
+        "«Роял с сыром» (Royale with Cheese)",
+        "Парижский Чиз",
+        "Ле Чизбургер"
+      ],
+      "optionsPl": [
+        "Big Burger",
+        "«Royale with Cheese» (Royale z serem)",
+        "Paryski Burger",
+        "Le Cheeseburger"
+      ],
+      "correctIndex": 1,
+      "funFact": "Винсент объясняет это тем, что во Франции метрическая система, и они не понимают, что такое чертова четверть фунта!",
+      "funFactPl": "Vincent wyjaśnia to faktem, że we Francji obowiązuje system metryczny i nikt nie wie, ile to ćwierć funta."
+    },
+    {
+      "id": "cin_2",
+      "text": "Какое главное и первое правило «Бойцовского клуба» (Fight Club) Дэвида Финчера?",
+      "textPl": "Jaka jest pierwsza i najważniejsza zasada «Podziemnego kręgu» (Fight Club) Davida Finchera?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Никому не рассказывать о Бойцовском клубе",
+        "Всегда драться один на один",
+        "Бой длится столько, сколько нужно",
+        "Новичок обязан принять бой"
+      ],
+      "optionsPl": [
+        "Nie rozmawiać o Podziemnym kręgu",
+        "Zawsze walczyć jeden na jednego",
+        "Walka trwa tak długo, jak trzeba",
+        "Nowy musi podjąć walkę"
+      ],
+      "correctIndex": 0,
+      "funFact": "Второе правило Бойцовского клуба в точности повторяет первое: «Никогда и никому не рассказывать о Бойцовском клубе».",
+      "funFactPl": "Druga zasada klubu brzmi dokładnie tak samo: «Nigdy nie rozmawiać o Podziemnym kręgu»."
+    },
+    {
+      "id": "cin_3",
+      "text": "Какой предмет служил личным тотемом Дома Кобба (Леонардо ДиКаприо) в фильме «Начало» (Inception)?",
+      "textPl": "Jaki przedmiot był osobistym totemem Doma Cobba (Leonardo DiCaprio) w filmie «Incepcja» (Inception)?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Игральная кость",
+        "Крутящийся металлический волчок",
+        "Шахматная фигура коня",
+        "Зажигалка Zippo"
+      ],
+      "optionsPl": [
+        "Kostka do gry",
+        "Kręcący się metalowy bączek (totem)",
+        "Figurka szachowa skoczka",
+        "Zapalniczka Zippo"
+      ],
+      "correctIndex": 1,
+      "funFact": "Если волчок вращается бесконечно и не падает, значит герой все еще находится внутри чужого сна.",
+      "funFactPl": "Jeśli bączek kręci się w nieskończoność bez utraty równowagi, oznacza to przebywanie we śnie."
+    },
+    {
+      "id": "cin_4",
+      "text": "Какой химический элемент и его цвет стали фирменным знаком чистоты продукта Уолтера Уайта в «Во все тяжкие»?",
+      "textPl": "Jaki kolor produktu stał się znakiem rozpoznawczym czystości w serialu «Breaking Bad»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Изумрудно-зеленый",
+        "Небесно-голубой («Blue Sky»)",
+        "Кристально-белый",
+        "Янтарно-желтый"
+      ],
+      "optionsPl": [
+        "Szmaragdowy",
+        "Błękitny («Blue Sky»)",
+        "Krystalicznie biały",
+        "Bursztynowy"
+      ],
+      "correctIndex": 1,
+      "funFact": "В качестве «синего продукта» на съемках сериала использовали обычные колотые мятные леденцы синего цвета.",
+      "funFactPl": "Na planie serialu w roli niebieskiego specyfiku używano po prostu pokruszonych cukierków miętowych."
+    },
+    {
+      "id": "cin_5",
+      "text": "Какой фильм занимает стабильное 1-е место в рейтинге лучших фильмов всех времен на IMDb?",
+      "textPl": "Jaki film zajmuje niezmiennie 1. miejsce w rankingu wszech czasów serwisu IMDb?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Крестный отец»",
+        "«Побег из Шоушенка» (The Shawshank Redemption)",
+        "«Темный рыцарь»",
+        "«Криминальное чтиво»"
+      ],
+      "optionsPl": [
+        "«Ojciec chrzestny»",
+        "«Skazani na Shawshank» (The Shawshank Redemption)",
+        "«Mroczny Rycerz»",
+        "«Pulp Fiction»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Фильм Фрэнка Дарабонта 1994 года по повести Стивена Кинга имеет рейтинг 9.3 из 10 на основе более 2.8 млн голосов.",
+      "funFactPl": "Dzieło Franka Darabonta z 1994 roku na podstawie opowiadania Kinga ma ocenę 9,3/10 przy ponad 2,8 mln ocen."
+    },
+    {
+      "id": "cin_6",
+      "text": "Как звали верного коня римского полководца Максимуса в фильме Ридли Скотта «Гладиатор»?",
+      "textPl": "Co generał Maximus w filmie «Gladiator» zawsze brał w dłonie przed rozpoczęciem decydującej bitwy?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Золотую монету императора",
+        "Горсть родной земли и пыли",
+        "Медальон с портретом жены",
+        "Серебряный кинжал"
+      ],
+      "optionsPl": [
+        "Złotą monetę cesarza",
+        "Garść ziemi i pyłu",
+        "Medalion z żoną",
+        "Srebrny sztylet"
+      ],
+      "correctIndex": 1,
+      "funFact": "Рассел Кроу придумал этот жест сам на съемках, показав глубокую связь своего героя с родной фермой в Испании.",
+      "funFactPl": "Russell Crowe sam zaimprowizował ten gest, symbolizujący przywiązanie Maximusa do rodzinnej ziemi w Hiszpanii."
+    },
+    {
+      "id": "cin_7",
+      "text": "Какую красную фразу на зеркале оставляет отель «Оверлук» в триллере Стэнли Кубрика «Сияние»?",
+      "textPl": "Jaki złowieszczy napis szminką na drzwiach łazienki pojawia się w «Lśnieniu» Stanleya Kubricka?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "HELP ME",
+        "REDRUM (MURDER)",
+        "OVERLOOK",
+        "WAKE UP"
+      ],
+      "optionsPl": [
+        "HELP ME",
+        "REDRUM (MURDER od tyłu)",
+        "OVERLOOK",
+        "WAKE UP"
+      ],
+      "correctIndex": 1,
+      "funFact": "Слово «REDRUM» — это анаграмма слова «MURDER» (убийство), прочитанного задом наперед в зеркальном отражении.",
+      "funFactPl": "Słowo «REDRUM» odbite w lustrze układa się w angielskie słowo «MURDER» (morderstwo)."
+    },
+    {
+      "id": "cin_8",
+      "text": "Какой персонаж вселенной Marvel щелкает пальцами в перчатке бесконечности со словами: «Я сама неотвратимость»?",
+      "textPl": "Jaki złoczyńca uniwersum Marvela pstryka palcami w Rękawicy Nieskończoności mówiąc: «Jestem nieunikniony»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Локи",
+        "Танос (Thanos)",
+        "Альтрон",
+        "Канг Завоеватель"
+      ],
+      "optionsPl": [
+        "Loki",
+        "Thanos",
+        "Ultron",
+        "Kang Zdobywca"
+      ],
+      "correctIndex": 1,
+      "funFact": "На что Тони Старк ответил своей культовой фразой: «А я... так, просто Железный Человек» перед финальным щелчком.",
+      "funFactPl": "Tony Stark odpowiedział na to słynnym: «A ja... jestem Iron Man» nim sam pstryknął palcami."
+    },
+    {
+      "id": "cin_9",
+      "text": "Какую оперную арию в исполнении Марии Каллас слушает Том Хэнкс в драматическом фильме «Филадельфия»?",
+      "textPl": "Jak nazywa się fikcyjne miasteczko w stanie New Jersey, w którym toczy się akcja serialu «Rodzina Soprano»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Спрингфилд",
+        "Норт-Колдуэлл / Ньюарк",
+        "Куонтико",
+        "Хэддонфилд"
+      ],
+      "optionsPl": [
+        "Springfield",
+        "North Caldwell / Newark",
+        "Quantico",
+        "Haddonfield"
+      ],
+      "correctIndex": 1,
+      "funFact": "«Клан Сопрано» совершил революцию в истории ТВ, сделав антигероя Тони Сопрано любимцем миллионов зрителей.",
+      "funFactPl": "Kreacja Tony'ego Soprano w wykonaniu Jamesa Gandolfiniego zdefiniowała na nowo pojęcie antybohatera w telewizji."
+    },
+    {
+      "id": "cin_10",
+      "text": "Какое прозвище носила невеста в желтом спортивном костюме в боевике Квентина Тарантино «Убить Билла»?",
+      "textPl": "Jaki pseudonim operacyjny nosiła Panna Młoda (Uma Thurman) w filmie «Kill Bill» Quentina Tarantino?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Гремучая змея",
+        "Черная Мамба (Black Mamba)",
+        "Кобра",
+        "Медянка"
+      ],
+      "optionsPl": [
+        "Grzechotnik",
+        "Czarna Mamba (Black Mamba)",
+        "Kobra",
+        "Żmija"
+      ],
+      "correctIndex": 1,
+      "funFact": "Желто-черный костюм Умы Турман — это прямая дань уважения легендарному Брюсу Ли из фильма «Игра смерти».",
+      "funFactPl": "Żółty dres Umy Thurman to hołd złożony Bruce'owi Lee i jego kultowemu strojowi z «Gry śmierci»."
+    },
+    {
+      "id": "cin_11",
+      "text": "Какой актер сыграл эксцентричного сыщика Эркюля Пуаро в фильмах «Убийство в Восточном экспрессе» (2017) и «Смерть на Ниле»?",
+      "textPl": "Jaki brytyjski reżyser i aktor wcielił się w Herkulesa Poirot w najnowszych adaptacjach kryminałów Agathy Christie?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Дэниел Крейг",
+        "Кеннет Брана (Kenneth Branagh)",
+        "Гэри Олдман",
+        "Колин Фёрт"
+      ],
+      "optionsPl": [
+        "Daniel Craig",
+        "Kenneth Branagh",
+        "Gary Oldman",
+        "Colin Firth"
+      ],
+      "correctIndex": 1,
+      "funFact": "Кеннет Брана также выступил режиссером всех трех современных экранизаций романов Агаты Кристи.",
+      "funFactPl": "Kenneth Branagh osobiście wyreżyserował całą trylogię filmów o przygodach genialnego belgijskiego detektywa."
+    },
+    {
+      "id": "cin_12",
+      "text": "Какая актриса сыграла главную роль в фильме «Ла-Ла Ленд» и получила за нее премию «Оскар»?",
+      "textPl": "Która aktorka zdobyła Oscara za pierwszoplanową rolę Mii w głośnym musicalu «La La Land»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Эмма Уотсон",
+        "Эмма Стоун (Emma Stone)",
+        "Дженнифер Лоуренс",
+        "Марго Робби"
+      ],
+      "optionsPl": [
+        "Emma Watson",
+        "Emma Stone",
+        "Jennifer Lawrence",
+        "Margot Robbie"
+      ],
+      "correctIndex": 1,
+      "funFact": "Эмма Уотсон отказалась от роли в «Ла-Ла Ленде» ради съемок в диснеевской «Красавице и Чудовище».",
+      "funFactPl": "Emma Watson zrezygnowała z tej roli na rzecz występu w disnejowskiej «Pięknej i Bestii»."
+    },
+    {
+      "id": "cin_13",
+      "text": "Какой сериал Netflix о шахматной вундеркиндке Бет Хармон вызвал бум продаж шахмат во всем мире в 2020 году?",
+      "textPl": "Jaki miniserial Netfliksa o genialnej szachistce Beth Harmon wywołał ogólnoświatowy boom na szachy w 2020 roku?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Мат королю»",
+        "«Ход королевы» (The Queen's Gambit)",
+        "«Гамбит»",
+        "«Королевская игра»"
+      ],
+      "optionsPl": [
+        "«Mat»",
+        "«Gambit królowej» (The Queen's Gambit)",
+        "«Partia życia»",
+        "«Mistrzyni»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Аня Тейлор-Джой запоминала все сложные ходы и шахматные комбинации как хореографический танец за 5 минут до съемок.",
+      "funFactPl": "Anya Taylor-Joy uczyła się skomplikowanych układów figur szachowych jak kroków tanecznych tuż przed ujęciami."
+    },
+    {
+      "id": "cin_14",
+      "text": "Какой знаменитый польский режиссер получил почетного «Оскара» в 2000 году и снял фильмы «Пепел и алмаз», «Катынь» и «Человек из железа»?",
+      "textPl": "Jaki wybitny polski reżyser otrzymał honorowego Oscara w 2000 roku i nakręcił «Kanał», «Popiół i diament» oraz «Katyń»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Кшиштоф Кесьлёвский",
+        "Анджей Вайда (Andrzej Wajda)",
+        "Роман Полански",
+        "Ежи Сколимовский"
+      ],
+      "optionsPl": [
+        "Krzysztof Kieślowski",
+        "Andrzej Wajda",
+        "Roman Polański",
+        "Jerzy Skolimowski"
+      ],
+      "correctIndex": 1,
+      "funFact": "Вайда передал свою статуэтку «Оскар» в музей Ягеллонского университета в Кракове.",
+      "funFactPl": "Andrzej Wajda podarował swoją statuetkę Oscara Muzeum Uniwersytetu Jagiellońskiego w Krakowie."
+    },
+    {
+      "id": "cin_15",
+      "text": "Как звали разумный суперкомпьютер с красным глазом в шедевре Стэнли Кубрика «Космическая одиссея 2001 года»?",
+      "textPl": "Jak nazywał się pokładowy superkomputer pokładowy z czerwonym okiem w filmie «2001: Odyseja kosmiczna»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "JARVIS",
+        "HAL 9000",
+        "Skynet",
+        "GLaDOS"
+      ],
+      "optionsPl": [
+        "JARVIS",
+        "HAL 9000",
+        "Skynet",
+        "GLaDOS"
+      ],
+      "correctIndex": 1,
+      "funFact": "Буквы HAL в латинском алфавите сдвинуты ровно на одну букву назад относительно аббревиатуры IBM (H->I, A->B, L->M).",
+      "funFactPl": "Litery HAL w alfabecie łacińskim poprzedzają bezpośrednio litery IBM (H przed I, A przed B, L przed M)."
+    },
+    {
+      "id": "cin_16",
+      "text": "В каком фильме Кристофера Нолана все события разворачиваются задом наперед через концепцию инверсии энтропии?",
+      "textPl": "W jakim widowisku szpiegowskim Christophera Nolana czas i przedmioty podlegają zjawisku inwersji entropii?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Помни» (Memento)",
+        "«Довод» (Tenet)",
+        "«Престиж»",
+        "«Дюнкерк»"
+      ],
+      "optionsPl": [
+        "«Memento»",
+        "«Tenet»",
+        "«Prestiż»",
+        "«Dunkierka»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Слово TENET — это палиндром, который читается одинаково как слева направо, так и справа налево.",
+      "funFactPl": "Słowo «TENET» to słynny palindrom, który czytany od przodu i od tyłu brzmi identycznie."
+    },
+    {
+      "id": "cin_17",
+      "text": "Какая культовая комедийная франшиза об ограблении казино в Лас-Вегасе собрала Джорджа Клуни, Брэда Питта и Мэтта Деймона?",
+      "textPl": "Jaka kultowa seria filmów o brawurowym napadzie na kasyna w Las Vegas połączyła Clooneya, Pitta i Damona?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Ограбление по-итальянски»",
+        "«Одиннадцать друзей Оушена» (Ocean's Eleven)",
+        "«Карты, деньги, два ствола»",
+        "«Афера»"
+      ],
+      "optionsPl": [
+        "«Włoska robota»",
+        "«Ocean's Eleven: Ryzykowna gra»",
+        "«Przekręt»",
+        "«Żądło»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Фильм 2001 года Стивена Содерберга — это ремейк одноименного фильма 1960 года с Фрэнком Синатрой.",
+      "funFactPl": "Film Stevena Soderbergha z 2001 roku jest remakiem klasyka z 1960 roku, w którym grał Frank Sinatra."
+    },
+    {
+      "id": "cin_18",
+      "text": "Какой сериал о выживании в корейских детских играх стал самым просматриваемым сериалом в истории Netflix?",
+      "textPl": "Jaki południowokoreański serial o śmiertelnych grach z dzieciństwa pobił wszelkie rekordy oglądalności Netfliksa?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Алиса в Пограничье»",
+        "«Игра в кальмара» (Squid Game)",
+        "«Королевство»",
+        "«Мы все мертвы»"
+      ],
+      "optionsPl": [
+        "«Alice in Borderland»",
+        "«Squid Game»",
+        "«Kingdom»",
+        "«All of Us Are Dead»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Сериал посмотрели более 142 миллионов аккаунтов за первые 4 недели после релиза в сентябре 2021 года.",
+      "funFactPl": "W ciągu pierwszych 4 tygodni od premiery serial obejrzało ponad 142 miliony użytkowników."
+    },
+    {
+      "id": "cin_19",
+      "text": "В каком фильме Квентина Тарантино герои обсуждают массаж стоп и гамбургеры из «Big Kahuna Burger»?",
+      "textPl": "W jakim filmie Quentina Tarantino Jules i Vincent toczą dyskusję o masażu stóp i burgerze z Big Kahuna?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Бешеные псы»",
+        "«Криминальное чтиво» (Pulp Fiction)",
+        "«Джеки Браун»",
+        "«Джанго освобожденный»"
+      ],
+      "optionsPl": [
+        "«Wściekłe psy»",
+        "«Pulp Fiction»",
+        "«Jackie Brown»",
+        "«Django»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Тарантино придумал вымышленную гавайскую сеть «Big Kahuna Burger», которая появляется во многих его фильмах.",
+      "funFactPl": "Fikcyjna sieć barów «Big Kahuna Burger» pojawia się w kilku różnych filmach Tarantino."
+    },
+    {
+      "id": "cin_20",
+      "text": "Какой фильм завоевал главный приз «Оскар-2024» за лучший фильм, лучшую режиссуру (Кристофер Нолан) и лучшую мужскую роль (Киллиан Мёрфи)?",
+      "textPl": "Jaki film triumfował na gali Oscarów 2024 zdobywając nagrodę za najlepszy film, reżyserię i rolę Cilliana Murphy'ego?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Барби»",
+        "«Оппенгеймер» (Oppenheimer)",
+        "«Бедные-несчастные»",
+        "«Убийцы цветочной луны»"
+      ],
+      "optionsPl": [
+        "«Barbie»",
+        "«Oppenheimer»",
+        "«Biedne istoty»",
+        "«Czas krwawego księżyca»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Нолан отказался от использования компьютерной графики CGI даже для сцены ядерного испытания «Тринити».",
+      "funFactPl": "Christopher Nolan zrezygnował z efektów komputerowych CGI nawet przy scenie wybuchu testu nuklearnego Trinity."
+    }
+  ]
+}

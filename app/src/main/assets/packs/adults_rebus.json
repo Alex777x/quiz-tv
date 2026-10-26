@@ -1,0 +1,453 @@
+{
+  "id": "adults_rebus",
+  "version": 2,
+  "title": "Кино-ребусы и эмодзи 🧩",
+  "titlePl": "Filmowe rebusy i emotikony 🧩",
+  "description": "Угадай культовый фильм по эмодзи-шифру на экране телевизора!",
+  "descriptionPl": "Odgadnij kultowy film po szyfrze emoji na ekranie telewizora!",
+  "ageGroup": "ADULTS",
+  "category": "Rebus & Logic",
+  "accentColor": "#F59E0B",
+  "questions": [
+    {
+      "id": "reb_1",
+      "rebusEmoji": "🚢 ❄️ 💔 🎻",
+      "text": "Какой культовый фильм-катастрофа зашифрован в этих эмодзи?",
+      "textPl": "Jaki kultowy film katastroficzny został zaszyfrowany w tych emotikonach?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Пираты Карибского моря»",
+        "«Титаник» (Titanic)",
+        "«Посейдон»",
+        "«Идеальный шторм»"
+      ],
+      "optionsPl": [
+        "«Piraci z Karaibów»",
+        "«Titanic»",
+        "«Posejdon»",
+        "«Gniew oceanu»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Скрипка 🎻 напоминает о корабельном оркестре, который продолжал играть до последних секунд погружения лайнера.",
+      "funFactPl": "Skrzypce 🎻 nawiązują do orkiestry okrętowej, która grała do samego końca katastrofy."
+    },
+    {
+      "id": "reb_2",
+      "rebusEmoji": "🚗 ⚡ ⏰ 🎸",
+      "text": "В какой фантастической трилогии машина времени разгоняется до 88 миль в час?",
+      "textPl": "W jakiej trylogii science-fiction wehikuł czasu wymagał prędkości 88 mil na godzinę?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Назад в будущее» (Back to the Future)",
+        "«Безумный Макс»",
+        "«Терминатор»",
+        "«Трансформеры»"
+      ],
+      "optionsPl": [
+        "«Powrót do przyszłości» (Back to the Future)",
+        "«Mad Max»",
+        "«Terminator»",
+        "«Transformers»"
+      ],
+      "correctIndex": 0,
+      "funFact": "Делориан Марти Макфлая требовал 1.21 гигаватта мощности, которую смогла дать только вспышка молнии в башню часов.",
+      "funFactPl": "DeLorean Marty'ego McFlya wymagał 1,21 gigawata energii, którą dostarczył dopiero piorun uderzający w wieżę zegarową."
+    },
+    {
+      "id": "reb_3",
+      "rebusEmoji": "🧙‍♂️ ⚡ 🚂 🦉",
+      "text": "О каком мальчике со шрамом в форме молнии идет речь?",
+      "textPl": "O jakim chłopcu z blizną w kształcie błyskawicy opowiada ten rebus?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Перси Джексон",
+        "Гарри Поттер (Harry Potter)",
+        "Питер Пэн",
+        "Эрагон"
+      ],
+      "optionsPl": [
+        "Percy Jackson",
+        "Harry Potter",
+        "Piotruś Pan",
+        "Eragon"
+      ],
+      "correctIndex": 1,
+      "funFact": "Поезд «Хогвартс-экспресс» отправляется ровно в 11:00 1 сентября с платформы 9 ¾ вокзала Кингс-Кросс.",
+      "funFactPl": "«Hogwart Express» odjeżdża dokładnie o 11:00 z peronu 9 ¾ na londyńskiej stacji King's Cross."
+    },
+    {
+      "id": "reb_4",
+      "rebusEmoji": "🦇 🌃 🃏 🤡",
+      "text": "Какой шедевр Кристофера Нолана о противостоянии добра и хаоса зашифрован?",
+      "textPl": "Jakie arcydzieło Christophera Nolana o walce porządku z chaosem ukryto w tych emotikonach?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Бэтмен: Начало»",
+        "«Темный рыцарь» (The Dark Knight)",
+        "«Джокер»",
+        "«Отряд самоубийц»"
+      ],
+      "optionsPl": [
+        "«Batman: Początek»",
+        "«Mroczny Rycerz» (The Dark Knight)",
+        "«Joker»",
+        "«Legion samobójców»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Хит Леджер посмертно получил премию «Оскар» за легендарное исполнение роли Джокера.",
+      "funFactPl": "Heath Ledger otrzymał pośmiertnego Oscara za genialną kreację Jokera."
+    },
+    {
+      "id": "reb_5",
+      "rebusEmoji": "💊 🕶️ 🐇 💻",
+      "text": "Какой культовый киберпанк-боевик братьев/сестер Вачовски здесь показан?",
+      "textPl": "Jaki kultowy cyberpunkowy hit Wachowskich został tutaj przedstawiony?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Бегущий по лезвию»",
+        "«Матрица» (The Matrix)",
+        "«Трон»",
+        "«Джонни Мнемоник»"
+      ],
+      "optionsPl": [
+        "«Blade Runner»",
+        "«Matrix» (The Matrix)",
+        "«Tron»",
+        "«Johnny Mnemonic»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Зеленый цифровой дождь из кода Матрицы на самом деле состоит из символов японских кулинарных рецептов суши!",
+      "funFactPl": "Słynny zielony cyfrowy deszcz kodu w Matriksie powstał ze znaków japońskich przepisów na sushi!"
+    },
+    {
+      "id": "reb_6",
+      "rebusEmoji": "🦖 🏝️ 🚙 🧬",
+      "text": "В каком парке Стивена Спилберга ученые воскресили доисторических гигантов?",
+      "textPl": "W jakim filmowym parku Stevena Spielberga naukowcy ożywili prehistoryczne gady?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Кинг-Конг»",
+        "«Парк Юрского периода» (Jurassic Park)",
+        "«Годзилла»",
+        "«Земля до начала времен»"
+      ],
+      "optionsPl": [
+        "«King Kong»",
+        "«Park Jurajski» (Jurassic Park)",
+        "«Godzilla»",
+        "«Pradawny ląd»"
+      ],
+      "correctIndex": 1,
+      "funFact": "ДНК динозавров в фильме была извлечена из комаров, застывших в доисторическом янтаре.",
+      "funFactPl": "Kluczowe DNA dinozaurów w filmie pozyskano z komarów uwięzionych w prehistorycznym bursztynie."
+    },
+    {
+      "id": "reb_7",
+      "rebusEmoji": "💍 🌋 🧝 🏹",
+      "text": "Какая эпическая фэнтези-трилогия Питера Джексона ведет героев к Роковой Горе?",
+      "textPl": "Jaka epicka trylogia fantasy Petera Jacksona prowadzi bohaterów ku Górze Przeznaczenia?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Хроники Нарнии»",
+        "«Властелин колец» (The Lord of the Rings)",
+        "«Хоббит»",
+        "«Варкрафт»"
+      ],
+      "optionsPl": [
+        "«Opowieści z Narnii»",
+        "«Władca Pierścieni» (The Lord of the Rings)",
+        "«Hobbit»",
+        "«Warcraft»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Третья часть «Возвращение короля» получила 11 статуэток «Оскар» из 11 номинаций, повторив рекорд «Титаника».",
+      "funFactPl": "Trzecia część «Powrót Króla» zdobyła 11 Oscarów na 11 nominacji, wyrównując rekord «Titanica»."
+    },
+    {
+      "id": "reb_8",
+      "rebusEmoji": "🦁 👑 🌅 🐗",
+      "text": "В каком шедевре Disney звучит песня «Hakuna Matata»?",
+      "textPl": "W jakim arcydziele Disneya rozbrzmiewa nieśmiertelna piosenka «Hakuna Matata»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Мадагаскар»",
+        "«Король Лев» (The Lion King)",
+        "«Книга джунглей»",
+        "«Тарзан»"
+      ],
+      "optionsPl": [
+        "«Madagaskar»",
+        "«Król Lew» (The Lion King)",
+        "«Księga dżungli»",
+        "«Tarzan»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Фраза «Хакуна матата» на языке суахили действительно означает «без забот и проблем».",
+      "funFactPl": "Zwrot «Hakuna matata» w języku suahili oznacza dosłownie «brak zmartwień»."
+    },
+    {
+      "id": "reb_9",
+      "rebusEmoji": "👽 🚲 🌕 📞",
+      "text": "Какой добрый пришелец хотел «позвонить домой» в фильме Стивена Спилберга?",
+      "textPl": "Jaki sympatyczny kosmita pragnął «zadzwonić do domu» w filmie Stevena Spielberga?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Люди в черном»",
+        "«Инопланетянин» (E.T.)",
+        "«Марс атакует!»",
+        "«Прибытие»"
+      ],
+      "optionsPl": [
+        "«Faceci w czerni»",
+        "«E.T.» (E.T. the Extra-Terrestrial)",
+        "«Marsjanie atakują!»",
+        "«Nowy początek»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Силуэт летящего на велосипеде мальчика на фоне полной луны стал официальным логотипом кинокомпании Amblin.",
+      "funFactPl": "Lecący rower na tle księżyca stał się oficjalnym logo wytwórni filmowej Amblin Entertainment."
+    },
+    {
+      "id": "reb_10",
+      "rebusEmoji": "👻 🚫 🔫 🏢",
+      "text": "Кого позовете, если в вашем холодильнике поселилось зеленое привидение Лизун?",
+      "textPl": "Do kogo zadzwonisz, gdy w mieście grasują duchy i piankowy gigant?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Люди в черном",
+        "Охотники за привидениями (Ghostbusters)",
+        "Секретные материалы",
+        "Ван Хельсинг"
+      ],
+      "optionsPl": [
+        "Faceci w czerni",
+        "Pogromcy duchów (Ghostbusters)",
+        "Z archiwum X",
+        "Van Helsing"
+      ],
+      "correctIndex": 1,
+      "funFact": "Автомобиль ECTO-1 был переделанной каретой скорой помощи Cadillac Miller-Meteor 1959 года выпуска.",
+      "funFactPl": "Samochód Ecto-1 powstał na bazie rzadkiego ambulansu Cadillac Miller-Meteor z 1959 roku."
+    },
+    {
+      "id": "reb_11",
+      "rebusEmoji": "🍫 🎩 🏭 🎫",
+      "text": "В какую сказочную фабрику можно попасть только по золотому билету?",
+      "textPl": "Do jakiej niezwykłej fabryki można było wejść wyłącznie ze Złotym Biletem?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Шрек",
+        "Чарли и шоколадная фабрика",
+        "Корпорация монстров",
+        "Алиса в Стране чудес"
+      ],
+      "optionsPl": [
+        "Shrek",
+        "Charlie i fabryka czekolady",
+        "Potwory i spółka",
+        "Alicja w Krainie Czarów"
+      ],
+      "correctIndex": 1,
+      "funFact": "Шоколадная река на съемках фильма Тима Бёртона состояла из настоящей воды, смешанной с какао и сливками.",
+      "funFactPl": "Czekoladowa rzeka na planie filmu Tima Burtona zawierała ponad 700 tysięcy litrów sztucznej czekolady."
+    },
+    {
+      "id": "reb_12",
+      "rebusEmoji": "🏠 👦 🎄 🍕",
+      "text": "Какую рождественскую комедию мы смотрим каждый Новый год в Польше на Polsat?",
+      "textPl": "Jaką świąteczną komedię z Macaulayem Culkinem ogląda cała Polska co roku w wigilię na Polsacie?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Гринч»",
+        "«Один дома» (Kevin sam w domu)",
+        "«Эльф»",
+        "«Подарок на Рождество»"
+      ],
+      "optionsPl": [
+        "«Grinch»",
+        "«Kevin sam w domu» (Home Alone)",
+        "«Elf»",
+        "«Świąteczna gorączka»"
+      ],
+      "correctIndex": 1,
+      "funFact": "В Польше фильм настолько популярен, что петиция зрителей заставила телеканал вернуть его в сетку вещания.",
+      "funFactPl": "W 2010 roku ponad 90 tysięcy Polaków zaprotestowało na Facebooku, gdy Polsat planował nie wyemitować Kevina."
+    },
+    {
+      "id": "reb_13",
+      "rebusEmoji": "🥊 🥩 🏃‍♂️ 🔔",
+      "text": "Какой боксер из Филадельфии поднимался по ступеням музея под крики толпы?",
+      "textPl": "Jaki pięściarz z Filadelfii trenował biegając po schodach muzeum w rytm «Gonna Fly Now»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Крид",
+        "Рокки Бальбоа (Rocky)",
+        "Малышка на миллион",
+        "Боец"
+      ],
+      "optionsPl": [
+        "Creed",
+        "Rocky Balboa",
+        "Za wszelką cenę",
+        "Fighter"
+      ],
+      "correctIndex": 1,
+      "funFact": "Сильвестр Сталлоне написал сценарий за 3 дня после просмотра боя Мухаммеда Али с Чаком Вепнером.",
+      "funFactPl": "Sylvester Stallone napisał scenariusz w zaledwie 3 dni i odmówił sprzedaży, dopóki nie zagwarantowano mu roli głównej."
+    },
+    {
+      "id": "reb_14",
+      "rebusEmoji": "🪐 ⏳ 👨‍👧 🚀",
+      "text": "В каком фильме Кристофера Нолана один час на планете Миллер равен 7 земным годам?",
+      "textPl": "W jakim filmie science-fiction Christophera Nolana 1 godzina na planecie Millera to 7 lat na Ziemi?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Гравитация»",
+        "«Интерстеллар» (Interstellar)",
+        "«Марсианин»",
+        "«К звездам»"
+      ],
+      "optionsPl": [
+        "«Grawitacja»",
+        "«Interstellar»",
+        "«Marsjanin»",
+        "«Ad Astra»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Физику черной дыры «Гаргантюа» рассчитывал нобелевский лауреат Кип Торн на суперкомпьютерах.",
+      "funFactPl": "Wizualizację czarnej dziury Gargantua obliczał zespół pod kierunkiem noblisty Kipa Thorne'a."
+    },
+    {
+      "id": "reb_15",
+      "rebusEmoji": "👨‍🍳 🐀 🧀 🥖",
+      "text": "Какой одаренный повар в Париже управлял кулинаром за волосы под колпаком?",
+      "textPl": "Jaki kulinarny geniusz w Paryżu sterował kucharzem ciągnąc go za włosy pod czapką?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Шеф Адам Джонс»",
+        "«Рататуй» (Ratatouille)",
+        "«Пряности и страсти»",
+        "«Кухня»"
+      ],
+      "optionsPl": [
+        "«Ugotowany»",
+        "«Ratatuj» (Ratatouille)",
+        "«Podróż na sto stóp»",
+        "«Smakosz»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Крысенок Реми готовит традиционное провансальское овощное рагу Конфи Бьяльди, покорившее критика Эго.",
+      "funFactPl": "Szczurek Rémy serwuje słynną wersję prowansalskiego dania warzywnego Confi Byaldi."
+    },
+    {
+      "id": "reb_16",
+      "rebusEmoji": "🎈 🤡 🌧️ 🚲",
+      "text": "В каком романе Стивена Кинга жуткий Пеннивайз предлагает уплыть в канализацию?",
+      "textPl": "W jakim horrorze Stephena Kinga przerażający klaun Pennywise kusi dzieci czerwonym balonikiem?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Сияние»",
+        "«Оно» (It)",
+        "«Кладбище домашних животных»",
+        "«Мизери»"
+      ],
+      "optionsPl": [
+        "«Lśnienie»",
+        "«To» (It)",
+        "«Smętarz dla zwierzaków»",
+        "«Misery»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Желтый дождевик маленького Джорджи стал мгновенно узнаваемым символом современного киноужаса.",
+      "funFactPl": "Żółty płaszcz przeciwdeszczowy małego Georgiego stał się ikoną współczesnego horroru."
+    },
+    {
+      "id": "reb_17",
+      "rebusEmoji": "👠 👗 👜 😈",
+      "text": "О каком нью-йоркском модном журнале «Подиум» и редакторе Миранде Пристли идет речь?",
+      "textPl": "O jakim nowojorskim świecie mody i despotycznej redaktor Mirandzie Priestly opowiada ten film?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Шопоголик»",
+        "«Дьявол носит Prada» (The Devil Wears Prada)",
+        "«Секс в большом городе»",
+        "«Завтрак у Тиффани»"
+      ],
+      "optionsPl": [
+        "«Wyznania zakupoholiczki»",
+        "«Diabeł ubiera się u Prady» (The Devil Wears Prada)",
+        "«Seks w wielkim mieście»",
+        "«Śniadanie u Tiffany'ego»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Мэрил Стрип сама настояла на том, чтобы ее героиня говорила тихим и спокойным голосом, вызывая еще больший трепет.",
+      "funFactPl": "Meryl Streep celowo mówiła w filmie szeptem i spokojnym tonem, co potęgowało grozę wśród współpracowników."
+    },
+    {
+      "id": "reb_18",
+      "rebusEmoji": "🤠 🧸 🚀 📦",
+      "text": "О каких оживающих игрушках Энди рассказывает первый в истории полнометражный 3D-мультфильм?",
+      "textPl": "O jakich ożywających zabawkach chłopca Andy'ego opowiadał pierwszy w historii pełnometrażowy film 3D?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Вверх»",
+        "«История игрушек» (Toy Story)",
+        "«Тачки»",
+        "«Суперсемейка»"
+      ],
+      "optionsPl": [
+        "«Odlot»",
+        "«Toy Story»",
+        "«Auta»",
+        "«Iniemamocni»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Вуди и Базз Лайтер стали первыми компьютерными анимационными героями, вошедшими в Национальный реестр фильмов США.",
+      "funFactPl": "«Toy Story» z 1995 roku był pierwszym filmem w całości stworzonym za pomocą animacji komputerowej."
+    },
+    {
+      "id": "reb_19",
+      "rebusEmoji": "🏴‍☠️ ⚓ 🪙 🦜",
+      "text": "Каким кораблем командовал капитан Джек Воробей в поисках проклятого золота ацтеков?",
+      "textPl": "Jakim statkiem dowodził kapitan Jack Sparrow w poszukiwaniu przeklętego złota Azteków?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Летучий голландец»",
+        "«Черная жемчужина» («Пираты Карибского моря»)",
+        "«Месть королеwy Анны»",
+        "«Испаньола»"
+      ],
+      "optionsPl": [
+        "«Latający Holender»",
+        "«Czarna Perła» («Piraci z Karaibów»)",
+        "«Zemsta Królowej Anny»",
+        "«Hispaniola»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Джонни Депп признался, что вдохновлялся походкой и манерами гитариста The Rolling Stones Кита Ричардса.",
+      "funFactPl": "Johnny Depp tworząc postać Jacka Sparrowa wzorował się na gitarzyście The Rolling Stones, Keithie Richardsie."
+    },
+    {
+      "id": "reb_20",
+      "rebusEmoji": "🕷️ 🕸️ 🗽 🧪",
+      "text": "Кому дядя Бен оставил завет: «С великой силой приходит великая ответственность»?",
+      "textPl": "Komu wujek Ben przekazał zasadę: «Z wielką siłą wiąże się wielka odpowiedzialność»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Бэтмен",
+        "Человек-паук (Spider-Man)",
+        "Железный человек",
+        "Сорвиголова"
+      ],
+      "optionsPl": [
+        "Batman",
+        "Spider-Man",
+        "Iron Man",
+        "Daredevil"
+      ],
+      "correctIndex": 1,
+      "funFact": "Питер Паркер получил свои суперспособности после укуса генетически модифицированного паука в научной лаборатории.",
+      "funFactPl": "Peter Parker zyskał pajęcze zdolności po ukąszeniu przez genetycznie zmodyfikowanego pająka."
+    }
+  ]
+}
