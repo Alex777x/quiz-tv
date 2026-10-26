@@ -1,10 +1,10 @@
 {
   "id": "adults_melody",
-  "version": 1,
+  "version": 2,
   "title": "Музыкальный ринг (Угадай мелодию) 🎵",
   "titlePl": "Jaka to melodia (Zgadnij utwór) 🎵",
-  "description": "Слушай мелодию из динамиков ТВ и угадай культовый хит или саундтрек!",
-  "descriptionPl": "Posłuchaj melodii z głośnika TV i odgadnij hit lub ścieżkę dźwiękową!",
+  "description": "Слушай отрывки из динамиков ТВ и угадай культовый мировой хит или саундтрек!",
+  "descriptionPl": "Posłuchaj fragmentu z głośników TV i odgadnij kultowy hit lub motyw filmowy!",
   "ageGroup": "ADULTS",
   "category": "Music & Audio",
   "accentColor": "#A855F7",
@@ -15,13 +15,13 @@
       "textPl": "Z jakiej legendarnej sagi kosmicznej pochodzi ta melodia odtwarzana z TV?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Звёздные войны» (Star Wars)",
-        "«Стартрек» (Star Trek)",
+        "«Звёздные войны»",
+        "«Стартрек»",
         "«Интерстеллар»",
         "«Стражи Галактики»"
       ],
       "optionsPl": [
-        "«Gwiezdne wojny» (Star Wars)",
+        "«Gwiezdne wojny»",
         "«Star Trek»",
         "«Interstellar»",
         "«Strażnicy Galaktyki»"
@@ -29,7 +29,7 @@
       "correctIndex": 0,
       "funFact": "Знаменитый «Имперский марш» Дарт Вейдера и главную тему саги написал пятикратный лауреат «Оскара» Джон Уильямс.",
       "funFactPl": "Słynny «Marsz Imperialny» Dartha Vadera skomponował legendarny John Williams nagrodzony 5 Oscarami.",
-      "melodyTune": "star_wars"
+      "melodyTune": "audio/star_wars.m4a"
     },
     {
       "id": "mel_2",
@@ -49,31 +49,31 @@
         "Pac-Man"
       ],
       "correctIndex": 1,
-      "funFact": "Тему Super Mario написал Кодзи Кондо на маленьком синтезаторе всего с 4 звуковыми каналами в 1985 году.",
-      "funFactPl": "Motyw Super Mario napisał Koji Kondo w 1985 roku na zaledwie czterokanałowym syntezatorze konsoli NES.",
-      "melodyTune": "mario"
+      "funFact": "Тему Super Mario написал Кодзи Кондо на синтезаторе всего с 4 звуковыми каналами в 1985 году.",
+      "funFactPl": "Motyw Super Mario napisał Koji Kondo w 1985 roku na czterokanałowym syntezatorze konsoli NES.",
+      "melodyTune": "audio/mario_theme.m4a"
     },
     {
       "id": "mel_3",
-      "text": "Для какого комедийного детективного персонажа была написана эта джазовая мелодия?",
-      "textPl": "Dla jakiej kultowej komediowej postaci detektywistycznej powstał ten motyw jazzowy?",
+      "text": "Для какого комедийного детективного персонажа была написана эта джазовая тема?",
+      "textPl": "Dla jakiej kultowej postaci detektywistycznej powstał ten motyw jazzowy?",
       "timeLimitSeconds": 20,
       "options": [
-        "Розовая пантера (Pink Panther)",
-        "Шерлок Холмс",
         "Остин Пауэрс",
+        "Шерлок Холмс",
+        "Розовая пантера",
         "Эйс Вентура"
       ],
       "optionsPl": [
-        "Różowa Pantera (Pink Panther)",
-        "Sherlock Holmes",
         "Austin Powers",
+        "Sherlock Holmes",
+        "Różowa Pantera",
         "Ace Ventura"
       ],
-      "correctIndex": 0,
-      "funFact": "Тему «Розовой пантеры» написал Генри Манчини в 1963 году. Тенор-саксофон соло исполнил Плас Джонсон.",
+      "correctIndex": 2,
+      "funFact": "Тему «Розовой пантеры» написал Генри Манчини в 1963 году. Соло на тенор-саксофоне исполнил Плас Джонсон.",
       "funFactPl": "Temat «Różowej Pantery» skomponował Henry Mancini w 1963 roku i zdobył nominację do Oscara.",
-      "melodyTune": "pink_panther"
+      "melodyTune": "audio/pink_panther.m4a"
     },
     {
       "id": "mel_4",
@@ -81,241 +81,330 @@
       "textPl": "Która symfonia Ludwiga van Beethovena rozpoczyna się od tych czterech dramatycznych nut?",
       "timeLimitSeconds": 20,
       "options": [
-        "Симфония №3 («Героическая»)",
-        "Симфония №5 (до минор)",
+        "Симфония №3",
+        "Симфония №9",
         "Симфония №7",
-        "Симфония №9 («Ода к радости»)"
+        "Симфония №5"
       ],
       "optionsPl": [
-        "III Symfonia («Eroica»)",
-        "V Symfonia c-moll",
+        "III Symfonia",
+        "IX Symfonia",
         "VII Symfonia",
-        "IX Symfonia («Oda do radości»)"
+        "V Symfonia c-moll"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Бетховен сам описал это грозное вступление словами: «Так судьба стучится в дверь!».",
       "funFactPl": "Sam Beethoven miał skomentować ten motyw słowami: «Tak oto Los puka do drzwi!».",
-      "melodyTune": "beethoven"
+      "melodyTune": "audio/beethoven_5.m4a"
     },
     {
       "id": "mel_5",
-      "text": "Какой легендарный британский рок-коллектив узнается по этому басовому риффу?",
-      "textPl": "Jaki legendarny brytyjski zespół rockowy rozpoznałeś po tym charakterystycznym basowym rytmie?",
+      "text": "Какой всемирный шедевр группы Queen звучит в этой знаменитой оперной рок-композиции?",
+      "textPl": "Jaki arcydzieło grupy Queen rozbrzmiewa w tej słynnej rock-operowej kompozycji?",
       "timeLimitSeconds": 20,
       "options": [
-        "Queen («Another One Bites The Dust»)",
-        "The Beatles",
-        "AC/DC",
-        "The Rolling Stones"
+        "Bohemian Rhapsody",
+        "We Are the Champions",
+        "The Show Must Go On",
+        "Radio Ga Ga"
       ],
       "optionsPl": [
-        "Queen («Another One Bites The Dust»)",
-        "The Beatles",
-        "AC/DC",
-        "The Rolling Stones"
+        "Bohemian Rhapsody",
+        "We Are the Champions",
+        "The Show Must Go On",
+        "Radio Ga Ga"
       ],
       "correctIndex": 0,
-      "funFact": "Басист Джон Дикон написал этот фанковый трек, а Майкл Джексон лично убедил Фредди Меркьюри выпустить его синглом.",
-      "funFactPl": "Basista John Deacon stworzył ten riff, a Michael Jackson namówił zespół na wydanie go jako singla.",
-      "melodyTune": "queen"
+      "funFact": "Фредди Меркьюри и группа Queen записывали хоровые партии для Богемской рапсодии более трёх недель, наложив до 180 вокальных дорожек.",
+      "funFactPl": "Freddie Mercury i zespół Queen nagrywali partie wokalne przez ponad 3 tygodnie, nakładając aż 180 ścieżek taśmy.",
+      "melodyTune": "audio/queen_bohemian.m4a"
     },
     {
       "id": "mel_6",
-      "text": "В какой головоломке для Game Boy эта народная мелодия стала самой узнаваемой в мире?",
-      "textPl": "W jakiej kultowej grze logicznej na Game Boya ta melodia stała się światowym fenomenem?",
-      "timeLimitSeconds": 20,
-      "options": [
-        "Arkanoid",
-        "Тетрис (Tetris)",
-        "Space Invaders",
-        "Tamagotchi"
-      ],
-      "optionsPl": [
-        "Arkanoid",
-        "Tetris",
-        "Space Invaders",
-        "Tamagotchi"
-      ],
-      "correctIndex": 1,
-      "funFact": "В основе знаменитой темы «Type A» Тетриса лежит народная песня «Коробейники» XIX века.",
-      "funFactPl": "Muzyka z Tetrisa oparta jest na tradycyjnej XIX-wiecznej melodii, zaaranżowanej przez Hirokazu Tanakę.",
-      "melodyTune": "tetris"
-    },
-    {
-      "id": "mel_7",
       "text": "К какому культовому фэнтези-сериалу HBO Рамин Джавади написал эту заглавную тему?",
       "textPl": "Do jakiego kultowego serialu fantasy HBO Ramin Djawadi skomponował ten motyw przewodni z wiolonczelą?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Ведьмак» (The Witcher)",
-        "«Игра престолов» (Game of Thrones)",
+        "«Ведьмак»",
+        "«Игра престолов»",
         "«Властелин колец»",
         "«Дом Дракона»"
       ],
       "optionsPl": [
-        "«Wiedźmin» (The Witcher)",
-        "«Gra o Tron» (Game of Thrones)",
+        "«Wiedźmin»",
+        "«Gra o Tron»",
         "«Władca Pierścieni»",
         "«Dom Smoka»"
       ],
       "correctIndex": 1,
-      "funFact": "Рамин Джавади выбрал солирующим инструментом виolonчель, чтобы музыка звучала более мрачно и глубоко.",
-      "funFactPl": "Djawadi postawił na wiolonczelę jako instrument wiodący, rezygnując z typowych fletów i solówek wokalnych.",
-      "melodyTune": "got"
+      "funFact": "Рамин Джавади выбрал солирующим инструментом виолончель, чтобы музыка звучала глубоко и мрачно.",
+      "funFactPl": "Djawadi postawił na wiolonczelę jako instrument wiodący, rezygnując z typowych fletów i solówek.",
+      "melodyTune": "audio/game_of_thrones.m4a"
     },
     {
-      "id": "mel_8",
+      "id": "mel_7",
       "text": "Какому шпиону британской разведки MI6 принадлежит этот легендарный музыкальный рифф?",
       "textPl": "Do jakiego agenta brytyjskiego wywiadu MI6 należy ten nieśmiertelny motyw muzyczny?",
       "timeLimitSeconds": 20,
       "options": [
         "Джейсон Борн",
-        "Джеймс Бонд 007",
         "Итан Хант",
+        "Джеймс Бонд 007",
         "Джонни Инглиш"
       ],
       "optionsPl": [
         "Jason Bourne",
-        "James Bond 007",
         "Ethan Hunt",
+        "James Bond 007",
         "Johnny English"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "«James Bond Theme» впервые прозвучала в фильме «Доктор Ноу» (1962) с Шоном Коннери в главной роли.",
       "funFactPl": "Motyw Bonda po raz pierwszy pojawił się w filmie «Doktor No» z 1962 roku z Seanem Connerym.",
-      "melodyTune": "james_bond"
+      "melodyTune": "audio/james_bond.m4a"
     },
     {
-      "id": "mel_9",
+      "id": "mel_8",
       "text": "В какой франшизе с Томом Крузом звучит эта напряженная тема в размере 5/4?",
       "textPl": "W jakiej serii filmów akcji z Tomem Cruise'em rozbrzmiewa ten motyw w metrum 5/4?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Топ Ган» (Top Gun)",
-        "«Миссия невыполнима» (Mission: Impossible)",
+        "«Топ Ган»",
         "«Джек Ричер»",
-        "«Грань будущего»"
+        "«Грань будущего»",
+        "«Миссия невыполнима»"
       ],
       "optionsPl": [
         "«Top Gun»",
-        "«Mission: Impossible»",
         "«Jack Reacher»",
-        "«Na skraju jutra»"
+        "«Na skraju jutra»",
+        "«Mission: Impossible»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Необычный ритм 5/4 был выбран композитором Лало Шифрином, потому что азбукой Морзе две точки и два тире соответствуют инициалам M.I.",
       "funFactPl": "Niezwykłe metrum 5/4 według kompozytora Lalo Schifrina odpowiada kodowi Morse'a dla liter M.I. (-- ..).",
-      "melodyTune": "mission_impossible"
+      "melodyTune": "audio/mission_impossible.m4a"
     },
     {
-      "id": "mel_10",
-      "text": "В какую школу магии и волшебства переносит нас этот сказочный мотив («Hedwig’s Theme»)?",
-      "textPl": "Do jakiej szkoły magii i czarodziejstwa przenosi nas ten bajkowy motyw («Hedwig’s Theme»)?",
-      "timeLimitSeconds": 20,
-      "options": [
-        "Шармбатон",
-        "Хогвартс («Гарри Поттер»)",
-        "Дурмстранг",
-        "Ильверморни"
-      ],
-      "optionsPl": [
-        "Beauxbatons",
-        "Hogwart («Harry Potter»)",
-        "Durmstrang",
-        "Ilvermorny"
-      ],
-      "correctIndex": 1,
-      "funFact": "Джон Уильямс сыграл эту тему продюсерам на фортепиано с первой попытки, и мелодия была утверждена мгновенно.",
-      "funFactPl": "John Williams zagrał ten motyw producentom na pianinie za pierwszym podejściem i natychmiast go zaakceptowano.",
-      "melodyTune": "harry_potter"
-    },
-    {
-      "id": "mel_11",
-      "text": "Какая гангстерская драма Фрэнсиса Форда Копполы ассоциируется с этой трогательной сицилийской темой?",
+      "id": "mel_9",
+      "text": "Какая гангстерская драма Фрэнсиса Форда Копполы ассоциируется с этой сицилийской темой?",
       "textPl": "Z jakim arcydziełem kina gangsterskiego Francisa Forda Coppoli kojarzy się ten sycylijski motyw?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Крестный отец» (The Godfather)",
-        "«Лицо со шрамом»",
+        "«Крестный отец»",
         "«Славные парни»",
+        "«Лицо со шрамом»",
         "«Однажды в Америке»"
       ],
       "optionsPl": [
-        "«Ojciec chrzestny» (The Godfather)",
-        "«Człowiek z blizną»",
+        "«Ojciec chrzestny»",
         "«Chłopcy z ferajny»",
+        "«Człowiek z blizną»",
         "«Dawno temu w Ameryce»"
       ],
       "correctIndex": 0,
-      "funFact": "Тему «Speak Softly Love» написал Нино Рота, создав один из самых узнаваемых саундтреков в истории кинематографа.",
-      "funFactPl": "Motyw miłosny do filmu skomponował Nino Rota, tworząc jedno z najsłynniejszych dzieł muzyki filmowej.",
-      "melodyTune": "godfather"
+      "funFact": "Тему «Speak Softly Love» написал Нино Рота, создав один из самых проникновенных саундтреков в истории кино.",
+      "funFactPl": "Muzykę «Speak Softly Love» skomponował Nino Rota, tworząc jedno z najbardziej poruszających dzieł muzyki filmowej.",
+      "melodyTune": "audio/godfather.m4a"
+    },
+    {
+      "id": "mel_10",
+      "text": "В каком оскароносном фильме Джеймса Кэмерона прозвучала песня «My Heart Will Go On»?",
+      "textPl": "W jakim oscarowym arcydziele Jamesa Camerona zabrzmiała ballada «My Heart Will Go On»?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Аватар»",
+        "«Титаник»",
+        "«Бездна»",
+        "«Ромео + Джульетта»"
+      ],
+      "optionsPl": [
+        "«Avatar»",
+        "«Titanic»",
+        "«Głębia»",
+        "«Romeo i Julia»"
+      ],
+      "correctIndex": 1,
+      "funFact": "Селин Дион записала песню с первого же дубля, а композитор Джеймс Хорнер втайне от режиссёра готовил её релиз.",
+      "funFactPl": "Celine Dion nagrała tę piosenkę w studiu za pierwszym podejściem, a utwór zdobył Oscara za najlepszą piosenkę.",
+      "melodyTune": "audio/titanic_my_heart.m4a",
+      "imageAsset": "images/titanic_ship.jpg"
+    },
+    {
+      "id": "mel_11",
+      "text": "Какой суперхит Майкла Джексона с легендарным басовым грувом звучит сейчас?",
+      "textPl": "Jaki legendarny hit Michaela Jacksona z hipnotyzującym basem właśnie słyszysz?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Beat It",
+        "Bad",
+        "Billie Jean",
+        "Smooth Criminal"
+      ],
+      "optionsPl": [
+        "Beat It",
+        "Bad",
+        "Billie Jean",
+        "Smooth Criminal"
+      ],
+      "correctIndex": 2,
+      "funFact": "Именно под песню «Billie Jean» в 1983 году Майкл Джексон впервые продемонстрировал миру лунную походку (Moonwalk).",
+      "funFactPl": "To podczas wykonania «Billie Jean» w 1983 roku Michael Jackson po raz pierwszy zaprezentował «moonwalk».",
+      "melodyTune": "audio/jackson_billie_jean.m4a"
     },
     {
       "id": "mel_12",
-      "text": "Какой бесстрашный археолог в шляпе и с кнутом спешит навстречу приключениям под этот победный марш?",
-      "textPl": "Jaki nieustraszony archeolog w kapeluszu i z biczem rusza do akcji przy dźwiękach tego marszu?",
+      "text": "Какая приключенческая морская франшиза с капитаном Джеком Воробьем узнается по этому маршу?",
+      "textPl": "Jaka piracka seria filmowa z kapitanem Jackiem Sparrowem rozbrzmiewa w tym motywie?",
       "timeLimitSeconds": 20,
       "options": [
-        "Нейтан Дрейк",
-        "Индиана Джонс (Indiana Jones)",
-        "Лара Крофт",
-        "Аллан Квотермейн"
+        "«Остров сокровищ»",
+        "«Хозяин морей»",
+        "«Черные паруса»",
+        "«Пираты Карибского моря»"
       ],
       "optionsPl": [
-        "Nathan Drake",
-        "Indiana Jones",
-        "Lara Croft",
-        "Allan Quatermain"
+        "«Wyspa skarbów»",
+        "«Pan i władca»",
+        "«Piraci»",
+        "«Piraci z Karaibów»"
       ],
-      "correctIndex": 1,
-      "funFact": "Джон Уильямс предложил Стивену Спилбергу две темы на выбор. Спилберг послушал обе и сказал: «Давай объединим обе в один марш!»",
-      "funFactPl": "John Williams przedstawił Stevenowi Spielbergowi dwa szkice, a reżyser poprosił o połączenie ich w jeden marsz.",
-      "melodyTune": "indiana_jones"
+      "correctIndex": 3,
+      "funFact": "Тему «He's a Pirate» Клаус Бадельт и Ханс Циммер написали буквально за одну бессонную ночь перед записью оркестра.",
+      "funFactPl": "Klaus Badelt i Hans Zimmer skomponowali motyw «He's a Pirate» w zaledwie jedną noc.",
+      "melodyTune": "audio/pirates_caribbean.m4a"
     },
     {
       "id": "mel_13",
-      "text": "Какая романтическая баллада Селин Дион из фильма «Титаник» только что прозвучала?",
-      "textPl": "Jaka wzruszająca ballada Céline Dion z filmu «Titanic» została właśnie odegrana?",
+      "text": "Какой гимн гранж-рока группы Nirvana из Сиэтла открывается этим гитарным аккордом?",
+      "textPl": "Jaki hymn muzyki grunge zespołu Nirvana otwiera ten legendarny gitarowy riff?",
       "timeLimitSeconds": 20,
       "options": [
-        "«I Will Always Love You»",
-        "«My Heart Will Go On»",
-        "«Because You Loved Me»",
-        "«The Power of Love»"
+        "Smells Like Teen Spirit",
+        "Come as You Are",
+        "Lithium",
+        "In Bloom"
       ],
       "optionsPl": [
-        "«I Will Always Love You»",
-        "«My Heart Will Go On»",
-        "«Because You Loved Me»",
-        "«The Power of Love»"
+        "Smells Like Teen Spirit",
+        "Come as You Are",
+        "Lithium",
+        "In Bloom"
       ],
-      "correctIndex": 1,
-      "funFact": "Джеймс Кэмерон сначала не хотел никаких поп-песен в титрах, но демо-запись Селин Дион растрогала его до слез.",
-      "funFactPl": "Reżyser James Cameron początkowo nie chciał piosenki pop w filmie, lecz wersja demo doprowadziła go do łez.",
-      "melodyTune": "titanic"
+      "correctIndex": 0,
+      "funFact": "Название песни родилось, когда подруга Курта Кобейна написала на стене «Kurt smells like Teen Spirit» (название дезодоранта).",
+      "funFactPl": "Tytuł powstał, gdy przyjaciółka Kurta Cobaina napisała na ścianie «Kurt smells like Teen Spirit» (marka dezodorantu).",
+      "melodyTune": "audio/nirvana_teen_spirit.m4a"
     },
     {
       "id": "mel_14",
-      "text": "Под какую песню Рика Эстли пользователи интернета разыгрывают друг друга по ссылке («Рикролл»)?",
-      "textPl": "Przy jakim hicie Ricka Astleya internauci nabierają się nawzajem w słynnym żarcie «Rickroll»?",
+      "text": "Какой легендарный диско-хит шведского квартета ABBA заставляет танцевать весь мир?",
+      "textPl": "Jaki ponadczasowy hit disco szwedzkiego kwartetu ABBA właśnie słyszysz?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Take On Me»",
-        "«Never Gonna Give You Up»",
-        "«Together Forever»",
-        "«Careless Whisper»"
+        "Mamma Mia",
+        "Dancing Queen",
+        "Waterloo",
+        "Gimme! Gimme! Gimme!"
       ],
       "optionsPl": [
-        "«Take On Me»",
-        "«Never Gonna Give You Up»",
-        "«Together Forever»",
-        "«Careless Whisper»"
+        "Mamma Mia",
+        "Dancing Queen",
+        "Waterloo",
+        "Gimme! Gimme! Gimme!"
       ],
       "correctIndex": 1,
-      "funFact": "Мем возник в 2007 году. Сам Рик Эстли считает шутку невероятно доброй и даже выступил вживую на параде в Нью-Йорке.",
-      "funFactPl": "Fenomen «Rickrollingu» narodził się w 2007 roku i stał się najpopularniejszym żartem w historii internetu.",
-      "melodyTune": "rickroll"
+      "funFact": "«Dancing Queen» — единственный сингл группы ABBA, возглавивший американский хит-парад Billboard Hot 100.",
+      "funFactPl": "«Dancing Queen» to jedyny singiel grupy ABBA, który zajął 1. miejsce na amerykańskiej liście Billboard Hot 100.",
+      "melodyTune": "audio/abba_dancing_queen.m4a"
+    },
+    {
+      "id": "mel_15",
+      "text": "Главная тема какого культового приключения Линка в королевстве Хайрул звучит в этой мелодии?",
+      "textPl": "Główny motyw jakiej legendarnej gry Nintendo o przygodach Linka w krainie Hyrule właśnie słyszysz?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Final Fantasy",
+        "Dark Souls",
+        "The Legend of Zelda",
+        "Elden Ring"
+      ],
+      "optionsPl": [
+        "Final Fantasy",
+        "Dark Souls",
+        "The Legend of Zelda",
+        "Elden Ring"
+      ],
+      "correctIndex": 2,
+      "funFact": "Кодзи Кондо написал главную тему Зельды буквально в последний момент, когда сорвались права на «Болеро» Равеля.",
+      "funFactPl": "Koji Kondo stworzył motyw Zeldy na dzień przed oddaniem gry do produkcji, gdy wygasły prawa do utworu Ravela.",
+      "melodyTune": "audio/zelda_theme.m4a"
+    },
+    {
+      "id": "mel_16",
+      "text": "В каком фильме о боксере Сильвестре Сталлоне звучит мотивирующий гимн «Gonna Fly Now»?",
+      "textPl": "W jakim filmie o niezłomnym bokserze Sylvestrze Stallone zabrzmiał ten hymn motywacyjny?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Бешеный бык»",
+        "«Малышка на миллион»",
+        "«Левша»",
+        "«Рокки»"
+      ],
+      "optionsPl": [
+        "«Wściekły Byk»",
+        "«Za wszelką cenę»",
+        "«Do utraty sił»",
+        "«Rocky»"
+      ],
+      "correctIndex": 3,
+      "funFact": "Знаменитая сцена пробежки Рокки по ступеням Художественного музея Филадельфии стала символом победы над трудностями.",
+      "funFactPl": "Bieg Rocky'ego po schodach muzeum w Filadelfii stał się symbolem determinacji w kulturze masowej.",
+      "melodyTune": "audio/rocky_theme.m4a"
+    },
+    {
+      "id": "mel_17",
+      "text": "В каком фантастическом блокбастере Стивена Спилберга ожили гигантские динозавры под эту музыку?",
+      "textPl": "W jakim superhicie Stevena Spielberga ożyły prehistoryczne dinozaury przy tej majestatycznej melodii?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "«Парк Юрского периода»",
+        "«Кинг-Конг»",
+        "«Годзилла»",
+        "«Хроники Нарнии»"
+      ],
+      "optionsPl": [
+        "«Park Jurajski»",
+        "«King Kong»",
+        "«Godzilla»",
+        "«Opowieści z Narnii»"
+      ],
+      "correctIndex": 0,
+      "funFact": "Джон Уильямс стремился передать в этой теме одновременно благоговение и восторг перед величием природы.",
+      "funFactPl": "John Williams skomponował ten motyw, by oddać uczucie zachwytu i respektu przed naturą.",
+      "melodyTune": "audio/jurassic_park.m4a"
+    },
+    {
+      "id": "mel_18",
+      "text": "Какому бесстрашному профессору археологии с кнутом и шляпой принадлежит этот походный марш?",
+      "textPl": "Do jakiego nieustraszonego profesora archeologii w fedorze i z biczem należy ten marsz?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Лара Крофт",
+        "Индиана Джонс",
+        "Натан Дрейк",
+        "Аллан Квотермейн"
+      ],
+      "optionsPl": [
+        "Lara Croft",
+        "Indiana Jones",
+        "Nathan Drake",
+        "Allan Quatermain"
+      ],
+      "correctIndex": 1,
+      "funFact": "«The Raiders March» была выбрана Спилбергом, когда Уильямс сыграл ему на рояле две разные темы, а Спилберг предложил объединить их.",
+      "funFactPl": "Steven Spielberg połączył dwa osobne motywy Williamsa w jeden legendarny marsz.",
+      "melodyTune": "audio/indiana_jones.m4a"
     }
   ]
 }

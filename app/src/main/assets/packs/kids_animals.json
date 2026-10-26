@@ -15,20 +15,21 @@
       "textPl": "Które zwierzę lądowe jest najszybsze na świecie i potrafi biec z prędkością ponad 100 km/h?",
       "timeLimitSeconds": 25,
       "options": [
+        "Гепард",
         "Лев",
-        "Гепард (Gepard)",
         "Антилопа",
         "Леопард"
       ],
       "optionsPl": [
-        "Lew",
         "Gepard",
+        "Lew",
         "Antylopa",
         "Lampart"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Гепард разгоняется от 0 до 100 км/ч всего за 3 секунды — быстрее многих спортивных суперкаров!",
-      "funFactPl": "Gepard przyspiesza od 0 do 100 km/h w niespełna 3 sekundy, szybciej niż większość aut sportowych!"
+      "funFactPl": "Gepard przyspiesza od 0 do 100 km/h w niespełna 3 sekundy, szybciej niż większość aut sportowych!",
+      "imageAsset": "images/cheetah.jpg"
     },
     {
       "id": "ka_2",
@@ -37,19 +38,20 @@
       "timeLimitSeconds": 25,
       "options": [
         "Африканский слон",
-        "Синий кит (Płetwal błękitny)",
+        "Синий кит",
         "Динозавр диплодок",
         "Гигантская акула"
       ],
       "optionsPl": [
         "Słoń afrykański",
-        "Płetwal błękitny (Błękitny wieloryb)",
+        "Płetwal błękitny",
         "Dinozaur diplodok",
         "Rekin wielorybi"
       ],
       "correctIndex": 1,
       "funFact": "Сердце синего кита размером с небольшой автомобиль, а его вес может превышать 150 тонн!",
-      "funFactPl": "Serce płetwala błękitnego ma wielkość małego samochodu, a całe zwierzę waży nawet 150 ton!"
+      "funFactPl": "Serce płetwala błękitnego ma wielkość małego samochodu, a całe zwierzę waży nawet 150 ton!",
+      "imageAsset": "images/blue_whale.jpg"
     },
     {
       "id": "ka_3",
@@ -58,19 +60,20 @@
       "timeLimitSeconds": 25,
       "options": [
         "Страус",
-        "Пингвин (Pingwin)",
         "Фламинго",
+        "Пингвин",
         "Пеликан"
       ],
       "optionsPl": [
         "Struś",
-        "Pingwin",
         "Flaming",
+        "Pingwin",
         "Pelikan"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Императорские пингвины способны нырять на глубину более 500 метров и задерживать дыхание на 20 минут!",
-      "funFactPl": "Pingwiny cesarskie potrafią nurkować na głębokość ponad 500 metrów i wstrzymać oddech na 20 minut!"
+      "funFactPl": "Pingwiny cesarskie potrafią nurkować na głębokość ponad 500 metrów i wstrzymać oddech na 20 minut!",
+      "imageAsset": "images/emperor_penguin.jpg"
     },
     {
       "id": "ka_4",
@@ -79,19 +82,20 @@
       "timeLimitSeconds": 25,
       "options": [
         "Коала",
-        "Кенгуру (Kangur)",
+        "Утконос",
         "Вомбат",
-        "Утконос"
+        "Кенгуру"
       ],
       "optionsPl": [
         "Koala",
-        "Kangur",
+        "Dziobak",
         "Wombat",
-        "Dziobak"
+        "Kangur"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Кенгуру не умеют ходить назад — их мощный хвост и строение ног позволяют двигаться только вперед!",
-      "funFactPl": "Kangury nie potrafią poruszać się do tyłu ze względu na budowę nóg i potężny ogon."
+      "funFactPl": "Kangury nie potrafią poruszać się do tyłu ze względu na budowę nóg i potężny ogon.",
+      "imageAsset": "images/koala.jpg"
     },
     {
       "id": "ka_5",
@@ -99,18 +103,18 @@
       "textPl": "Ile serc bije w ciele morskiej ośmiornicy?",
       "timeLimitSeconds": 25,
       "options": [
-        "1 сердце",
-        "2 сердца",
         "3 сердца",
+        "2 сердца",
+        "1 сердце",
         "4 сердца"
       ],
       "optionsPl": [
-        "1 serce",
-        "2 serca",
         "3 serca",
+        "2 serca",
+        "1 serce",
         "4 serca"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "funFact": "У осьминога целых 3 сердца и голубая кровь, богатая медью вместо железа!",
       "funFactPl": "Ośmiornica posiada aż 3 serca, a jej krew ma niebieski odcień z powodu zawartości miedzi."
     },
@@ -121,7 +125,7 @@
       "timeLimitSeconds": 25,
       "options": [
         "Слон",
-        "Жираф (Żyrafa)",
+        "Жираф",
         "Лошадь",
         "Верблюд"
       ],
@@ -142,19 +146,20 @@
       "timeLimitSeconds": 25,
       "options": [
         "Геккон",
-        "Хамелеон (Kameleon)",
         "Варан",
+        "Хамелеон",
         "Игуана"
       ],
       "optionsPl": [
         "Gekon",
-        "Kameleon",
         "Waran",
+        "Kameleon",
         "Iguana"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Хамелеон выбрасывает свой липкий язык за сотую долю секунды на расстояние в два раза длиннее своего тела!",
-      "funFactPl": "Kameleon wystrzeliwuje swój lepki język w ułamku sekundy na odległość dwukrotnie większą niż długość jego ciała!"
+      "funFactPl": "Kameleon wystrzeliwuje swój lepki język w ułamku sekundy na odległość dwukrotnie większą niż długość jego ciała!",
+      "imageAsset": "images/chameleon.jpg"
     },
     {
       "id": "ka_8",
@@ -163,19 +168,20 @@
       "timeLimitSeconds": 25,
       "options": [
         "Ленивец",
-        "Коала (Koala)",
+        "Опоссум",
         "Панда",
-        "Опоссум"
+        "Коала"
       ],
       "optionsPl": [
         "Leniwiec",
-        "Koala",
+        "Opos",
         "Panda",
-        "Opos"
+        "Koala"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Отпечатки пальцев коалы настолько похожи на человеческие, что их трудно различить даже под микроскопом!",
-      "funFactPl": "Odciski palców koali są tak podobne do ludzkich, że niemal nie da się ich odróżnić pod mikroskopem!"
+      "funFactPl": "Odciski palców koali są tak podobne do ludzkich, że niemal nie da się ich odróżnić pod mikroskopem!",
+      "imageAsset": "images/koala.jpg"
     },
     {
       "id": "ka_9",
@@ -183,18 +189,18 @@
       "textPl": "Który pożyteczny owad wytwarza słodki miód i komunikuje się w ulu za pomocą specjalnego tańca?",
       "timeLimitSeconds": 25,
       "options": [
+        "Пчела",
         "Оса",
-        "Пчела (Pszczoła)",
         "Шмель",
         "Муравей"
       ],
       "optionsPl": [
-        "Osa",
         "Pszczoła",
+        "Osa",
         "Trzmiel",
         "Mrówka"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Чтобы собрать всего 100 граммов меда, пчелам нужно облететь более одного миллиона цветов!",
       "funFactPl": "Aby wyprodukować zaledwie 100 gramów miodu, pszczoły muszą odwiedzić ponad milion kwiatów!"
     },
@@ -205,7 +211,7 @@
       "timeLimitSeconds": 25,
       "options": [
         "Морж",
-        "Дельфин (Delfin)",
+        "Дельфин",
         "Белый медведь",
         "Тюлень"
       ],
@@ -226,17 +232,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Ласточка",
-        "Колибри (Koliber)",
         "Синичка",
+        "Колибри",
         "Стриж"
       ],
       "optionsPl": [
         "Jaskółka",
-        "Koliber",
         "Sikorka",
+        "Koliber",
         "Jerzyk"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Крылышки колибри машут со скоростью до 80 взмахов в секунду, а ее сердечко бьется более 1200 раз в минуту!",
       "funFactPl": "Skrzydła kolibra wykonują nawet 80 uderzeń na sekundę, a jego serce bije ponad 1200 razy na minutę!"
     },
@@ -247,19 +253,20 @@
       "timeLimitSeconds": 25,
       "options": [
         "Лев",
-        "Тигр (Tygrys)",
+        "Пума",
         "Ягуар",
-        "Пума"
+        "Тигр"
       ],
       "optionsPl": [
         "Lew",
-        "Tygrys",
+        "Puma",
         "Jaguar",
-        "Puma"
+        "Tygrys"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "У каждого тигра полоски на шкуре уникальны, как отпечатки пальцев у человека, и полосата даже сама кожа!",
-      "funFactPl": "Wzór pasków na ciele tygrysa jest unikalny dla każdego osobnika i widoczny także na samej skórze."
+      "funFactPl": "Wzór pasków na ciele tygrysa jest unikalny dla każdego osobnika i widoczny także na samej skórze.",
+      "imageAsset": "images/lion.jpg"
     },
     {
       "id": "ka_13",
@@ -267,18 +274,18 @@
       "textPl": "Które powolne zwierzę nosi swój twardy pancerz na grzbiecie i może dożyć ponad 150 lat?",
       "timeLimitSeconds": 25,
       "options": [
+        "Черепаха",
         "Улитка",
-        "Черепаха (Żółw)",
         "Рак",
         "Броненосец"
       ],
       "optionsPl": [
-        "Ślimak",
         "Żółw",
+        "Ślimak",
         "Rak",
         "Pancernik"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Гигантские сейшельские черепахи могут весить более 250 кг и спокойно доживают до двух веков!",
       "funFactPl": "Żółwie olbrzymie z Seszeli osiągają wagę ponad 250 kg i mogą świętować nawet dwusetne urodziny!"
     },
@@ -289,7 +296,7 @@
       "timeLimitSeconds": 25,
       "options": [
         "Лось",
-        "Северный олень (Renifer)",
+        "Северный олень",
         "Снежный барс",
         "Як"
       ],
@@ -310,17 +317,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Сова",
-        "Летучая мышь (Nietoperz)",
         "Белка-летяга",
+        "Летучая мышь",
         "Дрозд"
       ],
       "optionsPl": [
         "Sowa",
-        "Nietoperz",
         "Wiewiórka latająca",
+        "Nietoperz",
         "Drozd"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Летучие мыши издают ультразвуковые щелчки и улавливают отраженное эхо ушами, «видя» даже тончайшую паутинку!",
       "funFactPl": "Nietoperze wysyłają niesłyszalne ultradźwięki i dzięki odbitemu echu bezbłędnie lokalizują komary w locie."
     },
@@ -331,17 +338,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Золотой сокол",
-        "Белый орел (Bielik)",
+        "Ястреб",
         "Черный аист",
-        "Ястреб"
+        "Белый орел"
       ],
       "optionsPl": [
         "Sokół wędrowny",
-        "Orzeł Biały (Bielik)",
+        "Jastrząb",
         "Bocian czarny",
-        "Jastrząb"
+        "Orzeł Biały"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Легендарный белый орел связывает историю с князем Лехом, который основал первую польскую столицу Гнезно.",
       "funFactPl": "Według legendy Lech założył gród Gniezno w miejscu, gdzie ujrzał gniazdo białego orła na tle zachodzącego słońca."
     },
@@ -351,18 +358,18 @@
       "textPl": "Jaki biało-czarny ptak na długich czerwonych nogach zakłada gniazda na dachach i kominach w całej Polsce?",
       "timeLimitSeconds": 25,
       "options": [
+        "Белый аист",
         "Цапля",
-        "Белый аист (Bocian biały)",
         "Журавль",
         "Лебедь"
       ],
       "optionsPl": [
-        "Czapla",
         "Bocian biały",
+        "Czapla",
         "Żuraw",
         "Łabędź"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "В Польше гнездится четверть всей мировой популяции белых аистов — более 40 тысяч пар!",
       "funFactPl": "Polska jest uważana za bocianie królestwo — co czwarty bocian biały na świecie gniazduje właśnie w Polsce!"
     },
@@ -373,7 +380,7 @@
       "timeLimitSeconds": 25,
       "options": [
         "Выдра",
-        "Бобр (Bóbr)",
+        "Бобр",
         "Ондатра",
         "Барсук"
       ],
@@ -394,17 +401,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Осел",
-        "Верблюд (Wielbłąd)",
         "Лама",
+        "Верблюд",
         "Антилопа"
       ],
       "optionsPl": [
         "Osioł",
-        "Wielbłąd",
         "Lama",
+        "Wielbłąd",
         "Antylopa"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Добравшись до воды, испытывающий жажду верблюд может выпить более 100 литров воды всего за 10 минут!",
       "funFactPl": "Spragniony wielbłąd potrafi wypić ponad 100 litrów wody w zaledwie 10 minut!"
     },
@@ -415,17 +422,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Благородный олень",
-        "Зубр (Żubr)",
+        "Дикий кабан",
         "Бурый медведь",
-        "Дикий кабан"
+        "Зубр"
       ],
       "optionsPl": [
         "Jeleń szlachetny",
-        "Żubr europejski",
+        "Dzik",
         "Niedźwiedź brunatny",
-        "Dzik"
+        "Żubr europejski"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Взрослый самец зубра может весить до 900 килограммов и перепрыгивать через двухметровые изгороди!",
       "funFactPl": "Dorosły byk żubra może ważyć niemal tonę i z łatwością przeskoczyć dwumetrowe ogrodzenie!"
     }

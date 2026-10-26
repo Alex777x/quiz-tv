@@ -99,6 +99,10 @@ sealed interface ClientMessage {
     data object ForceReveal : ClientMessage
 
     @Serializable
+    @SerialName("REPLAY_MELODY")
+    data object ReplayMelody : ClientMessage
+
+    @Serializable
     @SerialName("RETURN_TO_LOBBY")
     data object ReturnToLobby : ClientMessage
 
@@ -225,7 +229,9 @@ sealed interface ServerMessage {
         val timeRemainingSeconds: Int = 0,
         val isPaused: Boolean = false,
         val options: List<String> = emptyList(),
-        val questionText: String? = null
+        val questionText: String? = null,
+        val questionId: String? = null,
+        val gameMode: GameMode = GameMode.ADULTS
     ) : ServerMessage
 
     @Serializable

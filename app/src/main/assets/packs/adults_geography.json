@@ -1,6 +1,6 @@
 {
   "id": "adults_geography",
-  "version": 1,
+  "version": 2,
   "title": "География и страны 🌍",
   "titlePl": "Geografia i Świat 🌍",
   "description": "Мировые столицы, флаги, горы, реки и удивительные уголки планеты!",
@@ -11,423 +11,443 @@
   "questions": [
     {
       "id": "geo_1",
-      "text": "Какая река является самой длинной в Польше (1047 км)?",
-      "textPl": "Która rzeka jest najdłuższa w Polsce (1047 km)?",
-      "timeLimitSeconds": 20,
-      "options": [
-        "Одра (Odra)",
-        "Висла (Wisła)",
-        "Варта (Warta)",
-        "Буг (Bug)"
-      ],
-      "optionsPl": [
-        "Odra",
-        "Wisła",
-        "Warta",
-        "Bug"
-      ],
-      "correctIndex": 1,
-      "funFact": "Висла берет начало в Силезских Бескидах и впадает в Балтийское море в районе Гданьска.",
-      "funFactPl": "Wisła ma 1047 km, uchodzi do Zatoki Gdańskiej i przepływa przez Kraków i Warszawę."
-    },
-    {
-      "id": "geo_2",
-      "text": "В каком европейском городе находится знаменитый Акрополь с Парфеноном?",
-      "textPl": "W którym europejskim mieście znajduje się słynny Akropol z Partenonem?",
+      "text": "В каком вечном городе возвышается этот знаменитый древнеримский амфитеатр Флавиев?",
+      "textPl": "W jakim Wiecznym Mieście wznosi się ten starożytny amfiteatr Flawiuszów?",
       "timeLimitSeconds": 20,
       "options": [
         "Рим",
         "Афины",
-        "Мадрид",
-        "Неаполь"
+        "Неаполь",
+        "Флоренция"
       ],
       "optionsPl": [
         "Rzym",
         "Ateny",
-        "Madryt",
-        "Neapol"
+        "Neapol",
+        "Florencja"
+      ],
+      "correctIndex": 0,
+      "funFact": "Колизей вмещал более 50 000 зрителей и имел сложную подземную систему подъемников для гладиаторов и диких зверей.",
+      "funFactPl": "Koloseum mieściło ponad 50 tysięcy widzów i posiadało podziemny system wind hypogeum dla gladiatorów i lwów.",
+      "imageAsset": "images/colosseum.jpg"
+    },
+    {
+      "id": "geo_2",
+      "text": "В какой стране расположен этот величественный мавзолей из белого мрамора (Тадж-Махал)?",
+      "textPl": "W jakim państwie znajduje się to arcydzieło architektury z białego marmuru (Tadź Mahal)?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Пакистан",
+        "Индия",
+        "Бангладеш",
+        "Непал"
+      ],
+      "optionsPl": [
+        "Pakistan",
+        "Indie",
+        "Bangladesz",
+        "Nepal"
       ],
       "correctIndex": 1,
-      "funFact": "Акрополь был построен в V веке до н.э. в период расцвета демократии при Перикле.",
-      "funFactPl": "Akropol został wzniesiony w V w. p.n.e. w złotym wieku ateńskiej demokracji."
+      "funFact": "Падишах Шах-Джахан построил Тадж-Махал в Агре в память о любимой жене Мумтаз-Махал в XVII веке.",
+      "funFactPl": "Szahdżahan wzniósł Tadź Mahal w Agrze z miłości do zmarłej żony Mumtaz Mahal w XVII wieku.",
+      "imageAsset": "images/taj_mahal.jpg"
     },
     {
       "id": "geo_3",
-      "text": "Какая страна в мире имеет наибольшее количество природных островов (более 260 000)?",
-      "textPl": "Który kraj na świecie ma najwięcej naturalnych wysp (ponad 260 000)?",
+      "text": "Какое грандиозное фортификационное сооружение длиной более 20 000 км показано на снимке?",
+      "textPl": "Jaka monumentalna fortyfikacja obronna o łącznej długości ponad 20 tys. km widnieje na zdjęciu?",
       "timeLimitSeconds": 20,
       "options": [
-        "Индонезия",
-        "Филиппины",
-        "Швеция",
-        "Греция"
+        "Вал Адриана",
+        "Линия Мажино",
+        "Великая Китайская стена",
+        "Крепость Масада"
       ],
       "optionsPl": [
-        "Indonezja",
-        "Filipiny",
-        "Szwecja",
-        "Grecja"
+        "Wał Hadriana",
+        "Linia Maginota",
+        "Wielki Mur Chiński",
+        "Twierdza Masada"
       ],
       "correctIndex": 2,
-      "funFact": "Швеция лидирует в мире по числу островов — около 267 570, хотя обитаемы менее тысячи из них.",
-      "funFactPl": "Szwecja posiada rekordowe ok. 267 570 wysp, choć zamieszkany jest niespełna tysiąc z nich."
+      "funFact": "Вопреки мифу, Великую Китайскую стену не видно невооруженным глазом с низкой околоземной орбиты без оптики.",
+      "funFactPl": "Wbrew mitowi, Wielki Mur Chiński nie jest widoczny gołym okiem z orbity kosmicznej bez pomocy aparatury.",
+      "imageAsset": "images/great_wall.jpg"
     },
     {
       "id": "geo_4",
-      "text": "Какая пустыня является самой засушливой жаркой пустыней на Земле?",
-      "textPl": "Która pustynia jest najbardziej suchą gorącą pustynią na Ziemi?",
+      "text": "В какой южноамериканской стране находится этот затерянный город инков на высоте 2430 м?",
+      "textPl": "W jakim państwie Ameryki Południowej leży to zaginione miasto Inków na wysokości 2430 m n.p.m.?",
       "timeLimitSeconds": 20,
       "options": [
-        "Сахара",
-        "Атакама",
-        "Калахари",
-        "Гоби"
+        "Боливия",
+        "Чили",
+        "Колумбия",
+        "Перу"
       ],
       "optionsPl": [
-        "Sahara",
-        "Atakama",
-        "Kalahari",
-        "Gobi"
+        "Boliwia",
+        "Chile",
+        "Kolumbia",
+        "Peru"
       ],
-      "correctIndex": 1,
-      "funFact": "В некоторых районах чилийской Атакамы дождя не было более 400 лет подряд!",
-      "funFactPl": "W niektórych stacjach chilijskiej Atakamy deszcz nie spadł od ponad 400 lat!"
+      "correctIndex": 3,
+      "funFact": "Мачу-Пикчу был открыт для внешнего мира лишь в 1911 году экспедицией американского исследователя Хайрама Бингема.",
+      "funFactPl": "Machu Picchu zostało odkryte dla świata zachodniego w 1911 roku przez ekspedycję Hirama Binghama.",
+      "imageAsset": "images/machu_picchu.jpg"
     },
     {
       "id": "geo_5",
-      "text": "Какой пролив отделяет Великобританию от континентальной Европы?",
-      "textPl": "Która cieśnina oddziela Wielką Brytanię od kontynentalnej Europy?",
+      "text": "В гавани какого австралийского мегаполиса красуется этот футуристический оперный театр?",
+      "textPl": "W zatoce jakiej australijskiej metropolii stoi ten słynny teatr operowy z dachem w kształcie żagli?",
       "timeLimitSeconds": 20,
       "options": [
-        "Босфор",
-        "Ла-Манш",
-        "Гибралтар",
-        "Дарданеллы"
+        "Сидней",
+        "Мельбурн",
+        "Брисбен",
+        "Перт"
       ],
       "optionsPl": [
-        "Bosfor",
-        "La Manche (English Channel)",
-        "Gibraltar",
-        "Dardanele"
+        "Sydney",
+        "Melbourne",
+        "Brisbane",
+        "Perth"
       ],
-      "correctIndex": 1,
-      "funFact": "Под Ла-Маншем проходит Евротоннель длиной 50,5 км, открытый в 1994 году.",
-      "funFactPl": "Pod La Manche biegnie Eurotunel o długości 50,5 km, otwarty w 1994 roku."
+      "correctIndex": 0,
+      "funFact": "Здание спроектировал датский архитектор Йорн Утзон, вдохновившись дольками очищенного апельсина.",
+      "funFactPl": "Projekt stworzył duński architekt Jørn Utzon, a dach pokrywa ponad milion szwedzkich płytek ceramicznych.",
+      "imageAsset": "images/sydney_opera.jpg"
     },
     {
       "id": "geo_6",
-      "text": "Какая столица является самой высокогорной в мире среди официальных столиц (3640 м)?",
-      "textPl": "Która stolica jest najwyżej położoną stolicą państwową na świecie (3640 m n.p.m.)?",
+      "text": "Рядом с какой африканской столицей расположены эти великие пирамиды плато Гиза?",
+      "textPl": "W sąsiedztwie jakiej afrykańskiej stolicy wznoszą się te legendarne piramidy w Gizie?",
       "timeLimitSeconds": 20,
       "options": [
-        "Кито (Эквадор)",
-        "Ла-Пас (Боливия)",
-        "Богота (Колумбия)",
-        "Катманду (Непал)"
+        "Александрия",
+        "Каир",
+        "Луксор",
+        "Гиза"
       ],
       "optionsPl": [
-        "Quito (Ekwador)",
-        "La Paz (Boliwia)",
-        "Bogota (Kolumbia)",
-        "Katmandu (Nepal)"
+        "Aleksandria",
+        "Kair",
+        "Luksor",
+        "Giza"
       ],
       "correctIndex": 1,
-      "funFact": "Ла-Пас расположен в Андах на высоте более 3600 метров. Из-за разреженного воздуха вода там закипает при 88 °C.",
-      "funFactPl": "La Paz leży w Andach na wysokości ponad 3600 m n.p.m. Woda wrze tam już w temperaturze ok. 88 °C."
+      "funFact": "Пирамида Хеопса была самым высоким рукотворным сооружением на Земле более 3800 лет.",
+      "funFactPl": "Wielka Piramida w Gizie była najwyższą budowlą wzniesioną przez człowieka przez ponad 3800 lat.",
+      "imageAsset": "images/pyramids_giza.jpg"
     },
     {
       "id": "geo_7",
-      "text": "Сколько стран имеют сухопутную границу с Польшей?",
-      "textPl": "Z iloma państwami Polska graniczy lądowo?",
+      "text": "Какая европейская страна подарила США эту колоссальную Статую Свободы в 1886 году?",
+      "textPl": "Który europejski naród podarował Stanom Zjednoczonym tę monumentalną Statuę Wolności w 1886 roku?",
       "timeLimitSeconds": 20,
       "options": [
-        "5",
-        "6",
-        "7",
-        "8"
+        "Великобритания",
+        "Испания",
+        "Франция",
+        "Италия"
       ],
       "optionsPl": [
-        "5",
-        "6",
-        "7",
-        "8"
+        "Wielka Brytania",
+        "Hiszpania",
+        "Francja",
+        "Włochy"
       ],
       "correctIndex": 2,
-      "funFact": "Польша граничит с 7 государствами: Германией, Чехией, Словакией, Украиной, Беларусью, Литвой и Калининградской обл.",
-      "funFactPl": "Polska graniczy z 7 sąsiadami: Niemcami, Czechami, Słowacją, Ukrainą, Białorusią, Litwą oraz obw. kaliningradzkim."
+      "funFact": "Внутренний стальной каркас статуи спроектировал тот самый Гюстав Эйфель, создатель Эйфелевой башни.",
+      "funFactPl": "Wewnętrzną konstrukcję nośną posągu zaprojektował sam Gustave Eiffel.",
+      "imageAsset": "images/statue_liberty.jpg"
     },
     {
       "id": "geo_8",
-      "text": "Какое озеро является самым глубоким на планете?",
-      "textPl": "Które jezioro jest najgłębszym jeziorem na świecie?",
+      "text": "Какая священная стратовулканическая гора Японии высотой 3776 м запечатлена на фото?",
+      "textPl": "Jaka święta góra-wulkan Japonii o wysokości 3776 m n.p.m. widnieje na tej fotografii?",
       "timeLimitSeconds": 20,
       "options": [
-        "Танганьика",
-        "Байкал",
-        "Верхнее",
-        "Виктория"
+        "Асо",
+        "Онтаке",
+        "Татеяма",
+        "Фудзияма"
       ],
       "optionsPl": [
-        "Tanganika",
-        "Bajkał",
-        "Jezioro Górne",
-        "Wiktoria"
+        "Aso",
+        "Ontake",
+        "Tateyama",
+        "Fudżi"
       ],
-      "correctIndex": 1,
-      "funFact": "Глубина Байкала достигает 1642 метров, и в нем сосредоточено около 20% мировых запасов незамерзшей пресной воды.",
-      "funFactPl": "Maksymalna głębokość Bajkału wynosi 1642 m. Zawiera ok. 20% światowych zasobów słodkiej wody powierzchniowej."
+      "correctIndex": 3,
+      "funFact": "Фудзияма — действующий стратовулкан, последнее крупное извержение которого произошло в 1707 году.",
+      "funFactPl": "Fudżi to aktywny stratowulkan, którego ostatnia erupcja miała miejsce na przełomie 1707 i 1708 roku.",
+      "imageAsset": "images/mount_fuji.jpg"
     },
     {
       "id": "geo_9",
-      "text": "Какой город называют «Городом ста шпилей»?",
-      "textPl": "Które miasto jest tradycyjnie nazywane «Miastem Stu Wież»?",
+      "text": "В каком европейском городе возвышается эта неоготическая часовая башня Елизаветы (Биг-Бен)?",
+      "textPl": "W której europejskiej stolicy stoi ta słynna neogotycka wieża zegarowa Elżbiety (Big Ben)?",
       "timeLimitSeconds": 20,
       "options": [
-        "Вена",
-        "Прага",
-        "Будапешт",
-        "Брюгге"
+        "Лондон",
+        "Эдинбург",
+        "Дублин",
+        "Манчестер"
       ],
       "optionsPl": [
-        "Wiedeń",
-        "Praga",
-        "Budapeszt",
-        "Brugia"
+        "Londyn",
+        "Edynburg",
+        "Dublin",
+        "Manchester"
       ],
-      "correctIndex": 1,
-      "funFact": "Прага славится сотнями готических и барочных башен и костелов по обоим берегам Влтавы.",
-      "funFactPl": "Praga zawdzięcza to miano setkom zabytkowych wież kościelnych i pałacowych nad Wełtawą."
+      "correctIndex": 0,
+      "funFact": "Название «Биг-Бен» изначально относилось только к огромному 13,7-тонному колоколу внутри башни.",
+      "funFactPl": "Nazwa «Big Ben» pierwotnie odnosiła się wyłącznie do 13,7-tonowego dzwonu we wnętrzu wieży.",
+      "imageAsset": "images/big_ben.jpg"
     },
     {
       "id": "geo_10",
-      "text": "Какая самая длинная горная цепь на суше протянулась на 7000 км вдоль Южной Америки?",
-      "textPl": "Który najdłuższy łańcuch górski na lądzie ciągnie się na dystansie 7000 km w Ameryce Południowej?",
+      "text": "В какой столице мира находится эта всемирно известная 330-метровая решетчатая железная башня?",
+      "textPl": "W jakiej stolicy świata znajduje się ta słynna 330-metrowa ażurowa wieża z żelaza?",
       "timeLimitSeconds": 20,
       "options": [
-        "Кордильеры",
-        "Анды",
-        "Гималаи",
-        "Альпы"
+        "Брюссель",
+        "Париж",
+        "Лион",
+        "Марсель"
       ],
       "optionsPl": [
-        "Kordyliery",
-        "Andy",
-        "Himalaje",
-        "Alpy"
+        "Bruksela",
+        "Paryż",
+        "Lyon",
+        "Marsylia"
       ],
       "correctIndex": 1,
-      "funFact": "Анды проходят через семь стран Южной Америки от Венесуэлы до Огненной Земли.",
-      "funFactPl": "Andy przecinają 7 państw Ameryki Południowej od Wenezueli aż po Ziemię Ognistą."
+      "funFact": "Эйфелева башня строилась как временная арка к Всемирной выставке 1889 года и должна была быть снесена через 20 лет.",
+      "funFactPl": "Wieżę Eiffla zbudowano jako tymczasową bramę Wystawy Światowej 1889 roku z planem rozbiórki po 20 latach.",
+      "imageAsset": "images/eiffel_tower.jpg"
     },
     {
       "id": "geo_11",
-      "text": "Какой океан является самым молодым и наименьшим по площади?",
-      "textPl": "Który ocean jest najmniejszy i najpłytszy na Ziemi?",
-      "timeLimitSeconds": 20,
-      "options": [
-        "Индийский",
-        "Северный Ледовитый",
-        "Атлантический",
-        "Южный"
-      ],
-      "optionsPl": [
-        "Indyjski",
-        "Arktyczny",
-        "Atlantycki",
-        "Południowy"
-      ],
-      "correctIndex": 1,
-      "funFact": "Северный Ледовитый океан занимает площадь около 14 млн км² и почти круглый год покрыт полярным льдом.",
-      "funFactPl": "Ocean Arktyczny ma powierzchnię ok. 14 mln km² i w dużej części pokryty jest lodem morskim."
-    },
-    {
-      "id": "geo_12",
-      "text": "Какая страна известна как «Страна восходящего солнца»?",
-      "textPl": "Który kraj jest tradycyjnie określany mianem «Kraju Kwitnącej Wiśni» i «Kraju Wschodzącego Słońca»?",
+      "text": "Флаг какого азиатского государства «Восходящего солнца» с красным солнечным диском показан на экране?",
+      "textPl": "Flaga którego azjatyckiego państwa «Wschodzącego Słońca» z czerwonym dyskiem widnieje na ekranie?",
       "timeLimitSeconds": 20,
       "options": [
         "Южная Корея",
-        "Япония",
         "Вьетнам",
-        "Таиланд"
+        "Япония",
+        "Сингапур"
       ],
       "optionsPl": [
         "Korea Południowa",
-        "Japonia",
         "Wietnam",
-        "Tajlandia"
+        "Japonia",
+        "Singapur"
       ],
-      "correctIndex": 1,
-      "funFact": "Иероглифы названия Японии (日本, Нихон) буквально переводятся как «родина солнца».",
-      "funFactPl": "Nazwa Japonii (Nihon) w dosłownym tłumaczeniu znaków kanji oznacza «miejsce wschodu słońca»."
+      "correctIndex": 2,
+      "funFact": "Официальное название японского флага — «Ниссёки» («солнечный флаг»), но в народе его называют «Хиномару».",
+      "funFactPl": "Oficjalna japońska nazwa flagi to Nisshōki («słoneczny sztandar»), a popularnie Hinomaru.",
+      "imageAsset": "images/flag_japan.png"
+    },
+    {
+      "id": "geo_12",
+      "text": "Флаг какой крупнейшей южноамериканской страны с девизом «Ordem e Progresso» изображен на экране?",
+      "textPl": "Flaga którego największego państwa Ameryki Południowej z dewizą «Ordem e Progresso» widnieje na ekranie?",
+      "timeLimitSeconds": 20,
+      "options": [
+        "Аргентина",
+        "Колумбия",
+        "Перу",
+        "Бразилия"
+      ],
+      "optionsPl": [
+        "Argentyna",
+        "Kolumbia",
+        "Peru",
+        "Brazylia"
+      ],
+      "correctIndex": 3,
+      "funFact": "Звезды на синем круге флага Бразилии точно воспроизводят небо над Рио-де-Жанейро утром 15 ноября 1889 года.",
+      "funFactPl": "Gwiazdy na fladze Brazylii odzwierciedlają układ nieba nad Rio de Janeiro z poranka 15 listopada 1889 roku.",
+      "imageAsset": "images/flag_brazil.png"
     },
     {
       "id": "geo_13",
-      "text": "В каком городе находится знаменитый оперный театр с крышей в форме парусов?",
-      "textPl": "W jakim mieście znajduje się słynny gmach opery o dachu przypominającym białe żagle?",
+      "text": "Какому второму по площади государству мира принадлежит этот флаг с красным сахарным кленовым листом?",
+      "textPl": "Do którego drugiego co do wielkości państwa świata należy ta flaga z czerwonym liściem klonowym?",
       "timeLimitSeconds": 20,
       "options": [
-        "Мельбурн",
-        "Сидней",
-        "Окленд",
-        "Торонто"
+        "Канада",
+        "США",
+        "Австралия",
+        "Новая Зеландия"
       ],
       "optionsPl": [
-        "Melbourne",
-        "Sydney",
-        "Auckland",
-        "Toronto"
+        "Kanada",
+        "USA",
+        "Australia",
+        "Nowa Zelandia"
       ],
-      "correctIndex": 1,
-      "funFact": "Сиднейский оперный театр был спроектирован датским архитектором Йорном Утзоном и открыт в 1973 году.",
-      "funFactPl": "Operę w Sydney zaprojektował duński architekt Jørn Utzon, a otwarto ją w 1973 roku."
+      "correctIndex": 0,
+      "funFact": "Дизайн национального флага Канады с 11-конечным листом был официально утвержден королевой Елизаветой II в 1965 году.",
+      "funFactPl": "Oficjalny wzór z 11-ramiennym liściem klonu został zatwierdzony przez królową Elżbietę II w 1965 roku.",
+      "imageAsset": "images/flag_canada.png"
     },
     {
       "id": "geo_14",
-      "text": "Какая страна имеет наибольшее число часовых поясов (12 зон с заморскими территориями)?",
-      "textPl": "Który kraj posiada najwięcej stref czasowych na świecie (12 wraz z terytoriami zamorskimi)?",
+      "text": "Флаг какой арабской страны на реке Нил с золотым орлом Саладина по центру изображен на экране?",
+      "textPl": "Flaga którego arabskiego kraju nad Nilem ze złotym orłem Saladyna widnieje na ekranie?",
       "timeLimitSeconds": 20,
       "options": [
-        "США",
-        "Франция",
-        "Великобритания",
-        "Канада"
+        "Сирия",
+        "Египет",
+        "Ирак",
+        "Иордания"
       ],
       "optionsPl": [
-        "USA",
-        "Francja",
-        "Wielka Brytania",
-        "Kanada"
+        "Syria",
+        "Egipt",
+        "Irak",
+        "Jordania"
       ],
       "correctIndex": 1,
-      "funFact": "Благодаря заморским островам в Полинезии, Карибском море и Индийском океане у Франции 12 часовых поясов.",
-      "funFactPl": "Dzięki terytoriom zamorskim na Pacyfiku, Karaibach i Oceanie Indyjskim Francja obejmuje aż 12 stref."
+      "funFact": "Золотой геральдический орёл Саладина на флаге держит в когтях свиток с официальным названием государства.",
+      "funFactPl": "Złoty orzeł Saladyna w centrum flagi trzyma wstęgę z arabską nazwą kraju.",
+      "imageAsset": "images/flag_egypt.png"
     },
     {
       "id": "geo_15",
-      "text": "Какая европейская столица разделена рекой Дунай на две исторические части: Буду и Пешт?",
-      "textPl": "Która europejska stolica jest przedzielona Dunajem na dwie historyczne części: Budę i Peszt?",
+      "text": "Флаг какой европейской республики представляет собой этот знаменитый сине-бело-красный триколор?",
+      "textPl": "Flaga której republiki europejskiej składa się z tych trzech pasów: niebieskiego, białego i czerwonego?",
       "timeLimitSeconds": 20,
       "options": [
-        "Братислава",
-        "Белград",
-        "Будапешт",
-        "Вена"
+        "Нидерланды",
+        "Люксембург",
+        "Франция",
+        "Парагвай"
       ],
       "optionsPl": [
-        "Bratysława",
-        "Belgrad",
-        "Budapeszt",
-        "Wiedeń"
+        "Holandia",
+        "Luksemburg",
+        "Francja",
+        "Paragwaj"
       ],
       "correctIndex": 2,
-      "funFact": "Города Буда, Пешт и Обуда официально объединились в один город Будапешт в 1873 году.",
-      "funFactPl": "Buda, Peszt i Óbuda połączyły się w jedno miasto Budapeszt w 1873 roku."
+      "funFact": "Французский триколор появился во время революции 1789 года, объединив белый цвет монархии с цветами Парижа.",
+      "funFactPl": "Flaga powstała w czasie Rewolucji Francuskiej, łącząc białą barwę królewską z błękitem i czerwienią Paryża.",
+      "imageAsset": "images/flag_france.png"
     },
     {
       "id": "geo_16",
-      "text": "Какой водопад на границе Замбии и Зимбабве на местном языке называется «Гремящий дым»?",
-      "textPl": "Który potężny wodospad na granicy Zambii i Zimbabwe nosi rdzenną nazwę Mosi-oa-Tunya («Dym, który grzmi»)?",
+      "text": "Флагу какой ведущей федеративной республики Европы принадлежат эти черно-красно-золотые полосы?",
+      "textPl": "Flaga której czołowej republiki federalnej w Europie składa się z pasów czarnego, czerwonego i złotego?",
       "timeLimitSeconds": 20,
       "options": [
-        "Игуасу",
-        "Ниагарский",
-        "Виктория",
-        "Анхель"
+        "Бельгия",
+        "Австрия",
+        "Швейцария",
+        "Германия"
       ],
       "optionsPl": [
-        "Iguazú",
-        "Niagara",
-        "Wodospad Wiktorii",
-        "Angel"
+        "Belgia",
+        "Austria",
+        "Szwajcaria",
+        "Niemcy"
       ],
-      "correctIndex": 2,
-      "funFact": "Водопад Виктория низвергается с уступа шириной 1708 метров в узкое ущелье реки Замбези.",
-      "funFactPl": "Wodospad Wiktorii ma szerokość 1708 metrów i spada do wąskiego wąwozu rzeki Zambezi."
+      "correctIndex": 3,
+      "funFact": "В конституции Германии цвета флага официально определены как «Schwarz-Rot-Gold» (чёрный, красный, золотой).",
+      "funFactPl": "W konstytucji Niemiec oficjalne barwy państwowe to «Schwarz-Rot-Gold» (czarny, czerwony i złoty).",
+      "imageAsset": "images/flag_germany.png"
     },
     {
       "id": "geo_17",
-      "text": "Какое государство является самым маленьким по площади суверенным государством в мире (0,49 км²)?",
-      "textPl": "Jakie państwo jest najmniejszym suwerennym krajem świata pod względem powierzchni (0,49 km²)?",
+      "text": "Флаг какого южноевропейского государства на Апеннинском полуострове состоит из этих зеленой, белой и красной полос?",
+      "textPl": "Flaga jakiego państwa na Półwyspie Apenińskim składa się z pasów zielonego, białego i czerwonego?",
       "timeLimitSeconds": 20,
       "options": [
-        "Монако",
-        "Сан-Марино",
-        "Ватикан",
-        "Лихтенштейн"
+        "Италия",
+        "Мексика",
+        "Ирландия",
+        "Португалия"
       ],
       "optionsPl": [
-        "Monako",
-        "San Marino",
-        "Watykan",
-        "Liechtenstein"
+        "Włochy",
+        "Meksyk",
+        "Irlandia",
+        "Portugalia"
       ],
-      "correctIndex": 2,
-      "funFact": "Ватикан полностью окружен Римом, а его население составляет около 800 человек.",
-      "funFactPl": "Watykan jest enklawą w Rzymie, a jego powierzchnia wynosi zaledwie 49 hektarów."
+      "correctIndex": 0,
+      "funFact": "Итальянский триколор («Il Tricolore») был вдохновлен флагом революционной Франции в 1797 году.",
+      "funFactPl": "Włoski «Il Tricolore» powstał pod wpływem rewolucyjnej Francji pod koniec XVIII wieku.",
+      "imageAsset": "images/flag_italy.png"
     },
     {
       "id": "geo_18",
-      "text": "В каком польском городе находится знаменитый Рынок с Мариацким костелом и Сукенницами?",
-      "textPl": "W którym polskim mieście znajduje się Rynek Główny z Kościołem Mariackim i Sukiennicami?",
+      "text": "Флаг какого королевства на Пиренейском полуострове с красно-жёлтыми полосами и гербом показан на экране?",
+      "textPl": "Flaga jakiego królestwa na Półwyspie Iberyjskim z żółto-czerwonymi pasami i herbem widnieje na ekranie?",
       "timeLimitSeconds": 20,
       "options": [
-        "Варшава",
-        "Краков",
-        "Вроцлав",
-        "Гданьск"
+        "Португалия",
+        "Испания",
+        "Андорра",
+        "Монако"
       ],
       "optionsPl": [
-        "Warszawa",
-        "Kraków",
-        "Wrocław",
-        "Gdańsk"
+        "Portugalia",
+        "Hiszpania",
+        "Andora",
+        "Monako"
       ],
       "correctIndex": 1,
-      "funFact": "Краковский Главный Рынок — одна из крупнейших средневековых рыночных площадей Европы (200 на 200 метров).",
-      "funFactPl": "Krakowski Rynek Główny ma wymiary 200 na 200 metrów i wytyczony został w 1257 roku."
+      "funFact": "Традиционный испанский флаг («La Rojigualda») был утвержден королем Карлом III в 1785 году для военных кораблей.",
+      "funFactPl": "Flaga zwana «Rojigualda» została wprowadzona przez króla Karola III w 1785 roku dla marynarki wojennej.",
+      "imageAsset": "images/flag_spain.png"
     },
     {
       "id": "geo_19",
-      "text": "Какая самая высокая гора Европы (в пределах Альп)?",
-      "textPl": "Jaki jest najwyższy szczyt Alp i Europy Zachodniej (4808 m n.p.m.)?",
+      "text": "Флаг какого государства («Юнион Джек») объединяет кресты святых Георгия, Андрея и Патрика?",
+      "textPl": "Flaga którego mocarstwa («Union Jack») łączy krzyże św. Jerzego, św. Andrzeja i św. Patryka?",
       "timeLimitSeconds": 20,
       "options": [
-        "Маттерхорн",
-        "Монблан",
-        "Юнгфрау",
-        "Гроссглоккнер"
+        "Новая Зеландия",
+        "Исландия",
+        "Великобритания",
+        "Норвегия"
       ],
       "optionsPl": [
-        "Matterhorn",
-        "Mont Blanc",
-        "Jungfrau",
-        "Großglockner"
+        "Nowa Zelandia",
+        "Islandia",
+        "Wielka Brytania",
+        "Norwegia"
       ],
-      "correctIndex": 1,
-      "funFact": "Монблан расположен на границе Франции и Италии. Его название переводится как «Белая гора».",
-      "funFactPl": "Mont Blanc leży na granicy francusko-włoskiej i wznosi się na wysokość 4808 metrów."
+      "correctIndex": 2,
+      "funFact": "Современный вариант флага Великобритании существует с 1801 года после объединения с Ирландией.",
+      "funFactPl": "Obecny wzór Union Jack obowiązuje od 1801 roku po unii Wielkiej Brytanii z Irlandią.",
+      "imageAsset": "images/flag_uk.png"
     },
     {
       "id": "geo_20",
-      "text": "Назовите столицу Канады:",
-      "textPl": "Jaka jest stolica Kanady?",
+      "text": "Какому островному государству-континенту принадлежит этот синий флаг с созвездием Южного Креста?",
+      "textPl": "Do jakiego państwa-kontynentu należy ta flaga z konstelacją Krzyża Południa na błękitnym tle?",
       "timeLimitSeconds": 20,
       "options": [
-        "Торонто",
-        "Монреаль",
-        "Оттава",
-        "Ванкувер"
+        "Фиджи",
+        "Папуа — Новая Гвинея",
+        "Самоа",
+        "Австралия"
       ],
       "optionsPl": [
-        "Toronto",
-        "Montreal",
-        "Ottawa",
-        "Vancouver"
+        "Fidżi",
+        "Papua-Nowa Gwinea",
+        "Samoa",
+        "Australia"
       ],
-      "correctIndex": 2,
-      "funFact": "Королева Виктория выбрала Оттаву столицей в 1857 году как компромисс между англо- и франкоязычными регионами.",
-      "funFactPl": "Królowa Wiktoria wybrała Ottawę w 1857 roku jako kompromis między społecznością angielską a francuską."
+      "correctIndex": 3,
+      "funFact": "Большая семиконечная звезда под британским кантоном символизирует шесть штатов Австралии и территории.",
+      "funFactPl": "Duża siedmioramienna Gwiazda Wspólnoty pod Union Jackiem symbolizuje sześć stanów i terytoria.",
+      "imageAsset": "images/flag_australia.png"
     }
   ]
 }

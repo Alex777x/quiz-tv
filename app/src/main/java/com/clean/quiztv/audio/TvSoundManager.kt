@@ -1,20 +1,28 @@
 package com.clean.quiztv.audio
 
+import android.content.Context
+import android.content.res.AssetFileDescriptor
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
+import android.media.MediaPlayer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.IOException
 import kotlin.math.PI
 import kotlin.math.sin
 
 /**
- * High-performance, zero-asset sound and melody synthesizer for Android TV.
- * Generates arcade-style audio effects and famous recognizable tunes in PCM memory.
+ * Sound manager for Android TV:
+ * - Ultra-low-latency PCM synthesized arcade effects (clicks, timer ticks, buzzers, fanfare)
+ * - Real audio playback (MP3 / M4A / AAC) for melody rounds via MediaPlayer with fade-in/out and replay.
  */
 object TvSoundManager {
     private val scope = CoroutineScope(Dispatchers.Default)
+    private var appContext: Context? = null
 
     enum class SoundEffect {
         TICK,
@@ -28,10 +36,18 @@ object TvSoundManager {
 
     private const val SAMPLE_RATE = 22050
     private val trackPool = mutableMapOf<SoundEffect, AudioTrack>()
-    private var currentMelodyTrack: AudioTrack? = null
+
+    private var mediaPlayer: MediaPlayer? = null
+    private var fadeJob: Job? = null
+    private var currentTunePath: String? = null
+    private val mediaLock = Any()
 
     init {
         generateAllSounds()
+    }
+
+    fun init(context: Context) {
+        appContext = context.applicationContext
     }
 
     private fun generateAllSounds() {
@@ -84,53 +100,132 @@ object TvSoundManager {
         } catch (_: Exception) {}
     }
 
-    fun playMelody(tuneId: String) {
-        stopMelody()
-        scope.launch {
-            val buffer = generateMelodyBuffer(tuneId) ?: return@launch
+    /**
+     * Plays a real audio preview file from assets/audio/ (or direct asset path) with smooth fade-in.
+     */
+    fun playMelody(tunePath: String) {
+        val ctx = appContext ?: return
+        currentTunePath = tunePath
+
+        synchronized(mediaLock) {
+            stopMelodyInternal(releaseOnly = false)
+
+            val afd: AssetFileDescriptor = resolveAssetFile(ctx, tunePath) ?: return
+
             try {
-                val track = AudioTrack.Builder()
-                    .setAudioAttributes(
+                val player = MediaPlayer().apply {
+                    setAudioAttributes(
                         AudioAttributes.Builder()
                             .setUsage(AudioAttributes.USAGE_GAME)
                             .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                             .build()
                     )
-                    .setAudioFormat(
-                        AudioFormat.Builder()
-                            .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
-                            .setSampleRate(SAMPLE_RATE)
-                            .setChannelMask(AudioFormat.CHANNEL_OUT_MONO)
-                            .build()
-                    )
-                    .setBufferSizeInBytes(buffer.size * 2)
-                    .setTransferMode(AudioTrack.MODE_STATIC)
-                    .build()
+                    setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                    afd.close()
+                    setVolume(0.0f, 0.0f)
+                    isLooping = false
+                    setOnCompletionListener { mp ->
+                        synchronized(mediaLock) {
+                            try {
+                                mp.reset()
+                                mp.release()
+                            } catch (_: Exception) {}
+                            if (mediaPlayer == mp) mediaPlayer = null
+                        }
+                    }
+                    prepare()
+                    start()
+                }
+                mediaPlayer = player
 
-                track.write(buffer, 0, buffer.size)
-                currentMelodyTrack = track
-                track.play()
+                // Smooth fade-in from 0.0 to 1.0 over ~500ms
+                fadeJob?.cancel()
+                fadeJob = scope.launch {
+                    val steps = 10
+                    for (i in 1..steps) {
+                        delay(45L)
+                        val vol = i / steps.toFloat()
+                        synchronized(mediaLock) {
+                            try {
+                                mediaPlayer?.setVolume(vol, vol)
+                            } catch (_: Exception) {}
+                        }
+                    }
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
+                try { afd.close() } catch (_: Exception) {}
             }
         }
+    }
+
+    fun replayMelody() {
+        val tune = currentTunePath ?: return
+        playMelody(tune)
     }
 
     fun stopMelody() {
-        try {
-            currentMelodyTrack?.let {
-                if (it.playState == AudioTrack.PLAYSTATE_PLAYING) {
-                    it.stop()
+        fadeJob?.cancel()
+        fadeJob = scope.launch {
+            // Fade-out over ~250ms
+            val steps = 5
+            for (i in (steps - 1) downTo 0) {
+                delay(40L)
+                val vol = i / steps.toFloat()
+                synchronized(mediaLock) {
+                    try {
+                        mediaPlayer?.setVolume(vol, vol)
+                    } catch (_: Exception) {}
                 }
-                it.release()
             }
-        } catch (_: Exception) {} finally {
-            currentMelodyTrack = null
+            synchronized(mediaLock) {
+                stopMelodyInternal(releaseOnly = true)
+            }
         }
     }
 
+    private fun stopMelodyInternal(releaseOnly: Boolean) {
+        fadeJob?.cancel()
+        fadeJob = null
+        try {
+            mediaPlayer?.let { player ->
+                if (player.isPlaying) {
+                    player.stop()
+                }
+                player.reset()
+                player.release()
+            }
+        } catch (_: Exception) {} finally {
+            mediaPlayer = null
+            if (releaseOnly) {
+                // Keep currentTunePath for potential replay
+            }
+        }
+    }
+
+    private fun resolveAssetFile(ctx: Context, path: String): AssetFileDescriptor? {
+        val candidates = listOf(
+            path,
+            "audio/$path",
+            "audio/$path.m4a",
+            "audio/$path.mp3",
+            "audio/${path.lowercase()}.m4a",
+            "audio/${path.lowercase()}.mp3"
+        )
+        for (c in candidates) {
+            try {
+                return ctx.assets.openFd(c)
+            } catch (_: IOException) {
+                // Try next
+            }
+        }
+        return null
+    }
+
     fun release() {
-        stopMelody()
+        synchronized(mediaLock) {
+            stopMelodyInternal(releaseOnly = true)
+        }
         for (track in trackPool.values) {
             try {
                 track.release()
@@ -139,6 +234,7 @@ object TvSoundManager {
         trackPool.clear()
     }
 
+    // --- Arcade Sound FX Synthesizers ---
     private fun generateTone(freq: Double, durationMs: Int, decay: Boolean = false): ShortArray {
         val numSamples = (SAMPLE_RATE * (durationMs / 1000.0)).toInt().coerceAtLeast(1)
         val buffer = ShortArray(numSamples)
@@ -224,107 +320,6 @@ object TvSoundManager {
                 val s1 = sin(2.0 * PI * freq * t)
                 val s2 = sin(2.0 * PI * (freq * 2) * t) * 0.3
                 val sample = ((s1 + s2) * env * 22000).toInt().coerceIn(-32767, 32767)
-                buffer[offset + i] = sample.toShort()
-            }
-            offset += count
-        }
-        return buffer
-    }
-
-    // --- Iconic Melody Note Synthesizer ---
-    private fun generateMelodyBuffer(tuneId: String): ShortArray? {
-        val E3 = 164.81; val G3 = 196.00; val A3 = 220.00; val B3 = 246.94
-        val C4 = 261.63; val Cs4 = 277.18; val D4 = 293.66; val Ds4 = 311.13; val E4 = 329.63
-        val F4 = 349.23; val Fs4 = 369.99; val G4 = 392.00; val A4 = 440.00; val Bb4 = 466.16; val B4 = 493.88
-        val C5 = 523.25; val D5 = 587.33; val E5 = 659.25; val Fs5 = 739.99
-        val G5 = 783.99; val A5 = 880.00; val B5 = 987.77
-        val REST = 0.0
-
-        val notes: List<Pair<Double, Int>> = when (tuneId.lowercase()) {
-            "star_wars" -> listOf(
-                G4 to 450, G4 to 450, G4 to 450,
-                Ds4 to 320, Bb4 to 140, G4 to 450,
-                Ds4 to 320, Bb4 to 140, G4 to 800
-            )
-            "mario" -> listOf(
-                E5 to 130, E5 to 130, REST to 100,
-                E5 to 130, REST to 100, C5 to 130,
-                E5 to 220, G5 to 350, REST to 200, G4 to 350
-            )
-            "pink_panther" -> listOf(
-                Ds4 to 160, E4 to 280, Fs4 to 160, G4 to 280,
-                Ds4 to 160, E4 to 160, Fs4 to 160, G4 to 160,
-                C5 to 260, B4 to 260, E4 to 160, G4 to 160, B4 to 260, Bb4 to 450
-            )
-            "beethoven" -> listOf(
-                G4 to 190, G4 to 190, G4 to 190, Ds4 to 750,
-                REST to 250,
-                F4 to 190, F4 to 190, F4 to 190, D4 to 850
-            )
-            "queen" -> listOf(
-                E3 to 180, E3 to 180, E3 to 180, REST to 120,
-                E3 to 180, E3 to 180, G3 to 220, E3 to 180, A3 to 280, G3 to 400
-            )
-            "tetris" -> listOf(
-                E5 to 300, B4 to 150, C5 to 150, D5 to 300, C5 to 150, B4 to 150,
-                A4 to 300, A4 to 150, C5 to 150, E5 to 300, D5 to 150, C5 to 150,
-                B4 to 450
-            )
-            "got" -> listOf(
-                G4 to 350, C4 to 350, Ds4 to 180, F4 to 180,
-                G4 to 350, C4 to 350, Ds4 to 180, F4 to 180, D4 to 600
-            )
-            "james_bond" -> listOf(
-                B3 to 240, C4 to 320, Cs4 to 240, C4 to 320,
-                B3 to 240, C4 to 320, Cs4 to 240, C4 to 320
-            )
-            "mission_impossible" -> listOf(
-                G4 to 320, G4 to 320, Bb4 to 220, C5 to 220,
-                G4 to 320, G4 to 320, F4 to 220, Fs4 to 220,
-                G4 to 320, G4 to 320, Bb4 to 220, C5 to 220
-            )
-            "harry_potter" -> listOf(
-                B4 to 280, E5 to 400, G5 to 220, Fs5 to 220, E5 to 420,
-                B5 to 280, A5 to 600, Fs5 to 600
-            )
-            "godfather" -> listOf(
-                E4 to 240, A4 to 240, C5 to 240, B4 to 240, A4 to 240,
-                C5 to 240, A4 to 240, B4 to 240, A4 to 240, F4 to 240, G4 to 240, E4 to 500
-            )
-            "indiana_jones" -> listOf(
-                E4 to 180, F4 to 180, G4 to 360, C5 to 650,
-                D4 to 180, E4 to 180, F4 to 700
-            )
-            "titanic" -> listOf(
-                F4 to 300, G4 to 300, A4 to 550, G4 to 300, F4 to 300,
-                G4 to 300, C5 to 700, Bb4 to 400, A4 to 400, F4 to 700
-            )
-            "rickroll" -> listOf(
-                F4 to 160, G4 to 160, Bb4 to 160, G4 to 160, D5 to 350, D5 to 350, C5 to 550,
-                F4 to 160, G4 to 160, Bb4 to 160, G4 to 160, C5 to 350, C5 to 350, Bb4 to 350, A4 to 250, G4 to 350
-            )
-            else -> return null
-        }
-
-        val totalSamples = notes.sumOf { (SAMPLE_RATE * (it.second / 1000.0)).toInt() }
-        val buffer = ShortArray(totalSamples)
-
-        var offset = 0
-        for ((freq, durationMs) in notes) {
-            val count = (SAMPLE_RATE * (durationMs / 1000.0)).toInt()
-            if (freq <= 0.0) {
-                // Rest silence
-                offset += count
-                continue
-            }
-            for (i in 0 until count) {
-                val t = i.toDouble() / SAMPLE_RATE
-                val progress = i.toDouble() / count
-                // Smooth bell envelope for pleasant acoustic timbre
-                val env = (1.0 - progress * 0.4) * (1.0 - Math.exp(-progress * 25.0))
-                val fundamental = sin(2.0 * PI * freq * t)
-                val overtone = sin(2.0 * PI * (freq * 2.0) * t) * 0.35
-                val sample = ((fundamental + overtone) * env * 22000).toInt().coerceIn(-32767, 32767)
                 buffer[offset + i] = sample.toShort()
             }
             offset += count

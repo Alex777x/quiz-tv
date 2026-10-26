@@ -56,64 +56,23 @@
             </div>
         </section>
 
-        <!-- 2. Screen: Lobby (Waiting or VIP Controls) -->
+        <!-- 2. Screen: Lobby (Waiting for game to start) -->
         <section id="screen-lobby" class="screen">
             <div class="player-card double-bezel">
                 <div class="bezel-inner player-card-inner">
                     <div id="lobby-player-avatar" class="avatar-medium">🦊</div>
                     <div class="player-info">
                         <div id="lobby-player-name" class="player-name">Игрок</div>
-                        <div id="lobby-vip-badge" class="badge-vip hidden">👑 ВЕДУЩИЙ (VIP)</div>
                     </div>
                 </div>
             </div>
 
-            <!-- VIP Host Controls (Visible only to VIP player) -->
-            <div id="vip-panel" class="vip-box double-bezel hidden">
-                <div class="bezel-inner vip-box-inner">
-                    <div class="vip-header-row">
-                        <span class="eyebrow-badge">VIP HOST</span>
-                        <div class="vip-title" id="txt-vip-settings">Настройки игры</div>
-                    </div>
-
-                    <div class="mode-toggle">
-                        <button id="mode-adults-btn" class="toggle-btn active">Взрослые 🍸</button>
-                        <button id="mode-kids-btn" class="toggle-btn">Дети 🎈</button>
-                    </div>
-
-                    <!-- Game Format Selector (Solo vs Teams) -->
-                    <div class="format-toggle-group">
-                        <label id="txt-format-label">Формат игры:</label>
-                        <div class="mode-toggle">
-                            <button id="format-solo-btn" class="toggle-btn active">👤 Соло</button>
-                            <button id="format-teams-btn" class="toggle-btn">👥 Команды</button>
-                        </div>
-                    </div>
-
-                    <div class="pack-select-group">
-                        <label for="pack-select" id="txt-theme-label">Тема вопросов:</label>
-                        <select id="pack-select">
-                            <option value="">Загрузка тем...</option>
-                        </select>
-                    </div>
-
-                    <button id="btn-open-llm" class="btn btn-secondary btn-llm-action">
-                        <span id="txt-btn-llm">✨ Сгенерировать тему с ИИ</span>
-                    </button>
-
-                    <button id="btn-start-game" class="btn btn-success btn-large btn-glow btn-island">
-                        <span class="btn-text" id="txt-btn-start">Начать игру</span>
-                        <span class="btn-island-icon">🚀</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Non-VIP Waiting Info -->
-            <div id="non-vip-panel" class="waiting-box double-bezel">
+            <!-- Waiting Info -->
+            <div id="waiting-panel" class="waiting-box double-bezel">
                 <div class="bezel-inner waiting-box-inner">
                     <div class="pulse-ring"></div>
                     <h2 id="txt-waiting-title">Ты в игре!</h2>
-                    <p id="txt-waiting-subtitle">Смотри на экран телевизора.<br>Ждем, пока ведущий запустит раунд...</p>
+                    <p id="txt-waiting-subtitle">Смотри на экран телевизора.<br>Игра скоро начнется!</p>
                 </div>
             </div>
 
@@ -239,13 +198,12 @@
                 </div>
             </div>
 
-            <div id="vip-again-box" class="again-box hidden">
+            <div class="again-box">
                 <button id="btn-play-again" class="btn btn-primary btn-large btn-glow btn-island">
                     <span class="btn-text" id="txt-btn-play-again">Сыграть еще раз</span>
                     <span class="btn-island-icon">🔄</span>
                 </button>
             </div>
-            <p id="non-vip-again-text" class="again-wait-text">Ожидание решения ведущего...</p>
         </section>
 
         <!-- 7. Modal: LLM Pack Generator -->
@@ -260,20 +218,20 @@
                         <label id="txt-llm-topic-label">Тема викторины:</label>
                         <input type="text" id="llm-topic-input" placeholder="Например: Гарри Поттер, Аниме, Рок-музыка">
 
-                        <label style="margin-top:10px;">Провайдер:</label>
+                        <label id="txt-llm-provider-label" style="margin-top:10px;">Провайдер:</label>
                         <select id="llm-provider-select">
                             <option value="openai">OpenAI / Groq / OpenRouter / DeepSeek</option>
                             <option value="gemini">Google Gemini</option>
                         </select>
 
-                        <label style="margin-top:10px;">API Ключ:</label>
+                        <label id="txt-llm-key-label" style="margin-top:10px;">API Ключ:</label>
                         <input type="password" id="llm-key-input" placeholder="sk-..." autocomplete="off">
 
                         <div id="llm-advanced-fields">
-                            <label style="margin-top:10px;">Base URL:</label>
+                            <label id="txt-llm-url-label" style="margin-top:10px;">Base URL:</label>
                             <input type="text" id="llm-url-input" value="https://api.openai.com/v1">
 
-                            <label style="margin-top:10px;">Модель:</label>
+                            <label id="txt-llm-model-label" style="margin-top:10px;">Модель:</label>
                             <input type="text" id="llm-model-input" value="gpt-4o-mini">
                         </div>
 
@@ -285,26 +243,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- 8. Floating Host In-Game Control Bar (Visible only to VIP during active game) -->
-        <div id="vip-host-bar" class="vip-host-bar hidden">
-            <button id="btn-vip-pause" class="vip-bar-btn" title="Пауза / Wstrzymaj">
-                <span id="vip-pause-icon">⏸️</span>
-                <span id="txt-vip-pause">Пауза</span>
-            </button>
-            <button id="btn-vip-reveal" class="vip-bar-btn" title="Раскрыть ответ / Pokaż odpowiedź">
-                <span>⏭️</span>
-                <span id="txt-vip-reveal">Раскрыть</span>
-            </button>
-            <button id="btn-vip-next" class="vip-bar-btn hidden" title="Следующий вопрос / Następne pytanie">
-                <span>⏩</span>
-                <span id="txt-vip-next">Далее</span>
-            </button>
-            <button id="btn-vip-lobby" class="vip-bar-btn" title="В лобби / Do lobby">
-                <span>🏠</span>
-                <span id="txt-vip-lobby">В лобби</span>
-            </button>
         </div>
     </main>
 

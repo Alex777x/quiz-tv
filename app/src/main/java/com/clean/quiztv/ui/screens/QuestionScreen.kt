@@ -4,6 +4,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,16 +23,22 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.clean.quiztv.audio.TvSoundManager
 import com.clean.quiztv.domain.model.GameMode
 import com.clean.quiztv.domain.model.Strings
 import com.clean.quiztv.game.GameState
@@ -51,7 +58,9 @@ fun QuestionScreen(
     state: GameState.QuestionRound,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     val lang = state.language
+    val isKids = state.pack.ageGroup == GameMode.KIDS
     val totalTime = state.question.timeLimitSeconds.toFloat().coerceAtLeast(1f)
     val remaining = state.secondsRemaining.toFloat()
     val progress by animateFloatAsState(
@@ -60,10 +69,19 @@ fun QuestionScreen(
         label = "timerProgress"
     )
 
+    val imageModel = remember(state.question.imageAsset) {
+        val asset = state.question.imageAsset
+        when {
+            asset == null -> null
+            asset.startsWith("http://") || asset.startsWith("https://") -> asset
+            else -> "file:///android_asset/$asset"
+        }
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 48.dp, vertical = 26.dp),
+            .padding(horizontal = 48.dp, vertical = 24.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         // --- Top Bar: Round & Category Header ---
@@ -73,16 +91,17 @@ fun QuestionScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
+                val badgeColor = if (isKids) Color(0xFF10B981) else NeonCyan
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(8.dp))
-                        .background(NeonCyan.copy(alpha = 0.2f))
-                        .border(1.dp, NeonCyan.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
+                        .background(badgeColor.copy(alpha = 0.2f))
+                        .border(1.dp, badgeColor.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
                         .padding(horizontal = 14.dp, vertical = 6.dp)
                 ) {
                     Text(
                         text = Strings.questionRound(state.questionIndex + 1, state.pack.questions.size, lang),
-                        color = NeonCyan,
+                        color = badgeColor,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.ExtraBold,
                         letterSpacing = 1.sp
@@ -102,7 +121,7 @@ fun QuestionScreen(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = Strings.modeBadge(state.pack.ageGroup, lang),
-                    color = if (state.pack.ageGroup == GameMode.KIDS) NeonAmber else NeonCyan,
+                    color = if (isKids) NeonAmber else NeonCyan,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -127,15 +146,16 @@ fun QuestionScreen(
             }
         }
 
-        // --- Center: Question Text (Double-Bezel) & Circular Timer ---
+        // --- Center: Question Content (Text, Image/Melody/Rebus) & Circular Timer ---
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .padding(vertical = 14.dp),
+                .padding(vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(28.dp)
+            horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
+            // Main Question Card (with optional real photo)
             DoubleBezelCard(
                 modifier = Modifier
                     .weight(1f)
@@ -144,34 +164,85 @@ fun QuestionScreen(
                 innerShape = RoundedCornerShape(23.dp),
                 outerPadding = 3.dp
             ) {
-                Box(
+                Row(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(24.dp),
-                    contentAlignment = Alignment.Center
+                        .padding(20.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
                 ) {
+                    // Optional Real Photo (Wikipedia / FlagCDN)
+                    if (imageModel != null) {
+                        Box(
+                            modifier = Modifier
+                                .width(310.dp)
+                                .fillMaxHeight()
+                                .clip(RoundedCornerShape(18.dp))
+                                .background(Color(0xFF0F172A))
+                                .border(1.5.dp, Color(0x40FFFFFF), RoundedCornerShape(18.dp)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            AsyncImage(
+                                model = ImageRequest.Builder(context)
+                                    .data(imageModel)
+                                    .crossfade(true)
+                                    .build(),
+                                contentDescription = "Question Image",
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.width(24.dp))
+                    }
+
+                    // Question Text & Specialized Badges Column
                     Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        // Visual Melody Synthesizer Banner
+                        // Real Audio Melody Banner & Replay Button
                         if (state.question.melodyTune != null) {
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(12.dp))
-                                    .background(Color(0x33A855F7))
-                                    .border(1.dp, Color(0xFFA855F7), RoundedCornerShape(12.dp))
-                                    .padding(horizontal = 16.dp, vertical = 6.dp)
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)
                             ) {
-                                Text(
-                                    text = Strings.musicGuessTitle(lang),
-                                    color = Color(0xFFD8B4FE),
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    letterSpacing = 0.5.sp
-                                )
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(Color(0x33A855F7))
+                                        .border(1.dp, Color(0xFFA855F7), RoundedCornerShape(12.dp))
+                                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                                ) {
+                                    Text(
+                                        text = Strings.musicGuessTitle(lang),
+                                        color = Color(0xFFD8B4FE),
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.ExtraBold,
+                                        letterSpacing = 0.5.sp
+                                    )
+                                }
+
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(Color(0x448B5CF6))
+                                        .border(1.dp, Color(0xFFA78BFA), RoundedCornerShape(12.dp))
+                                        .clickable { TvSoundManager.replayMelody() }
+                                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                                ) {
+                                    Text(
+                                        text = Strings.replayMelodyBtn(lang),
+                                        color = Color.White,
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
                             }
-                            Spacer(modifier = Modifier.height(14.dp))
+                            Spacer(modifier = Modifier.height(12.dp))
                         }
 
                         // Visual Rebus Emoji Box
@@ -181,24 +252,24 @@ fun QuestionScreen(
                                     .clip(RoundedCornerShape(18.dp))
                                     .background(Brush.radialGradient(listOf(Color(0xFF334155), Color(0xFF1E293B))))
                                     .border(1.5.dp, NeonCyan, RoundedCornerShape(18.dp))
-                                    .padding(horizontal = 26.dp, vertical = 10.dp)
+                                    .padding(horizontal = 24.dp, vertical = 8.dp)
                             ) {
                                 Text(
                                     text = state.question.rebusEmoji,
-                                    fontSize = 44.sp,
+                                    fontSize = 42.sp,
                                     letterSpacing = 4.sp
                                 )
                             }
-                            Spacer(modifier = Modifier.height(12.dp))
+                            Spacer(modifier = Modifier.height(10.dp))
                         }
 
                         Text(
                             text = state.question.localizedText(lang),
                             color = Color.White,
-                            fontSize = if (state.question.melodyTune != null || state.question.rebusEmoji != null) 24.sp else 28.sp,
+                            fontSize = if (imageModel != null || state.question.melodyTune != null || state.question.rebusEmoji != null) 23.sp else 28.sp,
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center,
-                            lineHeight = if (state.question.melodyTune != null || state.question.rebusEmoji != null) 33.sp else 39.sp
+                            lineHeight = if (imageModel != null) 32.sp else 38.sp
                         )
                     }
                 }
@@ -253,7 +324,7 @@ fun QuestionScreen(
             trackColor = Color(0x2BFFFFFF)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
         // --- Bottom: 4 Colored Answer Cards ---
         val colors = listOf(AnswerRed, AnswerBlue, AnswerYellow, AnswerGreen)
@@ -262,7 +333,7 @@ fun QuestionScreen(
 
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -299,44 +370,6 @@ fun QuestionScreen(
                 )
             }
         }
-
-        // Host Pause Overlay
-        if (state.isPaused) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color(0xEE070A14)),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(22.dp))
-                            .background(Color(0x33F59E0B))
-                            .border(2.dp, NeonAmber, RoundedCornerShape(22.dp))
-                            .padding(horizontal = 36.dp, vertical = 18.dp)
-                    ) {
-                        Text(
-                            text = Strings.gamePausedTitle(lang),
-                            color = NeonAmber,
-                            fontSize = 38.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 1.sp
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = Strings.gamePausedSubtitle(lang),
-                        color = Color.White,
-                        fontSize = 19.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
-            }
-        }
     }
 }
 
@@ -349,7 +382,7 @@ private fun OptionCard(
 ) {
     Box(
         modifier = modifier
-            .height(80.dp)
+            .height(78.dp)
             .clip(RoundedCornerShape(20.dp))
             .background(Color(0x18FFFFFF))
             .border(1.dp, Color(0x33FFFFFF), RoundedCornerShape(20.dp))

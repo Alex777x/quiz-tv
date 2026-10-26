@@ -15,18 +15,18 @@
       "textPl": "Co zawsze idzie do przodu i nigdy nie cofa się ani o sekundę?",
       "timeLimitSeconds": 25,
       "options": [
+        "Время и часы",
         "Поезд",
-        "Время и часы (Czas)",
         "Река",
         "Автомобиль"
       ],
       "optionsPl": [
-        "Pociąg",
         "Czas i zegar",
+        "Pociąg",
         "Rzeka",
         "Samochód"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Даже когда стрелки сломанных часов стоят на месте, само время продолжает неумолимо идти вперед!",
       "funFactPl": "Nawet gdy zegar się zepsuje, sam czas nieubłaganie płynie do przodu!"
     },
@@ -36,13 +36,13 @@
       "textPl": "Ile miesięcy w roku ma 28 dni?",
       "timeLimitSeconds": 25,
       "options": [
-        "Только один (февраль)",
+        "Только один",
         "Все 12 месяцев",
         "Шесть месяцев",
         "Четыре месяца"
       ],
       "optionsPl": [
-        "Tylko jeden (luty)",
+        "Tylko jeden",
         "Wszystkie 12 miesięcy",
         "Sześć miesięcy",
         "Cztery miesiące"
@@ -58,17 +58,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Фен",
-        "Полотенце (Ręcznik)",
         "Губка",
+        "Полотенце",
         "Солнце"
       ],
       "optionsPl": [
         "Suszarka",
-        "Ręcznik",
         "Gąbka",
+        "Ręcznik",
         "Słońce"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Чем лучше полотенце вытирает капли воды после душа, тем более влажным оно становится само!",
       "funFactPl": "Im dokładniej ręcznik wyciera wodę po kąpieli, tym bardziej sam staje się wilgotny!"
     },
@@ -79,17 +79,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "7 овец",
-        "3 овечки",
+        "10 овец",
         "0 овец",
-        "10 овец"
+        "3 овечки"
       ],
       "optionsPl": [
         "7 owieczek",
-        "3 owieczki",
+        "10 owieczek",
         "0 owieczek",
-        "10 owieczek"
+        "3 owieczki"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Внимательно слушай условие: ведь сказано же, что «все, кроме трех, убежали»!",
       "funFactPl": "Klucz tkwi w treści pytania: «oprócz trzech» oznacza, że dokładnie trzy owce zostały w zagrodzie!"
     },
@@ -99,18 +99,18 @@
       "textPl": "Co ma jedno małe «uszko» (oczko), ale nie potrafi niczego zobaczyć?",
       "timeLimitSeconds": 25,
       "options": [
+        "Иголка для шитья",
         "Картошка",
-        "Иголка для шитья (Igła)",
         "Пуговица",
         "Булавка"
       ],
       "optionsPl": [
-        "Ziemniak",
         "Igła do szycia",
+        "Ziemniak",
         "Guzik",
         "Szpilka"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Отверстие в иголке, куда продевают нитку, называют игольным ушком или глазком!",
       "funFactPl": "Otwór w igle, przez który przewleka się nitkę, nazywany jest uszkiem igielnym!"
     },
@@ -121,7 +121,7 @@
       "timeLimitSeconds": 25,
       "options": [
         "Сапоги",
-        "Зонтик (Parasol)",
+        "Зонтик",
         "Лужа",
         "Радуга"
       ],
@@ -142,17 +142,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Письмо",
-        "Почтовая марка (Znaczek)",
         "Открытка",
+        "Почтовая марка",
         "Печать"
       ],
       "optionsPl": [
         "List",
-        "Znaczek pocztowy",
         "Pocztówka",
+        "Znaczek pocztowy",
         "Pieczątka"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Первая в мире самоклеящаяся почтовая марка «Черный пенни» появилась в Великобритании в 1840 году.",
       "funFactPl": "Pierwszy znaczek pocztowy «Penny Black» wydano w Wielkiej Brytanii w 1840 roku."
     },
@@ -163,17 +163,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Рубашка",
-        "Стеклянная бутылка (Butelka)",
+        "Гитара",
         "Жираф",
-        "Гитара"
+        "Стеклянная бутылка"
       ],
       "optionsPl": [
         "Koszula",
-        "Szklana butelka",
+        "Gitara",
         "Żyrafa",
-        "Gitara"
+        "Szklana butelka"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "У бутылки есть горлышко и донышко, но совершенно нет головы!",
       "funFactPl": "Butelka ma szyjkę i dno, lecz brakuje jej jakiejkolwiek głowy!"
     },
@@ -183,18 +183,18 @@
       "textPl": "Co można łatwo złamać lub przerwać, wcale go nie dotykając?",
       "timeLimitSeconds": 25,
       "options": [
+        "Обещание или тишину",
         "Стекло",
-        "Обещание или тишину (Obietnica)",
         "Тарелку",
         "Зеркало"
       ],
       "optionsPl": [
-        "Szybę",
         "Obietnicę lub ciszę",
+        "Szybę",
         "Talerz",
         "Lustro"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Достаточно шепота, чтобы нарушить тишину, и доброго сердца, чтобы сдержать обещание!",
       "funFactPl": "Wystarczy jedno słowo, by przerwać ciszę, i uczciwość, by dotrzymać danego słowa!"
     },
@@ -226,17 +226,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Собака",
-        "Твоя тень (Cień)",
         "Ветер",
+        "Твоя тень",
         "Эхо"
       ],
       "optionsPl": [
         "Pies",
-        "Twój własny cień",
         "Wiatr",
+        "Twój własny cień",
         "Echo"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "В полдень, когда солнце стоит прямо над головой в зените, тень становится самой короткой!",
       "funFactPl": "W samo południe, gdy słońce świeci najwyżej na niebie, cień staje się najkrótszy!"
     },
@@ -247,17 +247,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "5 концов",
-        "6 концов (u połówki też są dwa!)",
+        "7 концов",
         "4 конца",
-        "7 концов"
+        "6 концов"
       ],
       "optionsPl": [
         "5 końców",
-        "6 końców (połówka też ma dwa!)",
+        "7 końców",
         "4 końce",
-        "7 końców"
+        "6 końców"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Даже если палку разломать пополам, у половинки все равно будет два конца, итого 2 + 2 + 2 = 6!",
       "funFactPl": "Gdy przełamiesz patyk na pół, połówka nadal ma 2 końce! Zatem 2 + 2 + 2 = 6 końców!"
     },
@@ -267,18 +267,18 @@
       "textPl": "Jaki kolor powstanie, gdy dokładnie wymieszasz ze sobą farbę niebieską i żółtą?",
       "timeLimitSeconds": 25,
       "options": [
+        "Зеленый",
         "Красный",
-        "Зеленый (Zielony)",
         "Фиолетовый",
         "Оранжевый"
       ],
       "optionsPl": [
-        "Czerwony",
         "Zielony",
+        "Czerwony",
         "Fioletowy",
         "Pomarańczowy"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Синий и желтый — первичные цвета, а их смесь дает чудесный травянисто-зеленый оттенок!",
       "funFactPl": "Niebieski i żółty to kolory podstawowe, a ich połączenie daje kolor zielony!"
     },
@@ -289,7 +289,7 @@
       "timeLimitSeconds": 25,
       "options": [
         "Акула",
-        "Расческа (Grzebień)",
+        "Расческа",
         "Крокодил",
         "Пила"
       ],
@@ -310,17 +310,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Железо",
-        "Они весят абсолютно одинаково (по 1 кг)",
         "Перья",
+        "Они весят абсолютно одинаково",
         "Зависит от магнита"
       ],
       "optionsPl": [
         "Żelazo",
-        "Ważą dokładnie tyle samo (po 1 kg)",
         "Pióra",
+        "Ważą dokładnie tyle samo",
         "To zależy od wiatru"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "И то, и другое весит ровно 1 килограмм, просто перьев понадобится целый огромный мешок!",
       "funFactPl": "Zarówno żelazo, jak i pióra ważą równo 1 kg — tylko pióra zajmą wielki worek!"
     },
@@ -331,17 +331,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Левое переднее",
-        "Запасное колесо в багажнике (Zapasowe)",
+        "Рулевое колесо",
         "Правое заднее",
-        "Рулевое колесо"
+        "Запасное колесо в багажнике"
       ],
       "optionsPl": [
         "Lewe przednie",
-        "Koło zapasowe w bagażniku",
+        "Kierownica",
         "Prawe tylne",
-        "Kierownica"
+        "Koło zapasowe w bagażniku"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Запасное колесо спокойно отдыхает в багажнике и ждет своего часа!",
       "funFactPl": "Koło zapasowe leży bezpiecznie w bagażniku i nie dotyka asfaltu podczas jazdy!"
     },
@@ -351,18 +351,18 @@
       "textPl": "Co można łatwo «złapać» jesienią, ale nie da się tego rzucić jak piłki?",
       "timeLimitSeconds": 25,
       "options": [
+        "Простуду или насморк",
         "Мячик",
-        "Простуду или насморк (Przeziębienie)",
         "Бабочку",
         "Мыльные пузыри"
       ],
       "optionsPl": [
-        "Piłkę",
         "Przeziębienie lub katar",
+        "Piłkę",
         "Motyla",
         "Bańki mydlane"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Поэтому зимой всегда нужно надевать теплую шапку и мыть ручки с мылом!",
       "funFactPl": "Dlatego jesienią warto nosić ciepłą czapkę i pamiętać o myciu rąk ciepłą wodą z mydłem!"
     },
@@ -373,13 +373,13 @@
       "timeLimitSeconds": 25,
       "options": [
         "1 яблоко",
-        "2 яблока (ты же их взял!)",
+        "2 яблока",
         "3 яблока",
         "0 яблок"
       ],
       "optionsPl": [
         "1 jabłko",
-        "2 jabłka (przecież je wziąłeś!)",
+        "2 jabłka",
         "3 jabłka",
         "0 jabłek"
       ],
@@ -394,17 +394,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Ванная комната",
-        "Гриб (в англ. mushroom = комната гриба)",
         "Чердак",
+        "Гриб",
         "Подвал"
       ],
       "optionsPl": [
         "Łazienka",
-        "Grzyb (ang. mushroom = grzyb)",
         "Strych",
+        "Grzyb",
         "Piwnica"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Это знаменитая игра слов в английском языке: «Mushroom» содержит слово «room» (комната)!",
       "funFactPl": "To słynna zagadka językowa z angielskiego słowa «mushroom» (grzyb), zawierającego człon «room» (pokój)!"
     },
@@ -415,17 +415,17 @@
       "timeLimitSeconds": 25,
       "options": [
         "Рост",
-        "Твой возраст (Wiek)",
+        "Количество игрушек",
         "Размер обуви",
-        "Количество игрушек"
+        "Твой возраст"
       ],
       "optionsPl": [
         "Wzrost",
-        "Twój wiek (lata)",
+        "Liczba zabawek",
         "Rozmiar buta",
-        "Liczba zabawek"
+        "Twój wiek"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Каждый день рождения мы становимся на один год старше, умнее и опытнее!",
       "funFactPl": "Każde urodziny oznaczają, że jesteśmy o rok starsi, mądrzejsi i bardziej doświadczeni!"
     }

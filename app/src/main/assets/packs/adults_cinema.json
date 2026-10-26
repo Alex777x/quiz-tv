@@ -15,18 +15,18 @@
       "textPl": "Jak według Vincenta Vegi w «Pulp Fiction» nazywa się w Paryżu burger «Quarter Pounder with Cheese»?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Роял с сыром»",
         "Биг Бургер",
-        "«Роял с сыром» (Royale with Cheese)",
         "Парижский Чиз",
         "Ле Чизбургер"
       ],
       "optionsPl": [
+        "«Royale with Cheese»",
         "Big Burger",
-        "«Royale with Cheese» (Royale z serem)",
         "Paryski Burger",
         "Le Cheeseburger"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Винсент объясняет это тем, что во Франции метрическая система, и они не понимают, что такое чертова четверть фунта!",
       "funFactPl": "Vincent wyjaśnia to faktem, że we Francji obowiązuje system metryczny i nikt nie wie, ile to ćwierć funta."
     },
@@ -36,18 +36,18 @@
       "textPl": "Jaka jest pierwsza i najważniejsza zasada «Podziemnego kręgu» (Fight Club) Davida Finchera?",
       "timeLimitSeconds": 20,
       "options": [
-        "Никому не рассказывать о Бойцовском клубе",
         "Всегда драться один на один",
+        "Никому не рассказывать о Бойцовском клубе",
         "Бой длится столько, сколько нужно",
         "Новичок обязан принять бой"
       ],
       "optionsPl": [
-        "Nie rozmawiać o Podziemnym kręgu",
         "Zawsze walczyć jeden na jednego",
+        "Nie rozmawiać o Podziemnym kręgu",
         "Walka trwa tak długo, jak trzeba",
         "Nowy musi podjąć walkę"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "funFact": "Второе правило Бойцовского клуба в точности повторяет первое: «Никогда и никому не рассказывать о Бойцовском клубе».",
       "funFactPl": "Druga zasada klubu brzmi dokładnie tak samo: «Nigdy nie rozmawiać o Podziemnym kręgu»."
     },
@@ -58,17 +58,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Игральная кость",
-        "Крутящийся металлический волчок",
         "Шахматная фигура коня",
+        "Крутящийся металлический волчок",
         "Зажигалка Zippo"
       ],
       "optionsPl": [
         "Kostka do gry",
-        "Kręcący się metalowy bączek (totem)",
         "Figurka szachowa skoczka",
+        "Kręcący się metalowy bączek",
         "Zapalniczka Zippo"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Если волчок вращается бесконечно и не падает, значит герой все еще находится внутри чужого сна.",
       "funFactPl": "Jeśli bączek kręci się w nieskończoność bez utraty równowagi, oznacza to przebywanie we śnie."
     },
@@ -79,17 +79,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Изумрудно-зеленый",
-        "Небесно-голубой («Blue Sky»)",
+        "Янтарно-желтый",
         "Кристально-белый",
-        "Янтарно-желтый"
+        "Небесно-голубой"
       ],
       "optionsPl": [
         "Szmaragdowy",
-        "Błękitny («Blue Sky»)",
+        "Bursztynowy",
         "Krystalicznie biały",
-        "Bursztynowy"
+        "Błękitny"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "В качестве «синего продукта» на съемках сериала использовали обычные колотые мятные леденцы синего цвета.",
       "funFactPl": "Na planie serialu w roli niebieskiego specyfiku używano po prostu pokruszonych cukierków miętowych."
     },
@@ -99,18 +99,18 @@
       "textPl": "Jaki film zajmuje niezmiennie 1. miejsce w rankingu wszech czasów serwisu IMDb?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Побег из Шоушенка»",
         "«Крестный отец»",
-        "«Побег из Шоушенка» (The Shawshank Redemption)",
         "«Темный рыцарь»",
         "«Криминальное чтиво»"
       ],
       "optionsPl": [
+        "«Skazani na Shawshank»",
         "«Ojciec chrzestny»",
-        "«Skazani na Shawshank» (The Shawshank Redemption)",
         "«Mroczny Rycerz»",
         "«Pulp Fiction»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Фильм Фрэнка Дарабонта 1994 года по повести Стивена Кинга имеет рейтинг 9.3 из 10 на основе более 2.8 млн голосов.",
       "funFactPl": "Dzieło Franka Darabonta z 1994 roku na podstawie opowiadania Kinga ma ocenę 9,3/10 przy ponad 2,8 mln ocen."
     },
@@ -142,17 +142,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "HELP ME",
-        "REDRUM (MURDER)",
         "OVERLOOK",
+        "REDRUM",
         "WAKE UP"
       ],
       "optionsPl": [
         "HELP ME",
-        "REDRUM (MURDER od tyłu)",
         "OVERLOOK",
+        "REDRUM",
         "WAKE UP"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Слово «REDRUM» — это анаграмма слова «MURDER» (убийство), прочитанного задом наперед в зеркальном отражении.",
       "funFactPl": "Słowo «REDRUM» odbite w lustrze układa się w angielskie słowo «MURDER» (morderstwo)."
     },
@@ -163,17 +163,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Локи",
-        "Танос (Thanos)",
+        "Канг Завоеватель",
         "Альтрон",
-        "Канг Завоеватель"
+        "Танос"
       ],
       "optionsPl": [
         "Loki",
-        "Thanos",
+        "Kang Zdobywca",
         "Ultron",
-        "Kang Zdobywca"
+        "Thanos"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "На что Тони Старк ответил своей культовой фразой: «А я... так, просто Железный Человек» перед финальным щелчком.",
       "funFactPl": "Tony Stark odpowiedział na to słynnym: «A ja... jestem Iron Man» nim sam pstryknął palcami."
     },
@@ -183,18 +183,18 @@
       "textPl": "Jak nazywa się fikcyjne miasteczko w stanie New Jersey, w którym toczy się akcja serialu «Rodzina Soprano»?",
       "timeLimitSeconds": 20,
       "options": [
-        "Спрингфилд",
         "Норт-Колдуэлл / Ньюарк",
+        "Спрингфилд",
         "Куонтико",
         "Хэддонфилд"
       ],
       "optionsPl": [
-        "Springfield",
         "North Caldwell / Newark",
+        "Springfield",
         "Quantico",
         "Haddonfield"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "«Клан Сопрано» совершил революцию в истории ТВ, сделав антигероя Тони Сопрано любимцем миллионов зрителей.",
       "funFactPl": "Kreacja Tony'ego Soprano w wykonaniu Jamesa Gandolfiniego zdefiniowała na nowo pojęcie antybohatera w telewizji."
     },
@@ -205,13 +205,13 @@
       "timeLimitSeconds": 20,
       "options": [
         "Гремучая змея",
-        "Черная Мамба (Black Mamba)",
+        "Черная Мамба",
         "Кобра",
         "Медянка"
       ],
       "optionsPl": [
         "Grzechotnik",
-        "Czarna Mamba (Black Mamba)",
+        "Czarna Mamba",
         "Kobra",
         "Żmija"
       ],
@@ -226,17 +226,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Дэниел Крейг",
-        "Кеннет Брана (Kenneth Branagh)",
         "Гэри Олдман",
+        "Кеннет Брана",
         "Колин Фёрт"
       ],
       "optionsPl": [
         "Daniel Craig",
-        "Kenneth Branagh",
         "Gary Oldman",
+        "Kenneth Branagh",
         "Colin Firth"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Кеннет Брана также выступил режиссером всех трех современных экранизаций романов Агаты Кристи.",
       "funFactPl": "Kenneth Branagh osobiście wyreżyserował całą trylogię filmów o przygodach genialnego belgijskiego detektywa."
     },
@@ -247,17 +247,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Эмма Уотсон",
-        "Эмма Стоун (Emma Stone)",
+        "Марго Робби",
         "Дженнифер Лоуренс",
-        "Марго Робби"
+        "Эмма Стоун"
       ],
       "optionsPl": [
         "Emma Watson",
-        "Emma Stone",
+        "Margot Robbie",
         "Jennifer Lawrence",
-        "Margot Robbie"
+        "Emma Stone"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Эмма Уотсон отказалась от роли в «Ла-Ла Ленде» ради съемок в диснеевской «Красавице и Чудовище».",
       "funFactPl": "Emma Watson zrezygnowała z tej roli na rzecz występu w disnejowskiej «Pięknej i Bestii»."
     },
@@ -267,18 +267,18 @@
       "textPl": "Jaki miniserial Netfliksa o genialnej szachistce Beth Harmon wywołał ogólnoświatowy boom na szachy w 2020 roku?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Ход королевы»",
         "«Мат королю»",
-        "«Ход королевы» (The Queen's Gambit)",
         "«Гамбит»",
         "«Королевская игра»"
       ],
       "optionsPl": [
+        "«Gambit królowej»",
         "«Mat»",
-        "«Gambit królowej» (The Queen's Gambit)",
         "«Partia życia»",
         "«Mistrzyni»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Аня Тейлор-Джой запоминала все сложные ходы и шахматные комбинации как хореографический танец за 5 минут до съемок.",
       "funFactPl": "Anya Taylor-Joy uczyła się skomplikowanych układów figur szachowych jak kroków tanecznych tuż przed ujęciami."
     },
@@ -289,7 +289,7 @@
       "timeLimitSeconds": 20,
       "options": [
         "Кшиштоф Кесьлёвский",
-        "Анджей Вайда (Andrzej Wajda)",
+        "Анджей Вайда",
         "Роман Полански",
         "Ежи Сколимовский"
       ],
@@ -310,17 +310,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "JARVIS",
-        "HAL 9000",
         "Skynet",
+        "HAL 9000",
         "GLaDOS"
       ],
       "optionsPl": [
         "JARVIS",
-        "HAL 9000",
         "Skynet",
+        "HAL 9000",
         "GLaDOS"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Буквы HAL в латинском алфавите сдвинуты ровно на одну букву назад относительно аббревиатуры IBM (H->I, A->B, L->M).",
       "funFactPl": "Litery HAL w alfabecie łacińskim poprzedzają bezpośrednio litery IBM (H przed I, A przed B, L przed M)."
     },
@@ -330,18 +330,18 @@
       "textPl": "W jakim widowisku szpiegowskim Christophera Nolana czas i przedmioty podlegają zjawisku inwersji entropii?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Помни» (Memento)",
-        "«Довод» (Tenet)",
+        "«Помни»",
+        "«Дюнкерк»",
         "«Престиж»",
-        "«Дюнкерк»"
+        "«Довод»"
       ],
       "optionsPl": [
         "«Memento»",
-        "«Tenet»",
+        "«Dunkierka»",
         "«Prestiż»",
-        "«Dunkierka»"
+        "«Tenet»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Слово TENET — это палиндром, который читается одинаково как слева направо, так и справа налево.",
       "funFactPl": "Słowo «TENET» to słynny palindrom, który czytany od przodu i od tyłu brzmi identycznie."
     },
@@ -351,18 +351,18 @@
       "textPl": "Jaka kultowa seria filmów o brawurowym napadzie na kasyna w Las Vegas połączyła Clooneya, Pitta i Damona?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Одиннадцать друзей Оушена»",
         "«Ограбление по-итальянски»",
-        "«Одиннадцать друзей Оушена» (Ocean's Eleven)",
         "«Карты, деньги, два ствола»",
         "«Афера»"
       ],
       "optionsPl": [
-        "«Włoska robota»",
         "«Ocean's Eleven: Ryzykowna gra»",
+        "«Włoska robota»",
         "«Przekręt»",
         "«Żądło»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Фильм 2001 года Стивена Содерберга — это ремейк одноименного фильма 1960 года с Фрэнком Синатрой.",
       "funFactPl": "Film Stevena Soderbergha z 2001 roku jest remakiem klasyka z 1960 roku, w którym grał Frank Sinatra."
     },
@@ -373,7 +373,7 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Алиса в Пограничье»",
-        "«Игра в кальмара» (Squid Game)",
+        "«Игра в кальмара»",
         "«Королевство»",
         "«Мы все мертвы»"
       ],
@@ -394,17 +394,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Бешеные псы»",
-        "«Криминальное чтиво» (Pulp Fiction)",
         "«Джеки Браун»",
+        "«Криминальное чтиво»",
         "«Джанго освобожденный»"
       ],
       "optionsPl": [
         "«Wściekłe psy»",
-        "«Pulp Fiction»",
         "«Jackie Brown»",
+        "«Pulp Fiction»",
         "«Django»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Тарантино придумал вымышленную гавайскую сеть «Big Kahuna Burger», которая появляется во многих его фильмах.",
       "funFactPl": "Fikcyjna sieć barów «Big Kahuna Burger» pojawia się w kilku różnych filmach Tarantino."
     },
@@ -415,17 +415,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Барби»",
-        "«Оппенгеймер» (Oppenheimer)",
+        "«Убийцы цветочной луны»",
         "«Бедные-несчастные»",
-        "«Убийцы цветочной луны»"
+        "«Оппенгеймер»"
       ],
       "optionsPl": [
         "«Barbie»",
-        "«Oppenheimer»",
+        "«Czas krwawego księżyca»",
         "«Biedne istoty»",
-        "«Czas krwawego księżyca»"
+        "«Oppenheimer»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Нолан отказался от использования компьютерной графики CGI даже для сцены ядерного испытания «Тринити».",
       "funFactPl": "Christopher Nolan zrezygnował z efektów komputerowych CGI nawet przy scenie wybuchu testu nuklearnego Trinity."
     }

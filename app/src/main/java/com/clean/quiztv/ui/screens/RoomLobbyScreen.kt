@@ -29,6 +29,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -377,6 +380,11 @@ fun RoomLobbyScreen(
 
         // --- Bottom Bar: Choose Theme Action Button ---
         val canProceed = state.players.isNotEmpty()
+        val focusRequester = remember { FocusRequester() }
+        LaunchedEffect(Unit) {
+            focusRequester.requestFocus()
+        }
+
         var isProceedFocused by remember { mutableStateOf(false) }
         val proceedScale by animateFloatAsState(
             targetValue = if (isProceedFocused) 1.05f else 1.0f,
@@ -386,6 +394,7 @@ fun RoomLobbyScreen(
 
         Box(
             modifier = Modifier
+                .focusRequester(focusRequester)
                 .fillMaxWidth()
                 .scale(proceedScale)
                 .clip(RoundedCornerShape(20.dp))
@@ -549,14 +558,6 @@ private fun PlayerChip(player: Player, lang: AppLanguage) {
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                if (player.isVip) {
-                    Text(
-                        text = Strings.vipHostBadge(lang),
-                        color = GoldMedal,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Black
-                    )
-                }
             }
         }
     }

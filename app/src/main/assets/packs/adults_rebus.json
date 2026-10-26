@@ -16,20 +16,21 @@
       "textPl": "Jaki kultowy film katastroficzny został zaszyfrowany w tych emotikonach?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Титаник»",
         "«Пираты Карибского моря»",
-        "«Титаник» (Titanic)",
         "«Посейдон»",
         "«Идеальный шторм»"
       ],
       "optionsPl": [
-        "«Piraci z Karaibów»",
         "«Titanic»",
+        "«Piraci z Karaibów»",
         "«Posejdon»",
         "«Gniew oceanu»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Скрипка 🎻 напоминает о корабельном оркестре, который продолжал играть до последних секунд погружения лайнера.",
-      "funFactPl": "Skrzypce 🎻 nawiązują do orkiestry okrętowej, która grała do samego końca katastrofy."
+      "funFactPl": "Skrzypce 🎻 nawiązują do orkiestry okrętowej, która grała do samego końca katastrofy.",
+      "imageAsset": "images/titanic_ship.jpg"
     },
     {
       "id": "reb_2",
@@ -38,20 +39,21 @@
       "textPl": "W jakiej trylogii science-fiction wehikuł czasu wymagał prędkości 88 mil na godzinę?",
       "timeLimitSeconds": 20,
       "options": [
-        "«Назад в будущее» (Back to the Future)",
         "«Безумный Макс»",
+        "«Назад в будущее»",
         "«Терминатор»",
         "«Трансформеры»"
       ],
       "optionsPl": [
-        "«Powrót do przyszłości» (Back to the Future)",
         "«Mad Max»",
+        "«Powrót do przyszłości»",
         "«Terminator»",
         "«Transformers»"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "funFact": "Делориан Марти Макфлая требовал 1.21 гигаватта мощности, которую смогла дать только вспышка молнии в башню часов.",
-      "funFactPl": "DeLorean Marty'ego McFlya wymagał 1,21 gigawata energii, którą dostarczył dopiero piorun uderzający w wieżę zegarową."
+      "funFactPl": "DeLorean Marty'ego McFlya wymagał 1,21 gigawata energii, którą dostarczył dopiero piorun uderzający w wieżę zegarową.",
+      "imageAsset": "images/delorean.jpg"
     },
     {
       "id": "reb_3",
@@ -61,17 +63,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Перси Джексон",
-        "Гарри Поттер (Harry Potter)",
         "Питер Пэн",
+        "Гарри Поттер",
         "Эрагон"
       ],
       "optionsPl": [
         "Percy Jackson",
-        "Harry Potter",
         "Piotruś Pan",
+        "Harry Potter",
         "Eragon"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Поезд «Хогвартс-экспресс» отправляется ровно в 11:00 1 сентября с платформы 9 ¾ вокзала Кингс-Кросс.",
       "funFactPl": "«Hogwart Express» odjeżdża dokładnie o 11:00 z peronu 9 ¾ na londyńskiej stacji King's Cross."
     },
@@ -83,17 +85,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Бэтмен: Начало»",
-        "«Темный рыцарь» (The Dark Knight)",
+        "«Отряд самоубийц»",
         "«Джокер»",
-        "«Отряд самоубийц»"
+        "«Темный рыцарь»"
       ],
       "optionsPl": [
         "«Batman: Początek»",
-        "«Mroczny Rycerz» (The Dark Knight)",
+        "«Legion samobójców»",
         "«Joker»",
-        "«Legion samobójców»"
+        "«Mroczny Rycerz»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Хит Леджер посмертно получил премию «Оскар» за легендарное исполнение роли Джокера.",
       "funFactPl": "Heath Ledger otrzymał pośmiertnego Oscara za genialną kreację Jokera."
     },
@@ -104,18 +106,18 @@
       "textPl": "Jaki kultowy cyberpunkowy hit Wachowskich został tutaj przedstawiony?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Матрица»",
         "«Бегущий по лезвию»",
-        "«Матрица» (The Matrix)",
         "«Трон»",
         "«Джонни Мнемоник»"
       ],
       "optionsPl": [
+        "«Matrix»",
         "«Blade Runner»",
-        "«Matrix» (The Matrix)",
         "«Tron»",
         "«Johnny Mnemonic»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Зеленый цифровой дождь из кода Матрицы на самом деле состоит из символов японских кулинарных рецептов суши!",
       "funFactPl": "Słynny zielony cyfrowy deszcz kodu w Matriksie powstał ze znaków japońskich przepisów na sushi!"
     },
@@ -127,13 +129,13 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Кинг-Конг»",
-        "«Парк Юрского периода» (Jurassic Park)",
+        "«Парк Юрского периода»",
         "«Годзилла»",
         "«Земля до начала времен»"
       ],
       "optionsPl": [
         "«King Kong»",
-        "«Park Jurajski» (Jurassic Park)",
+        "«Park Jurajski»",
         "«Godzilla»",
         "«Pradawny ląd»"
       ],
@@ -149,17 +151,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Хроники Нарнии»",
-        "«Властелин колец» (The Lord of the Rings)",
         "«Хоббит»",
+        "«Властелин колец»",
         "«Варкрафт»"
       ],
       "optionsPl": [
         "«Opowieści z Narnii»",
-        "«Władca Pierścieni» (The Lord of the Rings)",
         "«Hobbit»",
+        "«Władca Pierścieni»",
         "«Warcraft»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Третья часть «Возвращение короля» получила 11 статуэток «Оскар» из 11 номинаций, повторив рекорд «Титаника».",
       "funFactPl": "Trzecia część «Powrót Króla» zdobyła 11 Oscarów na 11 nominacji, wyrównując rekord «Titanica»."
     },
@@ -171,17 +173,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Мадагаскар»",
-        "«Король Лев» (The Lion King)",
+        "«Тарзан»",
         "«Книга джунглей»",
-        "«Тарзан»"
+        "«Король Лев»"
       ],
       "optionsPl": [
         "«Madagaskar»",
-        "«Król Lew» (The Lion King)",
+        "«Tarzan»",
         "«Księga dżungli»",
-        "«Tarzan»"
+        "«Król Lew»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Фраза «Хакуна матата» на языке суахили действительно означает «без забот и проблем».",
       "funFactPl": "Zwrot «Hakuna matata» w języku suahili oznacza dosłownie «brak zmartwień»."
     },
@@ -192,18 +194,18 @@
       "textPl": "Jaki sympatyczny kosmita pragnął «zadzwonić do domu» w filmie Stevena Spielberga?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Инопланетянин»",
         "«Люди в черном»",
-        "«Инопланетянин» (E.T.)",
         "«Марс атакует!»",
         "«Прибытие»"
       ],
       "optionsPl": [
+        "«E.T.»",
         "«Faceci w czerni»",
-        "«E.T.» (E.T. the Extra-Terrestrial)",
         "«Marsjanie atakują!»",
         "«Nowy początek»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Силуэт летящего на велосипеде мальчика на фоне полной луны стал официальным логотипом кинокомпании Amblin.",
       "funFactPl": "Lecący rower na tle księżyca stał się oficjalnym logo wytwórni filmowej Amblin Entertainment."
     },
@@ -215,13 +217,13 @@
       "timeLimitSeconds": 20,
       "options": [
         "Люди в черном",
-        "Охотники за привидениями (Ghostbusters)",
+        "Охотники за привидениями",
         "Секретные материалы",
         "Ван Хельсинг"
       ],
       "optionsPl": [
         "Faceci w czerni",
-        "Pogromcy duchów (Ghostbusters)",
+        "Pogromcy duchów",
         "Z archiwum X",
         "Van Helsing"
       ],
@@ -237,17 +239,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Шрек",
-        "Чарли и шоколадная фабрика",
         "Корпорация монстров",
+        "Чарли и шоколадная фабрика",
         "Алиса в Стране чудес"
       ],
       "optionsPl": [
         "Shrek",
-        "Charlie i fabryka czekolady",
         "Potwory i spółka",
+        "Charlie i fabryka czekolady",
         "Alicja w Krainie Czarów"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Шоколадная река на съемках фильма Тима Бёртона состояла из настоящей воды, смешанной с какао и сливками.",
       "funFactPl": "Czekoladowa rzeka na planie filmu Tima Burtona zawierała ponad 700 tysięcy litrów sztucznej czekolady."
     },
@@ -259,17 +261,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Гринч»",
-        "«Один дома» (Kevin sam w domu)",
+        "«Подарок на Рождество»",
         "«Эльф»",
-        "«Подарок на Рождество»"
+        "«Один дома»"
       ],
       "optionsPl": [
         "«Grinch»",
-        "«Kevin sam w domu» (Home Alone)",
+        "«Świąteczna gorączka»",
         "«Elf»",
-        "«Świąteczna gorączka»"
+        "«Kevin sam w domu»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "В Польше фильм настолько популярен, что петиция зрителей заставила телеканал вернуть его в сетку вещания.",
       "funFactPl": "W 2010 roku ponad 90 tysięcy Polaków zaprotestowało na Facebooku, gdy Polsat planował nie wyemitować Kevina."
     },
@@ -280,18 +282,18 @@
       "textPl": "Jaki pięściarz z Filadelfii trenował biegając po schodach muzeum w rytm «Gonna Fly Now»?",
       "timeLimitSeconds": 20,
       "options": [
+        "Рокки Бальбоа",
         "Крид",
-        "Рокки Бальбоа (Rocky)",
         "Малышка на миллион",
         "Боец"
       ],
       "optionsPl": [
-        "Creed",
         "Rocky Balboa",
+        "Creed",
         "Za wszelką cenę",
         "Fighter"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Сильвестр Сталлоне написал сценарий за 3 дня после просмотра боя Мухаммеда Али с Чаком Вепнером.",
       "funFactPl": "Sylvester Stallone napisał scenariusz w zaledwie 3 dni i odmówił sprzedaży, dopóki nie zagwarantowano mu roli głównej."
     },
@@ -303,7 +305,7 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Гравитация»",
-        "«Интерстеллар» (Interstellar)",
+        "«Интерстеллар»",
         "«Марсианин»",
         "«К звездам»"
       ],
@@ -325,17 +327,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Шеф Адам Джонс»",
-        "«Рататуй» (Ratatouille)",
         "«Пряности и страсти»",
+        "«Рататуй»",
         "«Кухня»"
       ],
       "optionsPl": [
         "«Ugotowany»",
-        "«Ratatuj» (Ratatouille)",
         "«Podróż na sto stóp»",
+        "«Ratatuj»",
         "«Smakosz»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Крысенок Реми готовит традиционное провансальское овощное рагу Конфи Бьяльди, покорившее критика Эго.",
       "funFactPl": "Szczurek Rémy serwuje słynną wersję prowansalskiego dania warzywnego Confi Byaldi."
     },
@@ -347,17 +349,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Сияние»",
-        "«Оно» (It)",
+        "«Мизери»",
         "«Кладбище домашних животных»",
-        "«Мизери»"
+        "«Оно»"
       ],
       "optionsPl": [
         "«Lśnienie»",
-        "«To» (It)",
+        "«Misery»",
         "«Smętarz dla zwierzaków»",
-        "«Misery»"
+        "«To»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Желтый дождевик маленького Джорджи стал мгновенно узнаваемым символом современного киноужаса.",
       "funFactPl": "Żółty płaszcz przeciwdeszczowy małego Georgiego stał się ikoną współczesnego horroru."
     },
@@ -368,18 +370,18 @@
       "textPl": "O jakim nowojorskim świecie mody i despotycznej redaktor Mirandzie Priestly opowiada ten film?",
       "timeLimitSeconds": 20,
       "options": [
+        "«Дьявол носит Prada»",
         "«Шопоголик»",
-        "«Дьявол носит Prada» (The Devil Wears Prada)",
         "«Секс в большом городе»",
         "«Завтрак у Тиффани»"
       ],
       "optionsPl": [
+        "«Diabeł ubiera się u Prady»",
         "«Wyznania zakupoholiczki»",
-        "«Diabeł ubiera się u Prady» (The Devil Wears Prada)",
         "«Seks w wielkim mieście»",
         "«Śniadanie u Tiffany'ego»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Мэрил Стрип сама настояла на том, чтобы ее героиня говорила тихим и спокойным голосом, вызывая еще больший трепет.",
       "funFactPl": "Meryl Streep celowo mówiła w filmie szeptem i spokojnym tonem, co potęgowało grozę wśród współpracowników."
     },
@@ -391,7 +393,7 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Вверх»",
-        "«История игрушек» (Toy Story)",
+        "«История игрушек»",
         "«Тачки»",
         "«Суперсемейка»"
       ],
@@ -413,17 +415,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Летучий голландец»",
-        "«Черная жемчужина» («Пираты Карибского моря»)",
         "«Месть королеwy Анны»",
+        "«Черная жемчужина»",
         "«Испаньола»"
       ],
       "optionsPl": [
         "«Latający Holender»",
-        "«Czarna Perła» («Piraci z Karaibów»)",
         "«Zemsta Królowej Anny»",
+        "«Czarna Perła»",
         "«Hispaniola»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Джонни Депп признался, что вдохновлялся походкой и манерами гитариста The Rolling Stones Кита Ричардса.",
       "funFactPl": "Johnny Depp tworząc postać Jacka Sparrowa wzorował się na gitarzyście The Rolling Stones, Keithie Richardsie."
     },
@@ -435,17 +437,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Бэтмен",
-        "Человек-паук (Spider-Man)",
+        "Сорвиголова",
         "Железный человек",
-        "Сорвиголова"
+        "Человек-паук"
       ],
       "optionsPl": [
         "Batman",
-        "Spider-Man",
+        "Daredevil",
         "Iron Man",
-        "Daredevil"
+        "Spider-Man"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Питер Паркер получил свои суперспособности после укуса генетически модифицированного паука в научной лаборатории.",
       "funFactPl": "Peter Parker zyskał pajęcze zdolności po ukąszeniu przez genetycznie zmodyfikowanego pająka."
     }

@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,6 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -90,6 +93,11 @@ fun LeaderboardScreen(
                 )
             }
 
+            val focusRequester = remember { FocusRequester() }
+            LaunchedEffect(Unit) {
+                focusRequester.requestFocus()
+            }
+
             var isFocused by remember { mutableStateOf(false) }
             val animatedScale by animateFloatAsState(
                 targetValue = if (isFocused) 1.08f else 1.0f,
@@ -100,6 +108,7 @@ fun LeaderboardScreen(
             // Island CTA Button
             Box(
                 modifier = Modifier
+                    .focusRequester(focusRequester)
                     .scale(animatedScale)
                     .clip(RoundedCornerShape(20.dp))
                     .background(
@@ -159,7 +168,13 @@ fun LeaderboardScreen(
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 state.teamStandings.forEach { team ->
-                    val color = Color(android.graphics.Color.parseColor(team.colorHex))
+                    val color = remember(team.colorHex) {
+                        try {
+                            Color(android.graphics.Color.parseColor(team.colorHex))
+                        } catch (_: Exception) {
+                            Color(0xFF3B82F6)
+                        }
+                    }
                     Box(
                         modifier = Modifier
                             .weight(1f)
@@ -192,7 +207,7 @@ fun LeaderboardScreen(
                                 }
                             }
                             Text(
-                                text = "${team.totalScore} pkt",
+                                text = Strings.pointsSuffix(team.totalScore, lang),
                                 color = Color.White,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Black

@@ -61,24 +61,30 @@ class LlmService(
                 - correctIndex — число от 0 до 3 (индекс правильного ответа).
                 - funFact — короткий поразительный или забавный факт, объясняющий правильный ответ (1-2 предложения).
                 - timeLimitSeconds: ${if (ageGroup == GameMode.KIDS) 25 else 20}.
+                - Двуязычность: сгенерируй русские поля (title, description, text, options, funFact) и качественный перевод на польский язык (titlePl, descriptionPl, textPl, optionsPl, funFactPl).
 
                 Верни ТОЛЬКО валидный JSON без обертки ```json или пояснений по схеме:
                 {
                   "id": "generated_${UUID.randomUUID().toString().take(8)}",
                   "version": 1,
-                  "title": "Название темы",
+                  "title": "Название темы на русском",
+                  "titlePl": "Tytuł tematu po polsku",
                   "description": "Краткое яркое описание темы",
+                  "descriptionPl": "Krótki, żywy opis tematu po polsku",
                   "ageGroup": "${ageGroup.name}",
                   "category": "$topic",
                   "accentColor": "#8B5CF6",
                   "questions": [
                     {
                       "id": "q1",
-                      "text": "Текст вопроса?",
+                      "text": "Текст вопроса на русском?",
+                      "textPl": "Treść pytania po polsku?",
                       "timeLimitSeconds": ${if (ageGroup == GameMode.KIDS) 25 else 20},
                       "options": ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4"],
+                      "optionsPl": ["Opcja 1", "Opcja 2", "Opcja 3", "Opcja 4"],
                       "correctIndex": 0,
-                      "funFact": "Текст факта"
+                      "funFact": "Текст факта на русском",
+                      "funFactPl": "Ciekawostka po polsku"
                     }
                   ]
                 }
@@ -91,7 +97,13 @@ class LlmService(
             }
 
             val cleaned = cleanJsonString(rawJsonContent)
-            val pack = json.decodeFromString<QuestionPack>(cleaned)
+            val parsedPack = json.decodeFromString<QuestionPack>(cleaned)
+
+            // Force unique question IDs scoped to pack id so QuestionHistoryManager does not mark them as already seen
+            val updatedQuestions = parsedPack.questions.mapIndexed { index, q ->
+                q.copy(id = "${parsedPack.id}_q_${index + 1}")
+            }
+            val pack = parsedPack.copy(questions = updatedQuestions)
 
             // Save to filesDir so it's instantly available in the lobby
             repository.savePack(pack)
@@ -140,7 +152,7 @@ class LlmService(
         model: String,
         prompt: String
     ): String {
-        val modelName = if (model.startsWith("gemini")) model else "gemini-1.5-flash"
+        val modelName = if (model.startsWith("gemini")) model else "gemini-2.5-flash"
         val endpoint = "https://generativelanguage.googleapis.com/v1beta/models/$modelName:generateContent?key=$apiKey"
 
         val payload = buildJsonObject {

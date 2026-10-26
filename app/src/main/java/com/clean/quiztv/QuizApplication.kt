@@ -1,6 +1,7 @@
 package com.clean.quiztv
 
 import android.app.Application
+import com.clean.quiztv.audio.TvSoundManager
 import com.clean.quiztv.data.QuestionPackRepository
 import com.clean.quiztv.data.llm.LlmService
 import com.clean.quiztv.game.GameStateMachine
@@ -22,6 +23,7 @@ class QuizApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        TvSoundManager.init(this)
         packRepository = QuestionPackRepository(this)
         llmService = LlmService(packRepository)
         stateMachine = GameStateMachine(packRepository)

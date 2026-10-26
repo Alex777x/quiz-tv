@@ -151,4 +151,7 @@ object Strings {
 
     fun rebusGuessTitle(lang: AppLanguage) =
         if (lang == AppLanguage.PL) "🧩 Rozszyfruj kultowy film!" else "🧩 Разгадай культовый фильм по ребусу!"
+
+    fun replayMelodyBtn(lang: AppLanguage) =
+        if (lang == AppLanguage.PL) "Powtórz melodię 🔄" else "Повторить мелодию 🔄"
 }

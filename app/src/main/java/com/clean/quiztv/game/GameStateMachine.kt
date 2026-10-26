@@ -56,8 +56,7 @@ sealed interface GameState {
         val answersReceived: Int,
         val totalPlayers: Int,
         override val gameFormat: GameFormat = GameFormat.INDIVIDUAL,
-        override val language: AppLanguage = AppLanguage.RU,
-        val isPaused: Boolean = false
+        override val language: AppLanguage = AppLanguage.RU
     ) : GameState
 
     data class Reveal(
@@ -68,8 +67,7 @@ sealed interface GameState {
         val optionCounts: Map<Int, Int>,
         val secondsRemaining: Int,
         override val gameFormat: GameFormat = GameFormat.INDIVIDUAL,
-        override val language: AppLanguage = AppLanguage.RU,
-        val isPaused: Boolean = false
+        override val language: AppLanguage = AppLanguage.RU
     ) : GameState
 
     data class Leaderboard(
@@ -80,8 +78,7 @@ sealed interface GameState {
         val teamStandings: List<TeamStanding> = emptyList(),
         val isLastQuestion: Boolean,
         override val gameFormat: GameFormat = GameFormat.INDIVIDUAL,
-        override val language: AppLanguage = AppLanguage.RU,
-        val isPaused: Boolean = false
+        override val language: AppLanguage = AppLanguage.RU
     ) : GameState
 
     data class Podium(
@@ -107,7 +104,7 @@ class GameStateMachine(
     var currentFormat: GameFormat = GameFormat.INDIVIDUAL
         private set
 
-    var isPaused: Boolean = false
+    var currentMode: GameMode = GameMode.ADULTS
         private set
 
     private val _state = MutableStateFlow<GameState>(GameState.Lobby())
@@ -120,8 +117,6 @@ class GameStateMachine(
     private val teamsMap = mutableMapOf<String, Team>()
     private var timerJob: Job? = null
     private var transitionJob: Job? = null
-
-    fun isPlayerVip(playerId: String): Boolean = playersMap[playerId]?.isVip == true
 
     init {
         coroutineScope.launch {
@@ -187,23 +182,12 @@ class GameStateMachine(
         broadcastLobbyUpdate()
     }
 
-    suspend fun togglePause() = mutex.withLock {
-        isPaused = !isPaused
-        broadcast(ServerMessage.GamePaused(isPaused))
-        when (val s = _state.value) {
-            is GameState.QuestionRound -> _state.value = s.copy(isPaused = isPaused)
-            is GameState.Reveal -> _state.value = s.copy(isPaused = isPaused)
-            is GameState.Leaderboard -> _state.value = s.copy(isPaused = isPaused)
-            else -> {}
-        }
-    }
-
-    suspend fun forceReveal() = mutex.withLock {
+    suspend fun replayCurrentMelody() = mutex.withLock {
         val s = _state.value
         if (s is GameState.QuestionRound) {
-            timerJob?.cancel()
-            TvSoundManager.stopMelody()
-            endQuestionRound()
+            if (s.question.melodyTune != null) {
+                TvSoundManager.replayMelody()
+            }
         }
     }
 
@@ -223,6 +207,7 @@ class GameStateMachine(
     }
 
     suspend fun selectMode(mode: GameMode) = mutex.withLock {
+        currentMode = mode
         val current = _state.value
         if (current is GameState.Lobby) {
             val matchingPack = current.availablePacks.firstOrNull { it.ageGroup == mode }?.id ?: current.selectedPackId
@@ -236,6 +221,7 @@ class GameStateMachine(
         if (current is GameState.Lobby) {
             val pack = current.availablePacks.find { it.id == packId }
             val mode = pack?.ageGroup ?: current.selectedMode
+            currentMode = mode
             _state.value = current.copy(selectedPackId = packId, selectedMode = mode)
             broadcastLobbyUpdate()
         }
@@ -269,36 +255,32 @@ class GameStateMachine(
             avatar = avatar,
             score = existing?.score ?: 0,
             streak = existing?.streak ?: 0,
-            isVip = existing?.isVip ?: false,
+            isVip = false,
             isConnected = true,
             teamId = existing?.teamId,
             teamName = existing?.teamName
         )
         playersMap[id] = player
 
-        // Always guarantee that an active connected player has VIP!
-        ensureVipLocked()
-
-        val finalPlayer = playersMap[id] ?: player
         updatePlayersInCurrentState()
         val lobby = _state.value as? GameState.Lobby
         sendToPlayer(
             id,
             ServerMessage.Welcome(
                 playerId = id,
-                isVip = finalPlayer.isVip,
+                isVip = false,
                 serverState = getStateName(_state.value),
                 language = currentLanguage,
-                selectedMode = lobby?.selectedMode ?: GameMode.ADULTS,
+                selectedMode = lobby?.selectedMode ?: currentMode,
                 selectedPackId = lobby?.selectedPackId,
                 gameFormat = lobby?.gameFormat ?: currentFormat,
-                teamId = finalPlayer.teamId,
-                teamName = finalPlayer.teamName,
+                teamId = player.teamId,
+                teamName = player.teamName,
                 teams = getTeamsList()
             )
         )
         broadcastLobbyUpdate()
-        finalPlayer
+        player
     }
 
     suspend fun handleReconnect(playerId: String): Boolean = mutex.withLock {
@@ -306,9 +288,6 @@ class GameStateMachine(
         val updated = existing.copy(isConnected = true)
         playersMap[playerId] = updated
 
-        ensureVipLocked()
-
-        val finalPlayer = playersMap[playerId] ?: updated
         updatePlayersInCurrentState()
 
         val lobby = _state.value as? GameState.Lobby
@@ -316,14 +295,14 @@ class GameStateMachine(
             playerId,
             ServerMessage.Welcome(
                 playerId = playerId,
-                isVip = finalPlayer.isVip,
+                isVip = false,
                 serverState = getStateName(_state.value),
                 language = currentLanguage,
-                selectedMode = lobby?.selectedMode ?: GameMode.ADULTS,
+                selectedMode = lobby?.selectedMode ?: currentMode,
                 selectedPackId = lobby?.selectedPackId,
                 gameFormat = lobby?.gameFormat ?: currentFormat,
-                teamId = finalPlayer.teamId,
-                teamName = finalPlayer.teamName,
+                teamId = updated.teamId,
+                teamName = updated.teamName,
                 teams = getTeamsList()
             )
         )
@@ -336,7 +315,6 @@ class GameStateMachine(
         // If disconnecting in Lobby, remove player immediately so ghost cards never linger
         if (_state.value is GameState.Lobby) {
             playersMap.remove(playerId)
-            ensureVipLocked()
             updatePlayersInCurrentState()
             broadcastLobbyUpdate()
             return@withLock
@@ -346,46 +324,14 @@ class GameStateMachine(
         val updated = existing.copy(isConnected = false)
         playersMap[playerId] = updated
 
-        if (updated.isVip) {
-            playersMap[playerId] = updated.copy(isVip = false)
-            ensureVipLocked()
-        }
-
         updatePlayersInCurrentState()
         broadcastLobbyUpdate()
     }
 
     suspend fun handleLeave(playerId: String) = mutex.withLock {
         playersMap.remove(playerId)
-        ensureVipLocked()
         updatePlayersInCurrentState()
         broadcastLobbyUpdate()
-    }
-
-    private suspend fun ensureVipLocked() {
-        val connected = playersMap.values.filter { it.isConnected }
-        if (connected.isEmpty()) return
-        val currentVip = connected.find { it.isVip }
-        if (currentVip == null) {
-            val newVip = connected.first()
-            playersMap[newVip.id] = newVip.copy(isVip = true)
-            val lobby = _state.value as? GameState.Lobby
-            sendToPlayer(
-                newVip.id,
-                ServerMessage.Welcome(
-                    playerId = newVip.id,
-                    isVip = true,
-                    serverState = getStateName(_state.value),
-                    language = currentLanguage,
-                    selectedMode = lobby?.selectedMode ?: GameMode.ADULTS,
-                    selectedPackId = lobby?.selectedPackId,
-                    gameFormat = lobby?.gameFormat ?: currentFormat,
-                    teamId = newVip.teamId,
-                    teamName = newVip.teamName,
-                    teams = getTeamsList()
-                )
-            )
-        }
     }
 
     // =========================================================================
@@ -397,7 +343,6 @@ class GameStateMachine(
             val currentLobby = _state.value as? GameState.Lobby
             val format = currentLobby?.gameFormat ?: currentFormat
             currentFormat = format
-            isPaused = false
 
             // Auto-balance teams in TEAMS mode if players haven't picked a team
             if (format == GameFormat.TEAMS) {
@@ -425,6 +370,7 @@ class GameStateMachine(
                 ?: repository.getPackById(packId)
                 ?: return
             if (rawPack.questions.isEmpty()) return
+            currentMode = gameMode
             val pack = rawPack.copy(ageGroup = gameMode)
 
             // Reset player scores & streaks
@@ -461,8 +407,7 @@ class GameStateMachine(
             answersReceived = 0,
             totalPlayers = totalPlayers,
             gameFormat = currentFormat,
-            language = currentLanguage,
-            isPaused = isPaused
+            language = currentLanguage
         )
 
         // If question has a synthesized melody, play it on the TV!
@@ -496,7 +441,6 @@ class GameStateMachine(
             while (sec > 0) {
                 delay(1000L)
                 mutex.withLock {
-                    if (isPaused) return@withLock
                     val s = _state.value as? GameState.QuestionRound ?: return@launch
                     sec--
                     _state.value = s.copy(secondsRemaining = sec)
@@ -537,10 +481,15 @@ class GameStateMachine(
             if (player.lastAnswer != null) return // Already answered
 
             val isCorrect = (optionIndex == s.question.correctIndex)
+            val effectiveTimeElapsedMs = if (timeElapsedMs > 0 && timeElapsedMs <= s.question.timeLimitSeconds * 1000L) {
+                timeElapsedMs
+            } else {
+                ((s.question.timeLimitSeconds - s.secondsRemaining) * 1000L).coerceAtLeast(0L)
+            }
             val points = ScoringEngine.calculatePoints(
                 isCorrect = isCorrect,
                 timeLimitSeconds = s.question.timeLimitSeconds,
-                timeElapsedMs = timeElapsedMs,
+                timeElapsedMs = effectiveTimeElapsedMs,
                 currentStreak = player.streak
             )
 
@@ -549,7 +498,7 @@ class GameStateMachine(
                 streak = if (isCorrect) player.streak + 1 else 0,
                 lastAnswer = PlayerAnswer(
                     optionIndex = optionIndex,
-                    timeElapsedMs = timeElapsedMs,
+                    timeElapsedMs = effectiveTimeElapsedMs,
                     isCorrect = isCorrect,
                     pointsEarned = points
                 )
@@ -623,20 +572,13 @@ class GameStateMachine(
             optionCounts = counts,
             secondsRemaining = 5,
             gameFormat = currentFormat,
-            language = currentLanguage,
-            isPaused = isPaused
+            language = currentLanguage
         )
 
-        // 3. Auto-progress to Leaderboard after reveal countdown (pause-aware)
+        // 3. Auto-progress to Leaderboard after reveal countdown
         transitionJob?.cancel()
         transitionJob = coroutineScope.launch {
-            var waitMs = 5500L
-            while (waitMs > 0) {
-                delay(200L)
-                if (!isPaused) {
-                    waitMs -= 200L
-                }
-            }
+            delay(5000L)
             mutex.withLock {
                 val current = _state.value
                 if (current is GameState.Reveal) {
@@ -659,8 +601,7 @@ class GameStateMachine(
             teamStandings = teamStandings,
             isLastQuestion = isLast,
             gameFormat = currentFormat,
-            language = currentLanguage,
-            isPaused = isPaused
+            language = currentLanguage
         )
 
         broadcast(
@@ -671,20 +612,14 @@ class GameStateMachine(
             )
         )
 
-        // Auto-progress to next question or podium (pause-aware)
+        // Auto-progress to next question or podium
         transitionJob?.cancel()
         transitionJob = coroutineScope.launch {
-            var waitMs = 5000L
-            while (waitMs > 0) {
-                delay(200L)
-                if (!isPaused) {
-                    waitMs -= 200L
-                }
-            }
+            delay(5000L)
             mutex.withLock {
                 val current = _state.value
                 if (current is GameState.Leaderboard) {
-                    proceedAfterLeaderboard()
+                    proceedAfterLeaderboardLocked()
                 }
             }
         }
@@ -703,13 +638,17 @@ class GameStateMachine(
             }
             is GameState.Leaderboard -> {
                 transitionJob?.cancel()
-                proceedAfterLeaderboard()
+                proceedAfterLeaderboardLocked()
             }
             else -> {}
         }
     }
 
-    suspend fun proceedAfterLeaderboard() {
+    suspend fun proceedAfterLeaderboard() = mutex.withLock {
+        proceedAfterLeaderboardLocked()
+    }
+
+    private suspend fun proceedAfterLeaderboardLocked() {
         transitionJob?.cancel()
         val s = _state.value
         if (s !is GameState.Leaderboard) return
@@ -751,7 +690,6 @@ class GameStateMachine(
         timerJob?.cancel()
         transitionJob?.cancel()
         TvSoundManager.stopMelody()
-        isPaused = false
 
         playersMap.keys.forEach { id ->
             val p = playersMap[id]!!
@@ -759,7 +697,7 @@ class GameStateMachine(
         }
         val packs = repository.getAllPacks()
         val lobby = _state.value as? GameState.Lobby
-        val mode = lobby?.selectedMode ?: GameMode.ADULTS
+        val mode = lobby?.selectedMode ?: currentMode
         _state.value = GameState.Lobby(
             players = playersMap.values.filter { it.isConnected },
             availablePacks = packs,
@@ -802,7 +740,7 @@ class GameStateMachine(
     }
 
     private fun computeTeamStandings(): List<TeamStanding> {
-        val teams = playersMap.values.filter { it.isConnected && it.teamId != null }
+        val teams = playersMap.values.filter { it.teamId != null }
             .groupBy { it.teamId!! }
 
         return teams.map { (teamId, teamPlayers) ->
@@ -837,9 +775,10 @@ class GameStateMachine(
                         questionIndex = s.questionIndex + 1,
                         totalQuestions = s.pack.questions.size,
                         timeRemainingSeconds = s.secondsRemaining,
-                        isPaused = s.isPaused,
                         options = s.question.localizedOptions(currentLanguage),
-                        questionText = s.question.localizedText(currentLanguage)
+                        questionText = s.question.localizedText(currentLanguage),
+                        questionId = s.question.id,
+                        gameMode = currentMode
                     )
                 )
             }
@@ -854,7 +793,8 @@ class GameStateMachine(
                         questionIndex = s.questionIndex + 1,
                         totalQuestions = s.pack.questions.size,
                         timeRemainingSeconds = s.secondsRemaining,
-                        isPaused = s.isPaused
+                        questionId = s.question.id,
+                        gameMode = currentMode
                     )
                 )
             }
@@ -867,7 +807,16 @@ class GameStateMachine(
                         alreadyAnswered = true,
                         questionIndex = s.questionIndex + 1,
                         totalQuestions = s.pack.questions.size,
-                        isPaused = s.isPaused
+                        questionId = s.pack.questions.getOrNull(s.questionIndex)?.id,
+                        gameMode = currentMode
+                    )
+                )
+                sendToPlayer(
+                    playerId,
+                    ServerMessage.LeaderboardUpdate(
+                        standings = s.standings,
+                        teamStandings = s.teamStandings,
+                        isFinal = s.isLastQuestion
                     )
                 )
             }
@@ -877,7 +826,18 @@ class GameStateMachine(
                     ServerMessage.SyncState(
                         state = "PODIUM",
                         score = p.score,
-                        alreadyAnswered = true
+                        alreadyAnswered = true,
+                        gameMode = currentMode
+                    )
+                )
+                val standing = s.standings.find { it.playerId == playerId }
+                sendToPlayer(
+                    playerId,
+                    ServerMessage.GameOver(
+                        finalRank = standing?.rank ?: 1,
+                        finalScore = standing?.score ?: p.score,
+                        winnerName = s.winner?.name ?: if (currentLanguage == AppLanguage.PL) "Mistrz" else "Победитель",
+                        winningTeam = s.winningTeam?.name
                     )
                 )
             }
@@ -914,7 +874,7 @@ class GameStateMachine(
                 playersCount = playerList.size,
                 players = playerList,
                 availablePacks = packList,
-                selectedMode = lobby?.selectedMode ?: GameMode.ADULTS,
+                selectedMode = lobby?.selectedMode ?: currentMode,
                 selectedPackId = lobby?.selectedPackId,
                 language = currentLanguage,
                 gameFormat = lobby?.gameFormat ?: currentFormat,

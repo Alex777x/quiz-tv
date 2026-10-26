@@ -87,19 +87,15 @@ class ConnectionManager(
                 }
             }
             is ClientMessage.SetLanguage -> {
-                if (!isVipSession(session)) return
                 stateMachine.setLanguage(message.language)
             }
             is ClientMessage.SelectMode -> {
-                if (!isVipSession(session)) return
                 stateMachine.selectMode(message.mode)
             }
             is ClientMessage.SelectPack -> {
-                if (!isVipSession(session)) return
                 stateMachine.selectPack(message.packId)
             }
             is ClientMessage.SelectFormat -> {
-                if (!isVipSession(session)) return
                 stateMachine.selectFormat(message.format)
             }
             is ClientMessage.CreateTeam -> {
@@ -115,7 +111,6 @@ class ConnectionManager(
                 }
             }
             is ClientMessage.GoToStep -> {
-                if (!isVipSession(session)) return
                 try {
                     val step = com.clean.quiztv.domain.model.LobbyStep.valueOf(message.step)
                     stateMachine.setLobbyStep(step)
@@ -133,7 +128,6 @@ class ConnectionManager(
                 }
             }
             is ClientMessage.StartGame -> {
-                if (!isVipSession(session)) return
                 stateMachine.startGame(message.packId, message.gameMode)
             }
             is ClientMessage.SubmitAnswer -> {
@@ -148,31 +142,24 @@ class ConnectionManager(
                 }
             }
             is ClientMessage.TogglePause -> {
-                if (!isVipSession(session)) return
-                stateMachine.togglePause()
+                // Host pause removed: all players play on equal terms
             }
             is ClientMessage.ForceReveal -> {
-                if (!isVipSession(session)) return
-                stateMachine.forceReveal()
+                // Host force reveal removed: round reveals on timer or when all answered
+            }
+            is ClientMessage.ReplayMelody -> {
+                stateMachine.replayCurrentMelody()
             }
             is ClientMessage.ReturnToLobby -> {
-                if (!isVipSession(session)) return
                 stateMachine.resetToLobby()
             }
             is ClientMessage.NextQuestion -> {
-                if (!isVipSession(session)) return
                 stateMachine.advanceGame()
             }
             is ClientMessage.PlayAgain -> {
-                if (!isVipSession(session)) return
                 stateMachine.resetToLobby()
             }
         }
-    }
-
-    private fun isVipSession(session: DefaultWebSocketServerSession): Boolean {
-        val playerId = sessionToPlayerId[session] ?: return false
-        return stateMachine.isPlayerVip(playerId)
     }
 
     private suspend fun registerPlayerSession(playerId: String, session: DefaultWebSocketServerSession) = mutex.withLock {

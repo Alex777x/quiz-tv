@@ -43,6 +43,7 @@ class HttpServer(
     private val serverScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val connectionManager = ConnectionManager(stateMachine, serverScope)
     private var engine: ApplicationEngine? = null
+    private val assetCache = java.util.concurrent.ConcurrentHashMap<String, ByteArray>()
 
     val localIp: String
         get() = NetworkUtils.getLocalIpAddress(context)
@@ -105,7 +106,7 @@ class HttpServer(
                         result.onSuccess { pack ->
                             stateMachine.refreshPacks()
                             call.respondText(
-                                """{"success":true,"packId":"${pack.id}","title":"${pack.title}"}""",
+                                """{"success":true,"status":"ok","packId":"${pack.id}","title":"${pack.title}"}""",
                                 ContentType.Application.Json
                             )
                         }.onFailure { err ->
@@ -170,10 +171,16 @@ class HttpServer(
         assetPath: String,
         contentType: ContentType
     ) {
+        val cached = assetCache[assetPath]
+        if (cached != null) {
+            call.respondBytes(cached, contentType)
+            return
+        }
         var stream: InputStream? = null
         try {
             stream = context.assets.open(assetPath)
             val bytes = stream.readBytes()
+            assetCache[assetPath] = bytes
             call.respondBytes(bytes, contentType)
         } catch (_: Exception) {
             call.respond(HttpStatusCode.NotFound, "File not found: $assetPath")

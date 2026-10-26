@@ -37,13 +37,13 @@
       "timeLimitSeconds": 20,
       "options": [
         "Тетрис",
-        "Змейка (Snake II)",
+        "Змейка",
         "Пакман",
         "Арканоид"
       ],
       "optionsPl": [
         "Tetris",
-        "Wąż (Snake II)",
+        "Wąż",
         "Pac-Man",
         "Arkanoid"
       ],
@@ -57,18 +57,18 @@
       "textPl": "Jaki japoński wirtualny zwierzak w formie jajka z ekranem wymagał karmienia i opieki pod koniec lat 90.?",
       "timeLimitSeconds": 20,
       "options": [
-        "Фёрби (Furby)",
-        "Тамагочи (Tamagotchi)",
+        "Фёрби",
         "Покемон",
+        "Тамагочи",
         "Дигимон"
       ],
       "optionsPl": [
         "Furby",
-        "Tamagotchi",
         "Pokemon",
+        "Tamagotchi",
         "Digimon"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Название «Тамагочи» происходит от японского слова «тамаго» (яйцо) и английского «watch» (часы).",
       "funFactPl": "Nazwa «Tamagotchi» to połączenie japońskiego słowa «tamago» (jajko) i angielskiego «watch» (zegarek)."
     },
@@ -79,17 +79,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Тихий гудок и мелодичный звон",
-        "Громкий свист, шипение и треск",
+        "Щелчки азбуки Морзе",
         "Звук барабанов",
-        "Щелчки азбуки Морзе"
+        "Громкий свист, шипение и треск"
       ],
       "optionsPl": [
         "Cichy sygnał i melodyjny dzwonek",
-        "Pisk, szum, skrzeczenie i trzaski",
+        "Klikanie alfabetu Morse'a",
         "Dźwięk bębnów",
-        "Klikanie alfabetu Morse'a"
+        "Pisk, szum, skrzeczenie i trzaski"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Свист и треск dial-up модема — это процесс рукопожатия (handshake), в ходе которого устройства тестировали частоты телефонной линии.",
       "funFactPl": "Ten piskliwy dźwięk (handshake) to proces negocjacji protokołu i testowania jakości linii telefonicznej."
     },
@@ -99,18 +99,18 @@
       "textPl": "Jaki kultowy dźwięk powiadomienia znał każdy użytkownik komunikatora ICQ z zielonym kwiatkiem?",
       "timeLimitSeconds": 20,
       "options": [
+        "«О-оу!»",
         "«Ку-ка-ре-ку!»",
-        "«О-оу!» («Uh-oh!»)",
         "Звук капли воды",
         "Клаксон автомобиля"
       ],
       "optionsPl": [
+        "«O-ou!»",
         "Pianie koguta",
-        "«O-ou!» («Uh-oh!»)",
         "Plusk kropli wody",
         "Klakson samochodowy"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Каждый пользователь ICQ имел уникальный цифровой номер (UIN), а 5-значные и 6-значные номера считались элитарными.",
       "funFactPl": "Użytkownicy ICQ logowali się za pomocą numeru UIN, a krótkie 5- i 6-cyfrowe numery miały status kultowy."
     },
@@ -142,17 +142,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«Oops!... I Did It Again»",
-        "«...Baby One More Time»",
         "«Toxic»",
+        "«...Baby One More Time»",
         "«I'm a Slave 4 U»"
       ],
       "optionsPl": [
         "«Oops!... I Did It Again»",
-        "«...Baby One More Time»",
         "«Toxic»",
+        "«...Baby One More Time»",
         "«I'm a Slave 4 U»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Сингл разошелся тиражом более 10 миллионов копий и сделал 16-летнюю Бритни мировой суперзвездой.",
       "funFactPl": "Płyta sprzedała się w ponad 10 milionach egzemplarzy, czyniąc z nastolatki ikonę muzyki pop."
     },
@@ -163,17 +163,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Tlen",
-        "Gadu-Gadu (GG)",
+        "Spik",
         "Skype",
-        "Spik"
+        "Gadu-Gadu"
       ],
       "optionsPl": [
         "Tlen",
-        "Gadu-Gadu (GG)",
+        "Spik",
         "Skype",
-        "Spik"
+        "Gadu-Gadu"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "В эпоху расцвета Gadu-Gadu пользовалось свыше 7 миллионов человек в Польше, а статусы в профиле были целым искусством.",
       "funFactPl": "W szczytowym momencie z Gadu-Gadu korzystało ponad 7 milionów Polaków, a opisy GG tworzyły subkulturę."
     },
@@ -183,18 +183,18 @@
       "textPl": "Jaka rewolucyjna konsola Sony z 1994 roku spopularyzowała płyty CD-ROM i trójwymiarową grafikę 3D?",
       "timeLimitSeconds": 20,
       "options": [
+        "PlayStation",
         "Sega Mega Drive",
-        "PlayStation (PS1 / PSX)",
         "Nintendo 64",
         "Dreamcast"
       ],
       "optionsPl": [
+        "PlayStation",
         "Sega Mega Drive",
-        "PlayStation (PS1 / PSX)",
         "Nintendo 64",
         "Dreamcast"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "PlayStation стала первой игровой консолью в истории, преодолевшей отметку в 100 миллионов проданных устройств.",
       "funFactPl": "PlayStation była pierwszą konsolą w historii, która przekroczyła próg 100 milionów sprzedanych egzemplarzy."
     },
@@ -226,17 +226,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Windows 3.11",
-        "Windows 95",
         "Windows 98",
+        "Windows 95",
         "Windows XP"
       ],
       "optionsPl": [
         "Windows 3.11",
-        "Windows 95",
         "Windows 98",
+        "Windows 95",
         "Windows XP"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Знаменитый 6-секундный звук запуска Windows 95 написал легендарный эмбиент-музыкант Брайан Ино на компьютере Mac!",
       "funFactPl": "Słynny dźwięk startowy Windows 95 skomponował muzyk Brian Eno... pracując na komputerze Apple Mac!"
     },
@@ -247,17 +247,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Kazaa",
-        "Napster",
+        "Limewire",
         "eMule",
-        "Limewire"
+        "Napster"
       ],
       "optionsPl": [
         "Kazaa",
-        "Napster",
+        "Limewire",
         "eMule",
-        "Limewire"
+        "Napster"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Группа Metallica подала в суд на Napster после того, как их неизданный трек «I Disappear» слили в сеть до премьеры.",
       "funFactPl": "Zespół Metallica wytoczył Napsterowi głośny proces po wycieku utworu «I Disappear» przed oficjalną premierą."
     },
@@ -267,18 +267,18 @@
       "textPl": "Jaki symulator życia stworzony przez Willa Wrighta w 2000 roku pozwolił budować domy i kierować ludzikami?",
       "timeLimitSeconds": 20,
       "options": [
-        "SimCity",
         "The Sims",
+        "SimCity",
         "Spore",
         "RollerCoaster Tycoon"
       ],
       "optionsPl": [
-        "SimCity",
         "The Sims",
+        "SimCity",
         "Spore",
         "RollerCoaster Tycoon"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "funFact": "Язык, на котором говорят персонажи (Simlish), был придуман путем смешения украинского, французского, тагальского и навахо!",
       "funFactPl": "Fikcyjny język Simlish powstał ze zmieszania improwizowanych słów, języka ukraińskiego, tagalskiego i nawaho!"
     },
@@ -289,13 +289,13 @@
       "timeLimitSeconds": 20,
       "options": [
         "Эпидемия вируса ЧАБ",
-        "Проблема 2000 года (Y2K Bug)",
+        "Проблема 2000 года",
         "Сбой GPS",
         "Остановка спутников"
       ],
       "optionsPl": [
         "Epidemia wirusa CIH",
-        "Pluskwa milenijna (Y2K Bug)",
+        "Pluskwa milenijna",
         "Awaria systemu GPS",
         "Czarny ekran DOS"
       ],
@@ -310,17 +310,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "*NSYNC",
-        "Backstreet Boys",
         "Boyz II Men",
+        "Backstreet Boys",
         "Take That"
       ],
       "optionsPl": [
         "*NSYNC",
-        "Backstreet Boys",
         "Boyz II Men",
+        "Backstreet Boys",
         "Take That"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Альбом «Millennium» (1999) был продан тиражом более 1,1 миллиона копий всего за первую неделю в США.",
       "funFactPl": "Album «Millennium» z 1999 roku rozszedł się w ponad 1,1 miliona kopii w pierwszym tygodniu w samych USA."
     },
@@ -331,17 +331,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "«I'm a Believer»",
-        "«All Star»",
+        "«Livin' la Vida Loca»",
         "«Walking on the Sun»",
-        "«Livin' la Vida Loca»"
+        "«All Star»"
       ],
       "optionsPl": [
         "«I'm a Believer»",
-        "«All Star»",
+        "«Livin' la Vida Loca»",
         "«Walking on the Sun»",
-        "«Livin' la Vida Loca»"
+        "«All Star»"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Строчка «Somebody once told me the world is gonna roll me» стала одним из главных музыкальных мемов XXI века.",
       "funFactPl": "Początek «Somebody once told me...» stał się jednym z najbardziej memogennych intro w historii popkultury."
     },
@@ -373,13 +373,13 @@
       "timeLimitSeconds": 20,
       "options": [
         "Digimon",
-        "Pokémon (Red & Blue)",
+        "Pokémon",
         "Yu-Gi-Oh!",
         "Monster Rancher"
       ],
       "optionsPl": [
         "Digimon",
-        "Pokémon (Red & Blue)",
+        "Pokémon",
         "Yu-Gi-Oh!",
         "Monster Rancher"
       ],
@@ -394,17 +394,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "Windows Media Player",
-        "Winamp",
         "AIMP",
+        "Winamp",
         "RealPlayer"
       ],
       "optionsPl": [
         "Windows Media Player",
-        "Winamp",
         "AIMP",
+        "Winamp",
         "RealPlayer"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "funFact": "Девиз программы звучал так: «Winamp, it really whips the llama's ass!» (с криком ламы при первом запуске).",
       "funFactPl": "Przy pierwszym uruchomieniu Winampa każdy słyszał słynne zawołanie z odgłosem lamy."
     },
@@ -415,17 +415,17 @@
       "timeLimitSeconds": 20,
       "options": [
         "VH1",
-        "MTV",
+        "Cartoon Network",
         "Viva",
-        "Cartoon Network"
+        "MTV"
       ],
       "optionsPl": [
         "VH1",
-        "MTV (Music Television)",
+        "Cartoon Network",
         "Viva",
-        "Cartoon Network"
+        "MTV"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "funFact": "Первым клипом, показанным в эфире MTV 1 августа 1981 года, стал «Video Killed the Radio Star» группы The Buggles.",
       "funFactPl": "Pierwszym wyemitowanym teledyskiem w historii MTV był «Video Killed the Radio Star» zespołu The Buggles."
     }
