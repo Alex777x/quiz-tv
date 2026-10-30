@@ -27,6 +27,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.jsonObject
@@ -52,6 +53,13 @@ class HttpServer(
         get() = "http://$localIp:$port"
 
     fun start() {
+        if (engine != null) return
+        serverScope.launch {
+            startEngineInternal()
+        }
+    }
+
+    private fun startEngineInternal() {
         if (engine != null) return
 
         engine = embeddedServer(CIO, port = port, host = "0.0.0.0") {

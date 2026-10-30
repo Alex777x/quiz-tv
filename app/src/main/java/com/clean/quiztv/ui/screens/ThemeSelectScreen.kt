@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -175,7 +174,6 @@ fun ThemeSelectScreen(
                         if (focusState.isFocused && !isBackFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         isBackFocused = focusState.isFocused
                     }
-                    .focusable()
                     .clickable {
                         TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         onBackToLobby()
@@ -224,9 +222,8 @@ fun ThemeSelectScreen(
                         if (focusState.isFocused && !isStartFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         isStartFocused = focusState.isFocused
                     }
-                    .focusable()
-                    .clickable(enabled = canStart) {
-                        if (currentSelectedId != null) {
+                    .clickable {
+                        if (canStart && currentSelectedId != null) {
                             TvSoundManager.play(TvSoundManager.SoundEffect.CORRECT)
                             onStartGame(currentSelectedId, state.selectedMode)
                         }
@@ -234,30 +231,13 @@ fun ThemeSelectScreen(
                     .padding(horizontal = 28.dp),
                 contentAlignment = Alignment.Center
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = Strings.btnStartQuizNow(lang),
-                        color = Color.White,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 1.2.sp
-                    )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(Color(0x33000000))
-                            .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
-                            .padding(horizontal = 8.dp, vertical = 3.dp)
-                    ) {
-                        Text(
-                            text = "OK",
-                            color = Color.White,
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Black
-                        )
-                    }
-                }
+                Text(
+                    text = Strings.btnStartQuizNow(lang),
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 1.2.sp
+                )
             }
         }
     }
@@ -330,7 +310,6 @@ private fun ThemeCard(
                 if (focusState.isFocused && !isFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                 isFocused = focusState.isFocused
             }
-            .focusable()
             .clickable {
                 TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                 onSelect()

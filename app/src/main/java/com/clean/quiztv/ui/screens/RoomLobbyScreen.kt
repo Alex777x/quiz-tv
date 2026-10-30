@@ -9,7 +9,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -165,7 +164,6 @@ fun RoomLobbyScreen(
                         if (focusState.isFocused && !isBackFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         isBackFocused = focusState.isFocused
                     }
-                    .focusable()
                     .clickable {
                         TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         onBackToSetup()
@@ -203,8 +201,8 @@ fun RoomLobbyScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(24.dp),
-                    verticalArrangement = Arrangement.SpaceBetween,
+                        .padding(22.dp),
+                    verticalArrangement = Arrangement.SpaceEvenly,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -228,7 +226,7 @@ fun RoomLobbyScreen(
                     // Large crisp QR code
                     Box(
                         modifier = Modifier
-                            .size(196.dp)
+                            .size(210.dp)
                             .clip(RoundedCornerShape(14.dp))
                             .background(Color.White)
                             .padding(10.dp),
@@ -243,28 +241,6 @@ fun RoomLobbyScreen(
                         } else {
                             Text("QR", color = Color.Black, fontSize = 14.sp)
                         }
-                    }
-
-                    // Clean high-contrast footer note
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(42.dp)
-                            .clip(RoundedCornerShape(10.dp))
-                            .background(Color(0xFF111520))
-                            .border(1.dp, BorderLight, RoundedCornerShape(10.dp))
-                            .padding(horizontal = 14.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = Strings.scanQrInstruction(lang),
-                            color = TextMuted,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Medium,
-                            textAlign = TextAlign.Center,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
                     }
                 }
             }
@@ -433,40 +409,22 @@ fun RoomLobbyScreen(
                     if (focusState.isFocused && !isProceedFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                     isProceedFocused = focusState.isFocused
                 }
-                .focusable()
-                .clickable(enabled = canProceed) {
-                    TvSoundManager.play(TvSoundManager.SoundEffect.CORRECT)
-                    onProceedToThemeSelect()
+                .clickable {
+                    if (canProceed) {
+                        TvSoundManager.play(TvSoundManager.SoundEffect.CORRECT)
+                        onProceedToThemeSelect()
+                    }
                 }
                 .padding(horizontal = 24.dp),
             contentAlignment = Alignment.Center
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = if (canProceed) Strings.btnChooseTheme(lang) else Strings.waitingForPlayersBtn(lang),
-                    color = if (canProceed) Color.White else TextMuted,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = 1.2.sp
-                )
-                if (canProceed) {
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(Color(0x33000000))
-                            .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
-                            .padding(horizontal = 8.dp, vertical = 3.dp)
-                    ) {
-                        Text(
-                            text = "OK",
-                            color = Color.White,
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Black
-                        )
-                    }
-                }
-            }
+            Text(
+                text = if (canProceed) Strings.btnChooseTheme(lang) else Strings.waitingForPlayersBtn(lang),
+                color = if (canProceed) Color.White else TextMuted,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = 1.2.sp
+            )
         }
     }
 }

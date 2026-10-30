@@ -137,8 +137,8 @@ class GameStateMachine(
     }
 
     suspend fun refreshPacks() {
+        val packs = repository.getAllPacks()
         mutex.withLock {
-            val packs = repository.getAllPacks()
             val current = _state.value
             if (current is GameState.Lobby) {
                 val defaultPackId = current.selectedPackId ?: packs.firstOrNull { it.ageGroup == current.selectedMode }?.id
@@ -712,29 +712,31 @@ class GameStateMachine(
         }
     }
 
-    suspend fun resetToLobby() = mutex.withLock {
-        timerJob?.cancel()
-        transitionJob?.cancel()
-        TvSoundManager.stopMelody()
-
-        playersMap.keys.forEach { id ->
-            val p = playersMap[id]!!
-            playersMap[id] = p.copy(score = 0, streak = 0, lastAnswer = null)
-        }
+    suspend fun resetToLobby() {
         val packs = repository.getAllPacks()
-        val lobby = _state.value as? GameState.Lobby
-        val mode = lobby?.selectedMode ?: currentMode
-        _state.value = GameState.Lobby(
-            players = playersMap.values.filter { it.isConnected },
-            availablePacks = packs,
-            selectedPackId = packs.firstOrNull { it.ageGroup == mode }?.id,
-            selectedMode = mode,
-            gameFormat = currentFormat,
-            language = currentLanguage,
-            step = LobbyStep.THEME_SELECT,
-            teams = getTeamsList()
-        )
-        broadcastLobbyUpdate()
+        mutex.withLock {
+            timerJob?.cancel()
+            transitionJob?.cancel()
+            TvSoundManager.stopMelody()
+
+            playersMap.keys.forEach { id ->
+                val p = playersMap[id]!!
+                playersMap[id] = p.copy(score = 0, streak = 0, lastAnswer = null)
+            }
+            val lobby = _state.value as? GameState.Lobby
+            val mode = lobby?.selectedMode ?: currentMode
+            _state.value = GameState.Lobby(
+                players = playersMap.values.filter { it.isConnected },
+                availablePacks = packs,
+                selectedPackId = packs.firstOrNull { it.ageGroup == mode }?.id,
+                selectedMode = mode,
+                gameFormat = currentFormat,
+                language = currentLanguage,
+                step = LobbyStep.THEME_SELECT,
+                teams = getTeamsList()
+            )
+            broadcastLobbyUpdate()
+        }
     }
 
     // =========================================================================

@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -72,11 +71,11 @@ fun SetupScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 48.dp, vertical = 32.dp),
+            .padding(horizontal = 44.dp, vertical = 30.dp),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // --- Header Section: Broadcast Editorial Style ---
+        // --- Header Section ---
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
@@ -89,7 +88,7 @@ fun SetupScreen(
                     .padding(horizontal = 14.dp, vertical = 4.dp)
             ) {
                 Text(
-                    text = "QUIZ TV • STUDIO EDITION",
+                    text = "QUIZ TV",
                     color = NeonCyan,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
@@ -117,23 +116,22 @@ fun SetupScreen(
             )
         }
 
-        // --- 4 Equal-Height Architectural Parameter Columns ---
+        // --- 4 Equal-Height Parameter Columns ---
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(236.dp),
-            horizontalArrangement = Arrangement.spacedBy(18.dp)
+                .height(228.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // 1. Language Card
             SetupSectionCard(
-                stepLabel = Strings.langStepLabel(lang),
+                stepLabel = if (lang == AppLanguage.PL) "JĘZYK" else "ЯЗЫК",
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
             ) {
                 SetupOptionButton(
                     title = "Русский",
-                    subtitle = "RU",
                     isSelected = lang == AppLanguage.RU,
                     accentColor = NeonCyan,
                     onClick = { onLanguageSelect(AppLanguage.RU) }
@@ -141,77 +139,68 @@ fun SetupScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 SetupOptionButton(
                     title = "Polski",
-                    subtitle = "PL",
                     isSelected = lang == AppLanguage.PL,
                     accentColor = NeonCyan,
                     onClick = { onLanguageSelect(AppLanguage.PL) }
                 )
             }
 
-            // 2. Audience / Mode Card
+            // 2. Mode Card
             SetupSectionCard(
-                stepLabel = Strings.modeStepLabel(lang),
+                stepLabel = if (lang == AppLanguage.PL) "KATEGORIA" else "КАТЕГОРИЯ",
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
             ) {
                 SetupOptionButton(
                     title = if (lang == AppLanguage.PL) "Dorośli" else "Взрослые",
-                    subtitle = "16+",
                     isSelected = selectedMode == GameMode.ADULTS,
                     accentColor = NeonCyan,
                     onClick = { onModeSelect(GameMode.ADULTS) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 SetupOptionButton(
-                    title = if (lang == AppLanguage.PL) "Dzieci i Rodzina" else "Дети и Семья",
-                    subtitle = "6+",
+                    title = if (lang == AppLanguage.PL) "Dzieci" else "Дети",
                     isSelected = selectedMode == GameMode.KIDS,
                     accentColor = NeonAmber,
                     onClick = { onModeSelect(GameMode.KIDS) }
                 )
             }
 
-            // 3. Format Card (Solo / Teams)
+            // 3. Format Card
             SetupSectionCard(
-                stepLabel = Strings.formatStepLabel(lang),
+                stepLabel = if (lang == AppLanguage.PL) "FORMAT" else "ФОРМАТ",
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
             ) {
                 SetupOptionButton(
-                    title = if (lang == AppLanguage.PL) "Indywidualny" else "Индивидуальный",
-                    subtitle = "SOLO",
+                    title = if (lang == AppLanguage.PL) "Solo" else "Соло",
                     isSelected = selectedFormat == GameFormat.INDIVIDUAL,
                     accentColor = NeonEmerald,
                     onClick = { onFormatSelect(GameFormat.INDIVIDUAL) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 SetupOptionButton(
-                    title = if (lang == AppLanguage.PL) "Drużynowy" else "Командный",
-                    subtitle = "TEAMS",
+                    title = if (lang == AppLanguage.PL) "Drużyny" else "Команды",
                     isSelected = selectedFormat == GameFormat.TEAMS,
                     accentColor = NeonViolet,
                     onClick = { onFormatSelect(GameFormat.TEAMS) }
                 )
             }
 
-            // 4. Round Timer Card (Standard Blitz vs ChGK / Discussion)
+            // 4. Round Timer Card
             SetupSectionCard(
-                stepLabel = Strings.timerStepLabel(lang),
+                stepLabel = if (lang == AppLanguage.PL) "CZAS NA ODPOWIEDŹ" else "ТАЙМЕР РАУНДА",
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
             ) {
                 val isFastSelected = selectedRoundDuration <= 25
-                val fastLabel = if (selectedRoundDuration == 15) {
-                    if (lang == AppLanguage.PL) "Bieg (15 sek)" else "Блиц (15 сек)"
-                } else {
-                    if (lang == AppLanguage.PL) "Standard (20 sek)" else "Стандарт (20 сек)"
-                }
+                val fastSec = if (selectedRoundDuration <= 25) selectedRoundDuration else 20
+                val fastLabel = if (lang == AppLanguage.PL) "$fastSec sekund" else "$fastSec секунд"
                 SetupOptionButton(
                     title = fastLabel,
-                    subtitle = "${if (selectedRoundDuration <= 25) selectedRoundDuration else 20}S",
                     isSelected = isFastSelected,
                     accentColor = NeonEmerald,
                     onClick = {
@@ -220,17 +209,12 @@ fun SetupScreen(
                     }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
-                val isChgkSelected = selectedRoundDuration >= 30
-                val discSeconds = if (selectedRoundDuration >= 30) selectedRoundDuration else 60
-                val discLabel = when (discSeconds) {
-                    30 -> if (lang == AppLanguage.PL) "Drużyny (30 sek)" else "Команды (30 сек)"
-                    45 -> if (lang == AppLanguage.PL) "Dyskusja (45 sek)" else "Дискуссия (45 сек)"
-                    else -> if (lang == AppLanguage.PL) "Klub ЧГК (60 sek)" else "Клуб ЧГК (60 сек)"
-                }
+                val isLongSelected = selectedRoundDuration >= 30
+                val longSec = if (selectedRoundDuration >= 30) selectedRoundDuration else 60
+                val longLabel = if (lang == AppLanguage.PL) "$longSec sekund" else "$longSec секунд"
                 SetupOptionButton(
-                    title = discLabel,
-                    subtitle = "${discSeconds}S",
-                    isSelected = isChgkSelected,
+                    title = longLabel,
+                    isSelected = isLongSelected,
                     accentColor = NeonAmber,
                     onClick = {
                         val next = when (selectedRoundDuration) {
@@ -260,8 +244,8 @@ fun SetupScreen(
         Box(
             modifier = Modifier
                 .focusRequester(focusRequester)
-                .width(420.dp)
-                .height(58.dp)
+                .width(380.dp)
+                .height(56.dp)
                 .scale(proceedScale)
                 .clip(RoundedCornerShape(14.dp))
                 .background(
@@ -277,7 +261,6 @@ fun SetupScreen(
                     if (focusState.isFocused && !isProceedFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                     isProceedFocused = focusState.isFocused
                 }
-                .focusable()
                 .clickable {
                     TvSoundManager.play(TvSoundManager.SoundEffect.CORRECT)
                     onProceedToLobby()
@@ -285,34 +268,13 @@ fun SetupScreen(
                 .padding(horizontal = 24.dp),
             contentAlignment = Alignment.Center
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = Strings.btnProceedToLobby(lang),
-                    color = Color.White,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = 1.2.sp
-                )
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(6.dp))
-                        .background(Color(0x33000000))
-                        .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
-                        .padding(horizontal = 10.dp, vertical = 4.dp)
-                ) {
-                    Text(
-                        text = "OK",
-                        color = Color.White,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 1.sp
-                    )
-                }
-            }
+            Text(
+                text = Strings.btnProceedToLobby(lang),
+                color = Color.White,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = 1.2.sp
+            )
         }
     }
 }
@@ -332,7 +294,7 @@ private fun SetupSectionCard(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(20.dp),
+                .padding(horizontal = 16.dp, vertical = 18.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
@@ -340,7 +302,7 @@ private fun SetupSectionCard(
                 color = TextMuted,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.ExtraBold,
-                letterSpacing = 1.5.sp,
+                letterSpacing = 1.2.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -351,14 +313,9 @@ private fun SetupSectionCard(
     }
 }
 
-/**
- * Strictly uniform-height (58.dp) option control.
- * Never shifts height or wraps text when selected/unselected.
- */
 @Composable
 private fun SetupOptionButton(
     title: String,
-    subtitle: String,
     isSelected: Boolean,
     accentColor: Color = NeonCyan,
     onClick: () -> Unit
@@ -373,7 +330,7 @@ private fun SetupOptionButton(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(58.dp)
+            .height(56.dp)
             .scale(animatedScale)
             .clip(RoundedCornerShape(12.dp))
             .background(
@@ -389,12 +346,11 @@ private fun SetupOptionButton(
                 if (focusState.isFocused && !isFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                 isFocused = focusState.isFocused
             }
-            .focusable()
             .clickable {
                 TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                 onClick()
             }
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 14.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(
@@ -405,7 +361,7 @@ private fun SetupOptionButton(
             Text(
                 text = title,
                 color = if (isSelected) Color.White else TextMuted,
-                fontSize = 15.sp,
+                fontSize = 16.sp,
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -414,41 +370,28 @@ private fun SetupOptionButton(
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = subtitle,
-                    color = if (isSelected) accentColor else TextMuted.copy(alpha = 0.55f),
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = 0.8.sp
-                )
-
-                Spacer(modifier = Modifier.width(10.dp))
-
-                // Fixed-size 18.dp radio indicator (identical outer footprint whether selected or unselected)
-                Box(
-                    modifier = Modifier
-                        .size(18.dp)
-                        .clip(CircleShape)
-                        .background(
-                            if (isSelected) accentColor.copy(alpha = 0.22f)
-                            else Color.Transparent
-                        )
-                        .border(
-                            width = 1.5.dp,
-                            color = if (isSelected) accentColor else Color(0x38FFFFFF),
-                            shape = CircleShape
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    if (isSelected) {
-                        Box(
-                            modifier = Modifier
-                                .size(8.dp)
-                                .clip(CircleShape)
-                                .background(accentColor)
-                        )
-                    }
+            Box(
+                modifier = Modifier
+                    .size(18.dp)
+                    .clip(CircleShape)
+                    .background(
+                        if (isSelected) accentColor.copy(alpha = 0.22f)
+                        else Color.Transparent
+                    )
+                    .border(
+                        width = 1.5.dp,
+                        color = if (isSelected) accentColor else Color(0x38FFFFFF),
+                        shape = CircleShape
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                if (isSelected) {
+                    Box(
+                        modifier = Modifier
+                            .size(8.dp)
+                            .clip(CircleShape)
+                            .background(accentColor)
+                    )
                 }
             }
         }

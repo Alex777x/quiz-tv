@@ -42,12 +42,16 @@ object TvSoundManager {
     private var currentTunePath: String? = null
     private val mediaLock = Any()
 
-    init {
-        generateAllSounds()
-    }
+    private var isInitialized = false
 
     fun init(context: Context) {
         appContext = context.applicationContext
+        if (!isInitialized) {
+            isInitialized = true
+            scope.launch {
+                generateAllSounds()
+            }
+        }
     }
 
     private fun generateAllSounds() {
