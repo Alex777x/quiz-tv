@@ -576,7 +576,9 @@
                 revealRank.textContent = `#${msg.rank}`;
                 revealTotalScore.textContent = msg.totalScore;
 
-                if (msg.funFact) {
+                if (msg.funFact &&
+                    msg.funFact.toLowerCase().indexOf('правильный ответ') === -1 &&
+                    msg.funFact.toLowerCase().indexOf('prawidłowa odpowiedź') === -1) {
                     revealFactText.textContent = msg.funFact;
                     revealFactBox.classList.remove('hidden');
                 } else {

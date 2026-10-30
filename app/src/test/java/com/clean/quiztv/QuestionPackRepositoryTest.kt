@@ -93,9 +93,21 @@ class QuestionPackRepositoryTest {
                     q.correctIndex in 0..3
                 )
 
-                // funFact & funFactPl
+                // funFact & funFactPl must be real explanations, never fake "Правильный ответ — ..."
                 assertFalse("funFact must not be blank ($qRef)", q.funFact.isBlank())
                 assertFalse("funFactPl must not be blank ($qRef)", q.funFactPl.isNullOrBlank())
+                assertFalse(
+                    "funFact must be a real fact, not 'Правильный ответ' ($qRef): ${q.funFact}",
+                    q.funFact.lowercase().contains("правильный ответ")
+                )
+
+                // Strict ban on Russia/USSR content
+                val fullText = "${q.text} ${q.options.joinToString(" ")} ${q.funFact}".lowercase()
+                val bannedRegex = Regex("\\b(росси[яиюей]|российск\\w*|ссср|советск\\w*|москв\\w*|кремл\\w*|рубл\\w*|копейк\\w*|нтв|мосфильм)\\b")
+                assertFalse(
+                    "Question contains banned Russia/USSR reference ($qRef): ${q.text}",
+                    bannedRegex.containsMatchIn(fullText)
+                )
 
                 // timeLimitSeconds
                 assertTrue("timeLimitSeconds must be positive ($qRef)", q.timeLimitSeconds > 0)

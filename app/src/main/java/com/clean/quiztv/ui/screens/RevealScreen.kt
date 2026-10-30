@@ -123,8 +123,11 @@ fun RevealScreen(
             }
         }
 
-        // Commentary / Explanation Card
-        if (funFact.isNotEmpty()) {
+        // Commentary / Explanation Card (only shown when a genuine fact/explanation exists)
+        val hasGenuineFact = funFact.isNotBlank() &&
+            !funFact.lowercase().contains("правильный ответ") &&
+            !funFact.lowercase().contains("prawidłowa odpowiedź")
+        if (hasGenuineFact) {
             DoubleBezelCard(
                 modifier = Modifier.fillMaxWidth(),
                 outerShape = RoundedCornerShape(16.dp),
