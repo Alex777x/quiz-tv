@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,7 +43,6 @@ import com.clean.quiztv.domain.model.GameFormat
 import com.clean.quiztv.domain.model.PlayerStanding
 import com.clean.quiztv.domain.model.Strings
 import com.clean.quiztv.game.GameState
-import com.clean.quiztv.ui.theme.BorderFocused
 import com.clean.quiztv.ui.theme.BorderLight
 import com.clean.quiztv.ui.theme.BronzeMedal
 import com.clean.quiztv.ui.theme.CardDark
@@ -67,7 +65,7 @@ fun PodiumScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 48.dp, vertical = 26.dp),
+            .padding(horizontal = 48.dp, vertical = 28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
@@ -84,34 +82,33 @@ fun PodiumScreen(
                 fontWeight = FontWeight.Black,
                 letterSpacing = 1.sp
             )
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(6.dp))
             val championText = if (state.gameFormat == GameFormat.TEAMS && state.winningTeam != null) {
-                "${state.winningTeam.emoji} ${state.winningTeam.name} — ${state.winningTeam.totalScore} pkt"
+                "${state.winningTeam.name} — ${Strings.pointsSuffix(state.winningTeam.totalScore, lang)}"
             } else {
-                Strings.congratsChampion(state.winner?.name ?: if (lang == AppLanguage.PL) "Wszyscy" else "Дружба", lang)
+                Strings.congratsChampion(state.winner?.name ?: "—", lang)
             }
             Text(
                 text = championText,
                 color = Color.White,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
+                fontSize = 18.sp,
+                fontWeight = FontWeight.SemiBold
             )
         }
 
-        // 3-Step Podium Pedestal
+        // 3-Step Architectural Podium Pedestal
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 80.dp),
+                .padding(horizontal = 96.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.Bottom
         ) {
-            // #2 Silver (Left)
             if (top2 != null) {
                 PodiumColumn(
                     standing = top2,
-                    place = "2",
-                    pedestalHeight = 160.dp,
+                    place = "02",
+                    pedestalHeight = 150.dp,
                     color = SilverMedal,
                     lang = lang,
                     modifier = Modifier.weight(1f)
@@ -122,12 +119,11 @@ fun PodiumScreen(
 
             Spacer(modifier = Modifier.width(24.dp))
 
-            // #1 Gold (Center, Highest)
             if (top1 != null) {
                 PodiumColumn(
                     standing = top1,
-                    place = "1",
-                    pedestalHeight = 220.dp,
+                    place = "01",
+                    pedestalHeight = 210.dp,
                     color = GoldMedal,
                     lang = lang,
                     modifier = Modifier.weight(1.15f)
@@ -136,12 +132,11 @@ fun PodiumScreen(
 
             Spacer(modifier = Modifier.width(24.dp))
 
-            // #3 Bronze (Right)
             if (top3 != null) {
                 PodiumColumn(
                     standing = top3,
-                    place = "3",
-                    pedestalHeight = 120.dp,
+                    place = "03",
+                    pedestalHeight = 115.dp,
                     color = BronzeMedal,
                     lang = lang,
                     modifier = Modifier.weight(1f)
@@ -151,7 +146,7 @@ fun PodiumScreen(
             }
         }
 
-        // Host Remote Button: Play Again
+        // Play Again CTA
         val focusRequester = remember { FocusRequester() }
         LaunchedEffect(Unit) {
             focusRequester.requestFocus()
@@ -159,23 +154,25 @@ fun PodiumScreen(
 
         var isFocused by remember { mutableStateOf(false) }
         val animatedScale by animateFloatAsState(
-            targetValue = if (isFocused) 1.08f else 1.0f,
-            animationSpec = tween(durationMillis = 200),
+            targetValue = if (isFocused) 1.03f else 1.0f,
+            animationSpec = tween(durationMillis = 180),
             label = "podiumPlayAgainScale"
         )
 
         Box(
             modifier = Modifier
                 .focusRequester(focusRequester)
+                .width(340.dp)
+                .height(54.dp)
                 .scale(animatedScale)
-                .clip(RoundedCornerShape(22.dp))
+                .clip(RoundedCornerShape(14.dp))
                 .background(
                     Brush.horizontalGradient(listOf(NeonEmerald, Color(0xFF047857)))
                 )
                 .border(
-                    width = if (isFocused) 2.5.dp else 1.dp,
-                    color = if (isFocused) BorderFocused else BorderLight,
-                    shape = RoundedCornerShape(22.dp)
+                    width = if (isFocused) 2.dp else 1.dp,
+                    color = if (isFocused) Color.White else BorderLight,
+                    shape = RoundedCornerShape(14.dp)
                 )
                 .onFocusChanged {
                     if (it.isFocused && !isFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -186,31 +183,34 @@ fun PodiumScreen(
                     TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                     onPlayAgain()
                 }
-                .padding(horizontal = 32.dp, vertical = 15.dp),
+                .padding(horizontal = 24.dp),
             contentAlignment = Alignment.Center
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Text(
                     text = Strings.playAgainBtn(lang),
                     color = Color.White,
-                    fontSize = 17.sp,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = 1.sp
+                    letterSpacing = 1.2.sp
                 )
-
-                Spacer(modifier = Modifier.width(14.dp))
 
                 Box(
                     modifier = Modifier
-                        .size(30.dp)
-                        .clip(CircleShape)
-                        .background(Color(0x33000000)),
-                    contentAlignment = Alignment.Center
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0x33000000))
+                        .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
+                        .padding(horizontal = 8.dp, vertical = 3.dp)
                 ) {
                     Text(
-                        text = "🔄",
+                        text = "OK",
                         color = Color.White,
-                        fontSize = 14.sp
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Black
                     )
                 }
             }
@@ -227,67 +227,73 @@ private fun PodiumColumn(
     lang: AppLanguage,
     modifier: Modifier = Modifier
 ) {
+    val monogram = remember(standing.avatar, standing.name) {
+        val av = standing.avatar.trim()
+        if (av.length in 1..2 && av.all { it.isLetterOrDigit() }) av.uppercase()
+        else standing.name.trim().take(2).uppercase().ifEmpty { "P" }
+    }
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = standing.avatar, fontSize = 48.sp)
-        Spacer(modifier = Modifier.height(6.dp))
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Color(0xFF161B26))
+                .border(1.5.dp, color, RoundedCornerShape(12.dp)),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = monogram,
+                color = color,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Black
+            )
+        }
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = standing.name,
             color = Color.White,
-            fontSize = 19.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             maxLines = 1
         )
         Text(
             text = Strings.pointsSuffix(standing.score, lang),
             color = NeonCyan,
-            fontSize = 16.sp,
+            fontSize = 14.sp,
             fontWeight = FontWeight.ExtraBold
         )
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Pedestal block with Double-Bezel styling
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(pedestalHeight)
-                .clip(RoundedCornerShape(topStart = 22.dp, topEnd = 22.dp))
-                .background(Color(0x22FFFFFF))
-                .border(
-                    1.dp,
-                    color.copy(alpha = 0.5f),
-                    RoundedCornerShape(topStart = 22.dp, topEnd = 22.dp)
-                )
-                .padding(top = 2.5.dp, start = 2.5.dp, end = 2.5.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(topStart = 19.dp, topEnd = 19.dp))
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                color.copy(alpha = 0.45f),
-                                CardDark
-                            )
+                .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            color.copy(alpha = 0.35f),
+                            CardDark
                         )
                     )
-                    .border(
-                        1.dp,
-                        color.copy(alpha = 0.7f),
-                        RoundedCornerShape(topStart = 19.dp, topEnd = 19.dp)
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = place,
-                    color = color,
-                    fontSize = 58.sp,
-                    fontWeight = FontWeight.Black
                 )
-            }
+                .border(
+                    1.5.dp,
+                    color.copy(alpha = 0.65f),
+                    RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = place,
+                color = color,
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Black
+            )
         }
     }
 }

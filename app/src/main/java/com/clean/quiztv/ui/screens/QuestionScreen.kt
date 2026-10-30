@@ -61,6 +61,7 @@ fun QuestionScreen(
     val context = LocalContext.current
     val lang = state.language
     val isKids = state.pack.ageGroup == GameMode.KIDS
+    val isChgk = state.pack.category.equals("ChGK", ignoreCase = true)
     val totalTime = remember(state.question.id) { state.secondsRemaining.toFloat().coerceAtLeast(1f) }
     val remaining = state.secondsRemaining.toFloat()
     val progress by animateFloatAsState(
@@ -91,62 +92,77 @@ fun QuestionScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                val badgeColor = if (isKids) Color(0xFF10B981) else NeonCyan
+                val badgeColor = when {
+                    isChgk -> NeonAmber
+                    isKids -> Color(0xFF10B981)
+                    else -> NeonCyan
+                }
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(badgeColor.copy(alpha = 0.2f))
-                        .border(1.dp, badgeColor.copy(alpha = 0.5f), RoundedCornerShape(8.dp))
-                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(badgeColor.copy(alpha = 0.18f))
+                        .border(1.dp, badgeColor.copy(alpha = 0.45f), RoundedCornerShape(6.dp))
+                        .padding(horizontal = 14.dp, vertical = 5.dp)
                 ) {
                     Text(
                         text = Strings.questionRound(state.questionIndex + 1, state.pack.questions.size, lang),
                         color = badgeColor,
-                        fontSize = 14.sp,
+                        fontSize = 12.sp,
                         fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 1.sp
+                        letterSpacing = 1.2.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.width(16.dp))
+                Spacer(modifier = Modifier.width(14.dp))
 
                 Text(
-                    text = state.pack.localizedTitle(lang),
+                    text = state.pack.localizedTitle(lang).uppercase(),
                     color = TextMuted,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp
                 )
             }
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = Strings.modeBadge(state.pack.ageGroup, lang),
-                    color = if (isKids) NeonAmber else NeonCyan,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                if (isChgk) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(NeonAmber.copy(alpha = 0.14f))
+                            .border(1.dp, NeonAmber.copy(alpha = 0.4f), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 12.dp, vertical = 5.dp)
+                    ) {
+                        Text(
+                            text = "ИНТЕЛЛЕКТУАЛЬНЫЙ КЛУБ • ЧГК",
+                            color = NeonAmber,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 1.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                }
 
-                Spacer(modifier = Modifier.width(20.dp))
-
-                // Answers received badge
                 Box(
                     modifier = Modifier
-                        .clip(CircleShape)
+                        .clip(RoundedCornerShape(6.dp))
                         .background(CardDark)
-                        .border(1.dp, BorderLight, CircleShape)
-                        .padding(horizontal = 16.dp, vertical = 6.dp)
+                        .border(1.dp, BorderLight, RoundedCornerShape(6.dp))
+                        .padding(horizontal = 14.dp, vertical = 5.dp)
                 ) {
                     Text(
                         text = Strings.answersReceived(state.answersReceived, state.totalPlayers, lang),
                         color = Color.White,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 0.8.sp
                     )
                 }
             }
         }
 
-        // --- Center: Question Content (Text, Image/Melody/Rebus) & Circular Timer ---
+        // --- Center: Question Content (Text, Optional Photo/Audio) & Circular Timer ---
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -155,31 +171,29 @@ fun QuestionScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            // Main Question Card (with optional real photo)
             DoubleBezelCard(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight(),
-                outerShape = RoundedCornerShape(26.dp),
-                innerShape = RoundedCornerShape(23.dp),
-                outerPadding = 3.dp
+                outerShape = RoundedCornerShape(20.dp),
+                innerShape = RoundedCornerShape(18.dp),
+                outerPadding = 2.dp
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(20.dp),
+                        .padding(24.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    // Optional Real Photo (Wikipedia / FlagCDN)
                     if (imageModel != null) {
                         Box(
                             modifier = Modifier
-                                .width(310.dp)
+                                .width(290.dp)
                                 .fillMaxHeight()
-                                .clip(RoundedCornerShape(18.dp))
-                                .background(Color(0xFF0F172A))
-                                .border(1.5.dp, Color(0x40FFFFFF), RoundedCornerShape(18.dp)),
+                                .clip(RoundedCornerShape(14.dp))
+                                .background(Color(0xFF0B0E17))
+                                .border(1.dp, BorderLight, RoundedCornerShape(14.dp)),
                             contentAlignment = Alignment.Center
                         ) {
                             AsyncImage(
@@ -196,7 +210,6 @@ fun QuestionScreen(
                         Spacer(modifier = Modifier.width(24.dp))
                     }
 
-                    // Question Text & Specialized Badges Column
                     Column(
                         modifier = Modifier
                             .weight(1f)
@@ -204,110 +217,102 @@ fun QuestionScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        // Real Audio Melody Banner & Replay Button
                         if (state.question.melodyTune != null) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .clip(RoundedCornerShape(12.dp))
-                                        .background(Color(0x33A855F7))
-                                        .border(1.dp, Color(0xFFA855F7), RoundedCornerShape(12.dp))
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .background(Color(0x26818CF8))
+                                        .border(1.dp, Color(0xFF818CF8), RoundedCornerShape(8.dp))
                                         .padding(horizontal = 14.dp, vertical = 6.dp)
                                 ) {
                                     Text(
                                         text = Strings.musicGuessTitle(lang),
-                                        color = Color(0xFFD8B4FE),
-                                        fontSize = 13.sp,
+                                        color = Color(0xFFC7D2FE),
+                                        fontSize = 11.sp,
                                         fontWeight = FontWeight.ExtraBold,
-                                        letterSpacing = 0.5.sp
+                                        letterSpacing = 1.sp
                                     )
                                 }
 
                                 Box(
                                     modifier = Modifier
-                                        .clip(RoundedCornerShape(12.dp))
-                                        .background(Color(0x448B5CF6))
-                                        .border(1.dp, Color(0xFFA78BFA), RoundedCornerShape(12.dp))
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .background(Color(0xFF1E293B))
+                                        .border(1.dp, BorderLight, RoundedCornerShape(8.dp))
                                         .clickable { TvSoundManager.replayMelody() }
                                         .padding(horizontal = 14.dp, vertical = 6.dp)
                                 ) {
                                     Text(
                                         text = Strings.replayMelodyBtn(lang),
                                         color = Color.White,
-                                        fontSize = 13.sp,
-                                        fontWeight = FontWeight.Bold
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        letterSpacing = 0.8.sp
                                     )
                                 }
                             }
-                            Spacer(modifier = Modifier.height(12.dp))
+                            Spacer(modifier = Modifier.height(14.dp))
                         }
 
-                        // Visual Rebus Emoji Box
-                        if (state.question.rebusEmoji != null) {
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(18.dp))
-                                    .background(Brush.radialGradient(listOf(Color(0xFF334155), Color(0xFF1E293B))))
-                                    .border(1.5.dp, NeonCyan, RoundedCornerShape(18.dp))
-                                    .padding(horizontal = 24.dp, vertical = 8.dp)
-                            ) {
-                                Text(
-                                    text = state.question.rebusEmoji,
-                                    fontSize = 42.sp,
-                                    letterSpacing = 4.sp
-                                )
-                            }
-                            Spacer(modifier = Modifier.height(10.dp))
+                        val qText = state.question.localizedText(lang)
+                        val fontSize = when {
+                            qText.length > 220 -> 20.sp
+                            qText.length > 140 -> 22.sp
+                            imageModel != null -> 23.sp
+                            else -> 26.sp
+                        }
+                        val lineHeight = when {
+                            qText.length > 220 -> 28.sp
+                            qText.length > 140 -> 30.sp
+                            else -> 35.sp
                         }
 
                         Text(
-                            text = state.question.localizedText(lang),
+                            text = qText,
                             color = Color.White,
-                            fontSize = if (imageModel != null || state.question.melodyTune != null || state.question.rebusEmoji != null) 23.sp else 28.sp,
+                            fontSize = fontSize,
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center,
-                            lineHeight = if (imageModel != null) 32.sp else 38.sp
+                            lineHeight = lineHeight
                         )
                     }
                 }
             }
 
-            // Big Timer Counter with glowing radial halo
+            // Broadcast Timer Counter
+            val timerAccent = if (state.secondsRemaining <= 5) Color(0xFFEF4444) else if (isChgk) NeonAmber else NeonCyan
             Box(
                 modifier = Modifier
-                    .size(136.dp)
+                    .size(132.dp)
                     .clip(CircleShape)
                     .background(
                         Brush.radialGradient(
                             listOf(
-                                if (state.secondsRemaining <= 5) AnswerRed.copy(alpha = 0.45f) else NeonCyan.copy(alpha = 0.3f),
-                                CardDark
+                                timerAccent.copy(alpha = 0.25f),
+                                Color(0xFF111520)
                             )
                         )
                     )
-                    .border(
-                        3.dp,
-                        if (state.secondsRemaining <= 5) AnswerRed else NeonCyan,
-                        CircleShape
-                    ),
+                    .border(2.5.dp, timerAccent, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
                         text = "${state.secondsRemaining}",
-                        color = if (state.secondsRemaining <= 5) AnswerRed else Color.White,
-                        fontSize = 52.sp,
+                        color = if (state.secondsRemaining <= 5) Color(0xFFEF4444) else Color.White,
+                        fontSize = 48.sp,
                         fontWeight = FontWeight.Black
                     )
                     Text(
                         text = Strings.secondsUnit(lang),
                         color = TextMuted,
-                        fontSize = 10.5.sp,
+                        fontSize = 10.sp,
                         fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 1.sp
+                        letterSpacing = 1.5.sp
                     )
                 }
             }
@@ -318,17 +323,17 @@ fun QuestionScreen(
             progress = { progress },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(7.dp)
-                .clip(RoundedCornerShape(4.dp)),
-            color = if (state.secondsRemaining <= 5) AnswerRed else NeonCyan,
-            trackColor = Color(0x2BFFFFFF)
+                .height(6.dp)
+                .clip(RoundedCornerShape(3.dp)),
+            color = if (state.secondsRemaining <= 5) Color(0xFFEF4444) else if (isChgk) NeonAmber else NeonCyan,
+            trackColor = Color(0x1FFFFFFF)
         )
 
         Spacer(modifier = Modifier.height(14.dp))
 
-        // --- Bottom: 4 Colored Answer Cards ---
+        // --- Bottom: 4 Broadcast Option Cards (A, B, C, D) ---
         val colors = listOf(AnswerRed, AnswerBlue, AnswerYellow, AnswerGreen)
-        val symbols = listOf("▲", "◆", "●", "■")
+        val labels = listOf("A", "B", "C", "D")
         val localizedOpts = state.question.localizedOptions(lang)
 
         Column(
@@ -340,15 +345,15 @@ fun QuestionScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 OptionCard(
-                    symbol = symbols[0],
+                    badge = labels[0],
                     text = localizedOpts.getOrElse(0) { "" },
-                    color = colors[0],
+                    accentColor = colors[0],
                     modifier = Modifier.weight(1f)
                 )
                 OptionCard(
-                    symbol = symbols[1],
+                    badge = labels[1],
                     text = localizedOpts.getOrElse(1) { "" },
-                    color = colors[1],
+                    accentColor = colors[1],
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -357,15 +362,15 @@ fun QuestionScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 OptionCard(
-                    symbol = symbols[2],
+                    badge = labels[2],
                     text = localizedOpts.getOrElse(2) { "" },
-                    color = colors[2],
+                    accentColor = colors[2],
                     modifier = Modifier.weight(1f)
                 )
                 OptionCard(
-                    symbol = symbols[3],
+                    badge = labels[3],
                     text = localizedOpts.getOrElse(3) { "" },
-                    color = colors[3],
+                    accentColor = colors[3],
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -375,43 +380,36 @@ fun QuestionScreen(
 
 @Composable
 private fun OptionCard(
-    symbol: String,
+    badge: String,
     text: String,
-    color: Color,
+    accentColor: Color,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
-            .height(78.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .background(Color(0x18FFFFFF))
-            .border(1.dp, Color(0x33FFFFFF), RoundedCornerShape(20.dp))
-            .padding(2.5.dp)
+            .height(74.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(Color(0xFF141926))
+            .border(1.5.dp, accentColor.copy(alpha = 0.65f), RoundedCornerShape(14.dp))
+            .padding(horizontal = 16.dp),
+        contentAlignment = Alignment.CenterStart
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .clip(RoundedCornerShape(17.dp))
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(color, color.copy(alpha = 0.88f))
-                    )
-                )
-                .padding(horizontal = 18.dp),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 modifier = Modifier
                     .size(38.dp)
-                    .clip(CircleShape)
-                    .background(Color(0x33000000))
-                    .border(1.dp, Color(0x40FFFFFF), CircleShape),
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(accentColor)
+                    .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(10.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = symbol,
+                    text = badge,
                     color = Color.White,
-                    fontSize = 20.sp,
+                    fontSize = 17.sp,
                     fontWeight = FontWeight.Black
                 )
             }
@@ -421,7 +419,7 @@ private fun OptionCard(
             Text(
                 text = text,
                 color = Color.White,
-                fontSize = 19.sp,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis

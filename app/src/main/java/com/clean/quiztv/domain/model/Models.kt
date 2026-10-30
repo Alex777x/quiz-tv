@@ -37,26 +37,26 @@ data class Team(
 )
 
 val TEAM_PRESET_PALETTE: List<Pair<String, String>> = listOf(
-    "#EF4444" to "🔴", // Red
-    "#3B82F6" to "🔵", // Blue
-    "#10B981" to "🟢", // Emerald
-    "#F59E0B" to "🟡", // Amber
-    "#8B5CF6" to "🟣", // Purple
-    "#EC4899" to "🌸", // Pink
-    "#06B6D4" to "💎", // Cyan
-    "#F97316" to "🔥", // Orange
-    "#84CC16" to "🍏", // Lime
-    "#14B8A6" to "🦚", // Teal
-    "#6366F1" to "⚡", // Indigo
-    "#D946EF" to "🦄", // Fuchsia
-    "#E11D48" to "🌹", // Rose
-    "#0284C7" to "🌊", // Sky
-    "#059669" to "🍀", // Green
-    "#D97706" to "🐯", // Gold
-    "#7C3AED" to "👾", // Violet
-    "#DB2777" to "🍧", // Pink-Red
-    "#0891B2" to "🧊", // Dark Cyan
-    "#4F46E5" to "🚀"  // Deep Indigo
+    "#EF4444" to "01",
+    "#3B82F6" to "02",
+    "#10B981" to "03",
+    "#F59E0B" to "04",
+    "#8B5CF6" to "05",
+    "#EC4899" to "06",
+    "#06B6D4" to "07",
+    "#F97316" to "08",
+    "#84CC16" to "09",
+    "#14B8A6" to "10",
+    "#6366F1" to "11",
+    "#D946EF" to "12",
+    "#E11D48" to "13",
+    "#0284C7" to "14",
+    "#059669" to "15",
+    "#D97706" to "16",
+    "#7C3AED" to "17",
+    "#DB2777" to "18",
+    "#0891B2" to "19",
+    "#4F46E5" to "20"
 )
 
 @Serializable

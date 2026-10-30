@@ -61,11 +61,9 @@ import com.clean.quiztv.ui.components.DoubleBezelCard
 import com.clean.quiztv.ui.theme.BorderFocused
 import com.clean.quiztv.ui.theme.BorderLight
 import com.clean.quiztv.ui.theme.CardDark
-import com.clean.quiztv.ui.theme.GoldMedal
 import com.clean.quiztv.ui.theme.NeonAmber
 import com.clean.quiztv.ui.theme.NeonCyan
 import com.clean.quiztv.ui.theme.NeonEmerald
-import com.clean.quiztv.ui.theme.NeonViolet
 import com.clean.quiztv.ui.theme.TextMuted
 
 @Composable
@@ -87,7 +85,7 @@ fun RoomLobbyScreen(
             .padding(horizontal = 48.dp, vertical = 26.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        // --- Top Bar: Branding, Mode Badges & Settings Shortcut ---
+        // --- Top Bar: Clean Architectural Badges & Back Action ---
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -96,36 +94,37 @@ fun RoomLobbyScreen(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(Brush.horizontalGradient(listOf(NeonCyan, NeonViolet)))
-                        .padding(horizontal = 14.dp, vertical = 4.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0x1F38BDF8))
+                        .border(1.dp, NeonCyan.copy(alpha = 0.45f), RoundedCornerShape(6.dp))
+                        .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text(
                         text = "QUIZ TV",
-                        color = Color.White,
-                        fontSize = 12.sp,
+                        color = NeonCyan,
+                        fontSize = 11.sp,
                         fontWeight = FontWeight.Black,
                         letterSpacing = 2.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.width(14.dp))
+                Spacer(modifier = Modifier.width(12.dp))
 
                 // Mode Badge
+                val modeColor = if (state.selectedMode == GameMode.KIDS) NeonAmber else NeonCyan
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(
-                            if (state.selectedMode == GameMode.KIDS) NeonAmber.copy(alpha = 0.2f)
-                            else NeonCyan.copy(alpha = 0.2f)
-                        )
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(modeColor.copy(alpha = 0.14f))
+                        .border(1.dp, modeColor.copy(alpha = 0.35f), RoundedCornerShape(6.dp))
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text(
                         text = Strings.modeBadge(state.selectedMode, lang),
-                        color = if (state.selectedMode == GameMode.KIDS) NeonAmber else NeonCyan,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
+                        color = modeColor,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
                     )
                 }
 
@@ -134,30 +133,33 @@ fun RoomLobbyScreen(
                 // Format Badge
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(Color(0x333B82F6))
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0x1FFFFFFF))
+                        .border(1.dp, BorderLight, RoundedCornerShape(6.dp))
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text(
                         text = Strings.formatBadge(state.gameFormat, lang),
-                        color = Color(0xFF60A5FA),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
+                        color = Color.White,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
                     )
                 }
             }
 
-            // Interactive Settings / Back Button
+            // Back to Setup Button
             var isBackFocused by remember { mutableStateOf(false) }
             Box(
                 modifier = Modifier
-                    .scale(if (isBackFocused) 1.05f else 1.0f)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Color(0x331E293B))
+                    .height(40.dp)
+                    .scale(if (isBackFocused) 1.04f else 1.0f)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color(0xFF161B26))
                     .border(
                         width = if (isBackFocused) 2.dp else 1.dp,
-                        color = if (isBackFocused) BorderFocused else Color(0x33FFFFFF),
-                        shape = RoundedCornerShape(12.dp)
+                        color = if (isBackFocused) BorderFocused else BorderLight,
+                        shape = RoundedCornerShape(10.dp)
                     )
                     .onFocusChanged { focusState ->
                         if (focusState.isFocused && !isBackFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -168,13 +170,15 @@ fun RoomLobbyScreen(
                         TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         onBackToSetup()
                     }
-                    .padding(horizontal = 14.dp, vertical = 5.dp)
+                    .padding(horizontal = 16.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = Strings.btnBackToSetup(lang),
                     color = Color.White,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp
                 )
             }
         }
@@ -185,21 +189,21 @@ fun RoomLobbyScreen(
                 .fillMaxWidth()
                 .weight(1f)
                 .padding(vertical = 14.dp),
-            horizontalArrangement = Arrangement.spacedBy(28.dp)
+            horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             // Left Half: Connection Instructions & Big QR
             DoubleBezelCard(
                 modifier = Modifier
                     .weight(0.95f)
                     .fillMaxHeight(),
-                outerShape = RoundedCornerShape(24.dp),
-                innerShape = RoundedCornerShape(21.dp),
+                outerShape = RoundedCornerShape(18.dp),
+                innerShape = RoundedCornerShape(16.dp),
                 outerPadding = 2.dp
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(22.dp),
+                        .padding(24.dp),
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -207,16 +211,16 @@ fun RoomLobbyScreen(
                         Text(
                             text = Strings.scanQr(lang),
                             color = Color.White,
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.ExtraBold,
                             textAlign = TextAlign.Center
                         )
-                        Spacer(modifier = Modifier.height(4.dp))
+                        Spacer(modifier = Modifier.height(6.dp))
                         Text(
                             text = Strings.orOpenBrowser(lang, serverUrl),
                             color = NeonCyan,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -224,8 +228,8 @@ fun RoomLobbyScreen(
                     // Large crisp QR code
                     Box(
                         modifier = Modifier
-                            .size(200.dp)
-                            .clip(RoundedCornerShape(18.dp))
+                            .size(196.dp)
+                            .clip(RoundedCornerShape(14.dp))
                             .background(Color.White)
                             .padding(10.dp),
                         contentAlignment = Alignment.Center
@@ -237,26 +241,29 @@ fun RoomLobbyScreen(
                                 modifier = Modifier.fillMaxSize()
                             )
                         } else {
-                            Text("QR...", color = Color.Black, fontSize = 14.sp)
+                            Text("QR", color = Color.Black, fontSize = 14.sp)
                         }
                     }
 
-                    // Clean high-contrast scan instruction banner (100% visible, no clipping!)
+                    // Clean high-contrast footer note
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(14.dp))
-                            .background(Color(0x331E293B))
-                            .border(1.dp, NeonCyan.copy(alpha = 0.4f), RoundedCornerShape(14.dp))
-                            .padding(horizontal = 14.dp, vertical = 10.dp),
+                            .height(42.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFF111520))
+                            .border(1.dp, BorderLight, RoundedCornerShape(10.dp))
+                            .padding(horizontal = 14.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = Strings.scanQrInstruction(lang),
-                            color = Color.White.copy(alpha = 0.95f),
+                            color = TextMuted,
                             fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
+                            fontWeight = FontWeight.Medium,
+                            textAlign = TextAlign.Center,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
                 }
@@ -267,14 +274,14 @@ fun RoomLobbyScreen(
                 modifier = Modifier
                     .weight(1.25f)
                     .fillMaxHeight(),
-                outerShape = RoundedCornerShape(24.dp),
-                innerShape = RoundedCornerShape(21.dp),
+                outerShape = RoundedCornerShape(18.dp),
+                innerShape = RoundedCornerShape(16.dp),
                 outerPadding = 2.dp
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(22.dp)
+                        .padding(24.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -284,62 +291,77 @@ fun RoomLobbyScreen(
                         Text(
                             text = Strings.playersInRoom(lang),
                             color = TextMuted,
-                            fontSize = 13.sp,
+                            fontSize = 12.sp,
                             fontWeight = FontWeight.ExtraBold,
-                            letterSpacing = 1.sp
+                            letterSpacing = 1.5.sp
                         )
 
                         Box(
                             modifier = Modifier
-                                .clip(RoundedCornerShape(10.dp))
+                                .clip(RoundedCornerShape(6.dp))
                                 .background(
-                                    if (state.players.isEmpty()) Color(0x33475569)
-                                    else NeonEmerald.copy(alpha = 0.2f)
+                                    if (state.players.isEmpty()) Color(0x1FFFFFFF)
+                                    else NeonEmerald.copy(alpha = 0.18f)
+                                )
+                                .border(
+                                    1.dp,
+                                    if (state.players.isEmpty()) BorderLight else NeonEmerald.copy(alpha = 0.45f),
+                                    RoundedCornerShape(6.dp)
                                 )
                                 .padding(horizontal = 10.dp, vertical = 3.dp)
                         ) {
                             Text(
                                 text = "${state.players.size} / 20",
                                 color = if (state.players.isEmpty()) TextMuted else NeonEmerald,
-                                fontSize = 12.sp,
+                                fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold
                             )
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(14.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
                     if (state.players.isEmpty()) {
-                        // Empty Waiting Box
+                        // Clean architectural empty state (no cartoon emojis)
                         Box(
-                            modifier = Modifier
-                                .fillMaxSize(),
+                            modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(
-                                    text = "📱",
-                                    fontSize = 44.sp
-                                )
-                                Spacer(modifier = Modifier.height(10.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(NeonCyan.copy(alpha = 0.1f))
+                                        .border(1.5.dp, NeonCyan.copy(alpha = 0.4f), CircleShape),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(12.dp)
+                                            .clip(CircleShape)
+                                            .background(NeonCyan)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(14.dp))
                                 Text(
                                     text = Strings.waitingForPlayersPrompt(lang),
                                     color = TextMuted,
-                                    fontSize = 16.sp,
+                                    fontSize = 15.sp,
                                     fontWeight = FontWeight.Medium,
-                                    textAlign = TextAlign.Center
+                                    textAlign = TextAlign.Center,
+                                    lineHeight = 22.sp
                                 )
                             }
                         }
                     } else if (state.gameFormat == GameFormat.TEAMS) {
-                        // Dynamic Teams Grid (Supports up to 20 teams)
                         val teamsToDisplay = state.teams.ifEmpty {
                             listOf(
-                                Team("team_1", if (lang == AppLanguage.PL) "Drużyna 1" else "Команда 1", "#EF4444", "🔴"),
-                                Team("team_2", if (lang == AppLanguage.PL) "Drużyna 2" else "Команда 2", "#3B82F6", "🔵")
+                                Team("team_1", if (lang == AppLanguage.PL) "Drużyna 1" else "Команда 1", "#EF4444", "01"),
+                                Team("team_2", if (lang == AppLanguage.PL) "Drużyna 2" else "Команда 2", "#3B82F6", "02")
                             )
                         }
-                        val gridCols = if (teamsToDisplay.size <= 2) 2 else if (teamsToDisplay.size <= 4) 2 else 3
+                        val gridCols = if (teamsToDisplay.size <= 4) 2 else 3
 
                         LazyVerticalGrid(
                             columns = GridCells.Fixed(gridCols),
@@ -357,7 +379,6 @@ fun RoomLobbyScreen(
                             }
                         }
                     } else {
-                        // Individual Solo Grid
                         LazyVerticalGrid(
                             columns = GridCells.Fixed(2),
                             horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -369,7 +390,7 @@ fun RoomLobbyScreen(
                                     visible = true,
                                     enter = fadeIn() + scaleIn()
                                 ) {
-                                    PlayerChip(player = player, lang = lang)
+                                    PlayerChip(player = player)
                                 }
                             }
                         }
@@ -378,7 +399,7 @@ fun RoomLobbyScreen(
             }
         }
 
-        // --- Bottom Bar: Choose Theme Action Button ---
+        // --- Bottom Bar: Proceed to Package Selection ---
         val canProceed = state.players.isNotEmpty()
         val focusRequester = remember { FocusRequester() }
         LaunchedEffect(Unit) {
@@ -387,8 +408,8 @@ fun RoomLobbyScreen(
 
         var isProceedFocused by remember { mutableStateOf(false) }
         val proceedScale by animateFloatAsState(
-            targetValue = if (isProceedFocused) 1.05f else 1.0f,
-            animationSpec = tween(durationMillis = 200),
+            targetValue = if (isProceedFocused) 1.02f else 1.0f,
+            animationSpec = tween(durationMillis = 180),
             label = "btnProceedThemeScale"
         )
 
@@ -396,16 +417,17 @@ fun RoomLobbyScreen(
             modifier = Modifier
                 .focusRequester(focusRequester)
                 .fillMaxWidth()
+                .height(56.dp)
                 .scale(proceedScale)
-                .clip(RoundedCornerShape(20.dp))
+                .clip(RoundedCornerShape(14.dp))
                 .background(
-                    if (canProceed) Brush.horizontalGradient(listOf(NeonEmerald, Color(0xFF0284C7)))
-                    else Brush.horizontalGradient(listOf(Color(0xFF334155), Color(0xFF1E293B)))
+                    if (canProceed) Brush.horizontalGradient(listOf(NeonEmerald, Color(0xFF047857)))
+                    else Brush.horizontalGradient(listOf(Color(0xFF1E2638), Color(0xFF161B26)))
                 )
                 .border(
-                    width = if (isProceedFocused) 3.dp else 1.dp,
-                    color = if (isProceedFocused) BorderFocused else BorderLight,
-                    shape = RoundedCornerShape(20.dp)
+                    width = if (isProceedFocused) 2.dp else 1.dp,
+                    color = if (isProceedFocused) Color.White else BorderLight,
+                    shape = RoundedCornerShape(14.dp)
                 )
                 .onFocusChanged { focusState ->
                     if (focusState.isFocused && !isProceedFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -416,20 +438,33 @@ fun RoomLobbyScreen(
                     TvSoundManager.play(TvSoundManager.SoundEffect.CORRECT)
                     onProceedToThemeSelect()
                 }
-                .padding(vertical = 15.dp, horizontal = 24.dp),
+                .padding(horizontal = 24.dp),
             contentAlignment = Alignment.Center
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = if (canProceed) Strings.btnChooseTheme(lang) else Strings.waitingForPlayersBtn(lang),
                     color = if (canProceed) Color.White else TextMuted,
-                    fontSize = 17.sp,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = 1.sp
+                    letterSpacing = 1.2.sp
                 )
                 if (canProceed) {
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(text = "🎮 [OK]", color = Color.White.copy(alpha = 0.8f), fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(Color(0x33000000))
+                            .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 8.dp, vertical = 3.dp)
+                    ) {
+                        Text(
+                            text = "OK",
+                            color = Color.White,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
                 }
             }
         }
@@ -453,9 +488,9 @@ private fun DynamicLobbyTeamBox(
 
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color(0x220F172A))
-            .border(1.5.dp, accentColor.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color(0xFF111520))
+            .border(1.dp, accentColor.copy(alpha = 0.55f), RoundedCornerShape(12.dp))
             .padding(12.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -468,26 +503,31 @@ private fun DynamicLobbyTeamBox(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(text = team.emoji, fontSize = 16.sp)
-                    Spacer(modifier = Modifier.width(6.dp))
+                    Box(
+                        modifier = Modifier
+                            .size(10.dp)
+                            .clip(CircleShape)
+                            .background(accentColor)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = team.name,
-                        color = accentColor,
+                        color = Color.White,
                         fontSize = 13.sp,
-                        fontWeight = FontWeight.ExtraBold,
+                        fontWeight = FontWeight.Bold,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(8.dp))
+                        .clip(RoundedCornerShape(6.dp))
                         .background(accentColor.copy(alpha = 0.2f))
                         .padding(horizontal = 7.dp, vertical = 2.dp)
                 ) {
                     Text(
                         text = "${players.size}",
-                        color = Color.White,
+                        color = accentColor,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -504,7 +544,7 @@ private fun DynamicLobbyTeamBox(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = if (lang == AppLanguage.PL) "Brak graczy" else "Нет игроков",
+                        text = if (lang == AppLanguage.PL) "Brak graczy" else "Нет участников",
                         color = TextMuted.copy(alpha = 0.5f),
                         fontSize = 11.sp
                     )
@@ -515,7 +555,7 @@ private fun DynamicLobbyTeamBox(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     players.forEach { p ->
-                        PlayerChip(player = p, lang = lang)
+                        PlayerChip(player = p)
                     }
                 }
             }
@@ -524,14 +564,25 @@ private fun DynamicLobbyTeamBox(
 }
 
 @Composable
-private fun PlayerChip(player: Player, lang: AppLanguage) {
+private fun PlayerChip(player: Player) {
+    val badgeText = remember(player.avatar, player.name) {
+        val av = player.avatar.trim()
+        if (av.length in 1..2 && av.all { it.isLetterOrDigit() }) {
+            av.uppercase()
+        } else {
+            player.name.trim().take(2).uppercase().ifEmpty { "P1" }
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
+            .height(48.dp)
+            .clip(RoundedCornerShape(10.dp))
             .background(CardDark)
-            .border(1.dp, BorderLight, RoundedCornerShape(14.dp))
-            .padding(horizontal = 12.dp, vertical = 9.dp)
+            .border(1.dp, BorderLight, RoundedCornerShape(10.dp))
+            .padding(horizontal = 12.dp),
+        contentAlignment = Alignment.CenterStart
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -539,26 +590,31 @@ private fun PlayerChip(player: Player, lang: AppLanguage) {
         ) {
             Box(
                 modifier = Modifier
-                    .size(36.dp)
-                    .clip(CircleShape)
-                    .background(Brush.radialGradient(listOf(Color(0xFF334155), Color(0xFF1E293B)))),
+                    .size(30.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFF1E293B))
+                    .border(1.dp, NeonCyan.copy(alpha = 0.4f), RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = player.avatar, fontSize = 19.sp)
+                Text(
+                    text = badgeText,
+                    color = NeonCyan,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
             }
 
             Spacer(modifier = Modifier.width(10.dp))
 
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = player.name,
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+            Text(
+                text = player.name,
+                color = Color.White,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }

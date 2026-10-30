@@ -1,27 +1,28 @@
 /**
- * Quiz TV Mobile Web Controller
- * 100% Offline Vanilla JS (WebSockets, Web Audio Synth, Dual-Language PL/RU)
+ * Quiz TV Studio Mobile Controller
+ * 100% Offline Vanilla JS • Zero Emoji Clutter • Bilingual RU/PL
  */
 
 (function () {
     'use strict';
 
-    // --- State & Constants ---
     const STORAGE_KEY_ID = 'quiztv_player_id';
     const STORAGE_KEY_NAME = 'quiztv_player_name';
     const STORAGE_KEY_AVATAR = 'quiztv_player_avatar';
     const STORAGE_KEY_LANG = 'quiztv_language';
 
-    const AVATARS = ['🦊', '🐻', '🐼', '🐱', '🤖', '👽', '🏴‍☠️', '🥷', '🦁', '🦄', '🚀', '⭐'];
+    // Clean studio callsigns (zero cartoon emojis)
+    const AVATARS = ['01', '02', '03', '04', '05', '06', '07', '08'];
 
     let socket = null;
     let reconnectTimer = null;
     let isConnected = false;
 
-    let currentLang = localStorage.getItem(STORAGE_KEY_LANG) || 'RU'; // 'RU' | 'PL'
+    let currentLang = localStorage.getItem(STORAGE_KEY_LANG) || 'RU';
     let myPlayerId = localStorage.getItem(STORAGE_KEY_ID) || '';
     let myName = localStorage.getItem(STORAGE_KEY_NAME) || '';
-    let myAvatar = localStorage.getItem(STORAGE_KEY_AVATAR) || '🦊';
+    let savedAv = localStorage.getItem(STORAGE_KEY_AVATAR) || '01';
+    let myAvatar = AVATARS.includes(savedAv) ? savedAv : '01';
 
     let selectedFormat = 'INDIVIDUAL';
     let myTeamId = '';
@@ -31,81 +32,78 @@
     let questionDurationSec = 20;
     let timerInterval = null;
 
-    // --- Bilingual Dictionary ---
     const I18N = {
         RU: {
-            langFlag: '🇷🇺',
-            langLabel: 'РУССКИЙ',
-            nextLang: 'PL',
+            langLabel: 'RU',
+            joinEyebrow: 'ПУЛЬТ УЧАСТНИКА',
             joinTitle: 'Вход в игру',
-            joinSubtitle: 'Введи имя и выбери персонажа',
-            namePlaceholder: 'Твое имя...',
-            btnJoin: 'Войти в игру',
-            waitingTitle: 'Ты в игре!',
-            waitingSubtitle: 'Смотри на экран телевизора.<br>Игра скоро начнется!',
-            lobbyCounterLabel: 'Игроков в комнате:',
-            lockTitle: 'Ответ принят!',
-            lockSubtitle: 'Смотри на телевизор...',
-            revealCorrect: 'Верно!',
-            revealIncorrect: 'Мимо!',
-            streakLabel: '🔥 Стрик: ',
-            standingRank: 'Твое место: ',
-            standingScore: 'Всего очков: ',
-            factTitle: '💡 Интересный факт',
-            leaderboardTitle: 'Таблица лидеров',
-            intermissionHint: 'Следующий вопрос начнется через несколько секунд...',
-            podiumTitle: 'Игра окончена!',
-            podiumScoreTitle: 'Твой финальный результат:',
+            joinSubtitle: 'Введите имя и выберите позывной',
+            nameLabel: 'ВАШЕ ИМЯ',
+            badgeLabel: 'НОМЕР ИГРОКА',
+            namePlaceholder: 'Введите имя...',
+            btnJoin: 'ПОДКЛЮЧИТЬСЯ',
+            playerStatus: 'ПОДКЛЮЧЕН К СТУДИИ',
+            waitingTitle: 'Вы в комнате',
+            waitingSubtitle: 'Обратите внимание на экран телевизора.<br>Раунд начнется автоматически.',
+            lobbyCounterLabel: 'Участников в комнате:',
+            lockTitle: 'Ответ зафиксирован',
+            lockSubtitle: 'Ожидайте завершения таймера на ТВ',
+            revealCorrect: 'ВЕРНО',
+            revealIncorrect: 'НЕВЕРНО',
+            streakLabel: 'СЕРИЯ x',
+            standingRank: 'МЕСТО',
+            standingScore: 'СЧЕТ',
+            factTitle: 'КОММЕНТАРИЙ К ОТВЕТУ',
+            leaderboardTitle: 'Турнирная таблица',
+            intermissionHint: 'Подготовка следующего вопроса...',
+            podiumTitle: 'ИТОГИ ПАРТИИ',
+            podiumScoreTitle: 'ФИНАЛЬНЫЙ СЧЕТ',
             winnerPrefix: 'Победитель: ',
-            btnPlayAgain: 'Сыграть еще раз',
+            btnPlayAgain: 'НОВАЯ ИГРА',
             toastConnecting: 'Подключение к ТВ...',
-            questionRound: (q, total) => `Вопрос ${q} из ${total}`,
-            leaveBtn: 'Выйти',
-            leaveConfirm: 'Вы действительно хотите покинуть игру?',
-            formatLabel: 'Формат игры:',
-            formatSolo: '👤 Соло',
-            formatTeams: '👥 Команды',
-            teamPickerTitle: 'Выбор команды (до 20):',
-            createTeamBtn: '+ Создать',
-            teamNamePlaceholder: 'Имя новой команды...',
-            emptyTeamsHint: 'Пока нет команд. Введи название и создай первую!'
+            questionRound: (q, total) => `ВОПРОС ${q} / ${total}`,
+            leaveBtn: 'ВЫХОД',
+            leaveConfirm: 'Покинуть текущую комнату?',
+            teamPickerTitle: 'ВЫБОР КОМАНДЫ',
+            createTeamBtn: 'СОЗДАТЬ',
+            teamNamePlaceholder: 'Название команды...',
+            emptyTeamsHint: 'Команды еще не созданы. Введите название выше.'
         },
         PL: {
-            langFlag: '🇵🇱',
-            langLabel: 'POLSKI',
-            nextLang: 'RU',
+            langLabel: 'PL',
+            joinEyebrow: 'KONTROLER GRACZA',
             joinTitle: 'Dołącz do gry',
-            joinSubtitle: 'Wpisz imię i wybierz postać',
-            namePlaceholder: 'Twoje imię...',
-            btnJoin: 'Wejdź do gry',
-            waitingTitle: 'Jesteś w grze!',
-            waitingSubtitle: 'Spójrz na ekran telewizora.<br>Gra wkrótce się rozpocznie!',
+            joinSubtitle: 'Wpisz imię i wybierz numer gracza',
+            nameLabel: 'TWOJE IMIĘ',
+            badgeLabel: 'NUMER GRACZA',
+            namePlaceholder: 'Wpisz imię...',
+            btnJoin: 'POŁĄCZ',
+            playerStatus: 'POŁĄCZONO ZE STUDIEM',
+            waitingTitle: 'Jesteś w pokoju',
+            waitingSubtitle: 'Spójrz na ekran telewizora.<br>Runda rozpocznie się automatycznie.',
             lobbyCounterLabel: 'Graczy w pokoju:',
-            lockTitle: 'Odpowiedź zapisana!',
-            lockSubtitle: 'Patrz na telewizor...',
-            revealCorrect: 'Brawo! Dobrze!',
-            revealIncorrect: 'Niestety pudło!',
-            streakLabel: '🔥 Seria: ',
-            standingRank: 'Twoje miejsce: ',
-            standingScore: 'Punkty: ',
-            factTitle: '💡 Ciekawostka',
-            leaderboardTitle: 'Tabela liderów',
-            intermissionHint: 'Kolejne pytanie rozpocznie się za chwilę...',
-            podiumTitle: 'Koniec gry!',
-            podiumScoreTitle: 'Twój wynik końcowy:',
+            lockTitle: 'Odpowiedź zapisana',
+            lockSubtitle: 'Poczekaj na zakończenie odliczania na TV',
+            revealCorrect: 'DOBRZE',
+            revealIncorrect: 'BŁĄD',
+            streakLabel: 'SERIA x',
+            standingRank: 'MIEJSCE',
+            standingScore: 'PUNKTY',
+            factTitle: 'KOMENTARZ DO ODPOWIEDZI',
+            leaderboardTitle: 'Klasyfikacja',
+            intermissionHint: 'Przygotowanie kolejnego pytania...',
+            podiumTitle: 'WYNIKI KOŃCOWE',
+            podiumScoreTitle: 'WYNIK KOŃCOWY',
             winnerPrefix: 'Zwycięzca: ',
-            btnPlayAgain: 'Zagraj ponownie',
+            btnPlayAgain: 'NOWA GRA',
             toastConnecting: 'Łączenie z TV...',
-            questionRound: (q, total) => `Pytanie ${q} z ${total}`,
-            leaveBtn: 'Wyjdź',
-            leaveConfirm: 'Czy na pewno chcesz wyjść z gry?',
-            formatLabel: 'Format gry:',
-            formatSolo: '👤 Solo',
-            formatTeams: '👥 Drużyny',
-            teamPickerTitle: 'Wybór drużyny (do 20):',
-            createTeamBtn: '+ Utwórz',
-            teamNamePlaceholder: 'Nazwa nowej drużyny...',
-            emptyTeamsHint: 'Brak drużyn. Wpisz nazwę i utwórz pierwszą!'
+            questionRound: (q, total) => `PYTANIE ${q} / ${total}`,
+            leaveBtn: 'WYJDŹ',
+            leaveConfirm: 'Czy na pewno chcesz opuścić pokój?',
+            teamPickerTitle: 'WYBÓR DRUŻYNY',
+            createTeamBtn: 'UTWÓRZ',
+            teamNamePlaceholder: 'Nazwa drużyny...',
+            emptyTeamsHint: 'Brak drużyn. Wpisz nazwę powyżej.'
         }
     };
 
@@ -113,7 +111,6 @@
     const toast = document.getElementById('connection-toast');
     const toastText = document.getElementById('toast-text');
     const btnLangToggle = document.getElementById('btn-lang-toggle');
-    const langFlag = document.getElementById('lang-flag');
     const langLabel = document.getElementById('lang-label');
     const btnLeaveRoom = document.getElementById('btn-leave-room');
     const txtLeaveBtn = document.getElementById('txt-leave-btn');
@@ -127,13 +124,11 @@
         podium: document.getElementById('screen-podium')
     };
 
-    // Join screen elements
     const avatarDisplay = document.getElementById('current-avatar');
     const avatarGrid = document.getElementById('avatar-grid');
     const nameInput = document.getElementById('player-name-input');
     const btnJoin = document.getElementById('btn-join');
 
-    // Lobby screen elements
     const lobbyAvatar = document.getElementById('lobby-player-avatar');
     const lobbyName = document.getElementById('lobby-player-name');
     const teamSelectorBox = document.getElementById('team-selector-box');
@@ -144,14 +139,12 @@
     const teamsListEl = document.getElementById('teams-list');
     const lobbyCount = document.getElementById('lobby-players-count');
 
-    // Question screen elements
     const qRoundLabel = document.getElementById('q-round-label');
     const timerBar = document.getElementById('timer-bar');
     const qTextBox = document.getElementById('question-text-mobile');
     const answerButtons = document.querySelectorAll('.answer-btn');
     const lockOverlay = document.getElementById('answer-lock-overlay');
 
-    // Reveal screen elements
     const revealCard = document.getElementById('reveal-card');
     const revealIcon = document.getElementById('reveal-icon');
     const revealTitle = document.getElementById('reveal-title');
@@ -163,32 +156,26 @@
     const revealFactBox = document.getElementById('reveal-fact-box');
     const revealFactText = document.getElementById('reveal-fact-text');
 
-    // Leaderboard screen elements
     const leaderboardList = document.getElementById('leaderboard-list');
 
-    // Podium screen elements
     const podiumRankBadge = document.getElementById('podium-rank-badge');
     const podiumFinalScore = document.getElementById('podium-final-score');
     const podiumWinnerText = document.getElementById('podium-winner-text');
     const btnPlayAgain = document.getElementById('btn-play-again');
 
-    // --- Audio Synthesizer (Zero External Audio Files) ---
+    // --- Audio Feedback ---
     const Audio = {
         ctx: null,
-
         init() {
             if (!this.ctx) {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (AudioContext) {
-                    this.ctx = new AudioContext();
-                }
+                if (AudioContext) this.ctx = new AudioContext();
             }
             if (this.ctx && this.ctx.state === 'suspended') {
                 this.ctx.resume();
             }
         },
-
-        playTone(freq, type, duration, gain = 0.15) {
+        playTone(freq, type, duration, gain = 0.12) {
             this.init();
             if (!this.ctx) return;
             try {
@@ -204,56 +191,51 @@
                 osc.stop(this.ctx.currentTime + duration);
             } catch (_) {}
         },
-
         tap() {
-            this.playTone(680, 'sine', 0.08, 0.2);
-            if (navigator.vibrate) navigator.vibrate(25);
+            this.playTone(620, 'sine', 0.06, 0.15);
+            if (navigator.vibrate) navigator.vibrate(18);
         },
-
         tick() {
-            this.playTone(1100, 'sine', 0.04, 0.12);
+            this.playTone(980, 'sine', 0.035, 0.08);
         },
-
         correct() {
             this.init();
             if (!this.ctx) return;
-            const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-            notes.forEach((freq, idx) => {
-                setTimeout(() => {
-                    this.playTone(freq, 'triangle', 0.28, 0.22);
-                }, idx * 75);
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+                setTimeout(() => this.playTone(freq, 'triangle', 0.22, 0.18), idx * 70);
             });
-            if (navigator.vibrate) navigator.vibrate([60, 40, 100]);
+            if (navigator.vibrate) navigator.vibrate([45, 30, 80]);
         },
-
         wrong() {
             this.init();
             if (!this.ctx) return;
-            this.playTone(280, 'sawtooth', 0.18, 0.25);
-            setTimeout(() => this.playTone(210, 'sawtooth', 0.32, 0.25), 140);
-            if (navigator.vibrate) navigator.vibrate(220);
+            this.playTone(250, 'sawtooth', 0.16, 0.18);
+            setTimeout(() => this.playTone(195, 'sawtooth', 0.26, 0.18), 130);
+            if (navigator.vibrate) navigator.vibrate(180);
         }
     };
 
-    // --- UI Localization Applier ---
     function applyLanguage(lang) {
         currentLang = lang;
         localStorage.setItem(STORAGE_KEY_LANG, lang);
         const t = I18N[lang] || I18N.RU;
 
-        langFlag.textContent = t.langFlag;
-        langLabel.textContent = t.langLabel;
+        if (langLabel) langLabel.textContent = t.langLabel;
 
         const setTxt = (id, text) => {
             const el = document.getElementById(id);
             if (el) el.innerHTML = text;
         };
 
+        setTxt('txt-join-eyebrow', t.joinEyebrow);
         setTxt('txt-join-title', t.joinTitle);
         setTxt('txt-join-subtitle', t.joinSubtitle);
+        setTxt('txt-name-label', t.nameLabel);
+        setTxt('txt-badge-label', t.badgeLabel);
         if (nameInput) nameInput.placeholder = t.namePlaceholder;
         setTxt('txt-btn-join', t.btnJoin);
 
+        setTxt('txt-player-status', t.playerStatus);
         setTxt('txt-waiting-title', t.waitingTitle);
         setTxt('txt-waiting-subtitle', t.waitingSubtitle);
         setTxt('txt-lobby-counter-label', t.lobbyCounterLabel);
@@ -262,6 +244,8 @@
         setTxt('txt-lock-subtitle', t.lockSubtitle);
 
         setTxt('txt-reveal-streak-label', t.streakLabel);
+        setTxt('txt-reveal-standing-rank', t.standingRank);
+        setTxt('txt-reveal-standing-score', t.standingScore);
         setTxt('txt-reveal-fact-title', t.factTitle);
 
         setTxt('txt-leaderboard-title', t.leaderboardTitle);
@@ -295,7 +279,6 @@
 
         if (!currentTeams || currentTeams.length === 0) {
             const emptyP = document.createElement('div');
-            emptyP.className = 'empty-teams-hint';
             emptyP.style.cssText = 'color: var(--text-muted); font-size: 12.5px; text-align: center; padding: 12px;';
             emptyP.textContent = t.emptyTeamsHint;
             teamsListEl.appendChild(emptyP);
@@ -305,26 +288,25 @@
         currentTeams.forEach(team => {
             const item = document.createElement('div');
             item.className = `team-list-item ${team.id === myTeamId ? 'selected' : ''}`;
-            item.style.borderColor = team.colorHex;
 
             const left = document.createElement('div');
             left.className = 'team-item-left';
 
-            const emoji = document.createElement('span');
-            emoji.className = 'team-item-emoji';
-            emoji.textContent = team.emoji;
+            const dot = document.createElement('span');
+            dot.className = 'team-item-dot';
+            dot.style.backgroundColor = team.colorHex || '#38BDF8';
 
             const name = document.createElement('span');
             name.className = 'team-item-name';
             name.textContent = team.name;
 
-            left.appendChild(emoji);
+            left.appendChild(dot);
             left.appendChild(name);
 
             const badge = document.createElement('span');
             badge.className = 'team-item-badge';
             const count = team.memberCount || 0;
-            badge.textContent = (currentLang === 'PL') ? `${count} os.` : `${count} игр.`;
+            badge.textContent = `${count}`;
 
             item.appendChild(left);
             item.appendChild(badge);
@@ -343,7 +325,6 @@
         });
     }
 
-    // --- UI Navigation ---
     function showScreen(name) {
         Object.keys(screens).forEach(key => {
             if (key === name) {
@@ -371,7 +352,6 @@
         toast.classList.add('hidden');
     }
 
-    // --- WebSocket Networking ---
     function connectSocket() {
         if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
             return;
@@ -439,7 +419,6 @@
         }
     }
 
-    // Auto-resync when mobile screen wakes up or user returns to tab
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
             checkAndResync();
@@ -454,7 +433,6 @@
         checkAndResync();
     });
 
-    // Heartbeat: keeps mobile WebSockets alive and immediately detects dropouts
     setInterval(() => {
         if (socket && socket.readyState === WebSocket.OPEN) {
             send({ type: 'PING' });
@@ -469,7 +447,6 @@
         }
     }
 
-    // --- Server Message Dispatcher ---
     function handleServerMessage(msg) {
         const t = I18N[currentLang] || I18N.RU;
 
@@ -534,14 +511,13 @@
 
                 qRoundLabel.textContent = t.questionRound(msg.questionIndex, msg.totalQuestions);
 
-                if (msg.gameMode === 'KIDS' && msg.text) {
+                if (msg.text) {
                     qTextBox.textContent = msg.text;
                     qTextBox.classList.remove('hidden');
                 } else {
                     qTextBox.classList.add('hidden');
                 }
 
-                // Populate button labels
                 if (msg.options && msg.options.length) {
                     msg.options.forEach((optText, i) => {
                         const lbl = document.getElementById(`opt-label-${i}`);
@@ -549,7 +525,6 @@
                     });
                 }
 
-                // Reset answer buttons
                 answerButtons.forEach(btn => {
                     btn.disabled = false;
                     btn.classList.remove('selected', 'dimmed');
@@ -561,7 +536,6 @@
                 break;
 
             case 'ANSWER_ACK':
-                // Visual confirmation that answer was received
                 Audio.tap();
                 lockOverlay.classList.remove('hidden');
                 answerButtons.forEach((btn, idx) => {
@@ -580,14 +554,14 @@
                 if (msg.isCorrect) {
                     Audio.correct();
                     revealCard.className = 'reveal-banner correct double-bezel';
-                    revealIcon.textContent = '🎉';
+                    revealIcon.textContent = '✓';
                     revealTitle.textContent = t.revealCorrect;
                     revealPoints.textContent = `+${msg.pointsEarned}`;
                     revealPoints.style.display = 'inline-block';
                 } else {
                     Audio.wrong();
                     revealCard.className = 'reveal-banner incorrect double-bezel';
-                    revealIcon.textContent = '❌';
+                    revealIcon.textContent = '×';
                     revealTitle.textContent = t.revealIncorrect;
                     revealPoints.style.display = 'none';
                 }
@@ -620,10 +594,7 @@
             case 'GAME_OVER':
                 podiumFinalScore.textContent = msg.finalScore;
                 podiumWinnerText.textContent = `${t.winnerPrefix}${msg.winnerName}`;
-
-                const medals = ['🥇', '🥈', '🥉'];
-                podiumRankBadge.textContent = medals[msg.finalRank - 1] || '🏅';
-
+                podiumRankBadge.textContent = String(msg.finalRank || 1).padStart(2, '0');
                 showScreen('podium');
                 break;
 
@@ -667,7 +638,7 @@
                 if (msg.questionIndex && msg.totalQuestions) {
                     qRoundLabel.textContent = t.questionRound(msg.questionIndex, msg.totalQuestions);
                 }
-                if (msg.gameMode === 'KIDS' && msg.questionText) {
+                if (msg.questionText) {
                     qTextBox.textContent = msg.questionText;
                     qTextBox.classList.remove('hidden');
                 } else {
@@ -720,7 +691,6 @@
         timerBar.style.transform = 'scaleX(1)';
         const start = performance.now();
         const totalMs = durationSec * 1000;
-
         let lastSecBeeped = -1;
 
         timerInterval = setInterval(() => {
@@ -748,11 +718,12 @@
 
             const rankSpan = document.createElement('span');
             rankSpan.className = `leader-rank top${st.rank}`;
-            rankSpan.textContent = `#${st.rank}`;
+            rankSpan.textContent = String(st.rank).padStart(2, '0');
 
             const avatarSpan = document.createElement('span');
             avatarSpan.className = 'leader-avatar';
-            avatarSpan.textContent = st.avatar;
+            const avText = (st.avatar && st.avatar.length <= 2) ? st.avatar : (st.name || 'P').substring(0, 2).toUpperCase();
+            avatarSpan.textContent = avText;
 
             const nameSpan = document.createElement('span');
             nameSpan.className = 'leader-name';
@@ -770,12 +741,9 @@
         });
     }
 
-    // --- DOM Event Listeners ---
     function initUI() {
-        // Apply default language
         applyLanguage(currentLang);
 
-        // Language toggle button handler
         btnLangToggle.onclick = () => {
             Audio.tap();
             const nextLang = (currentLang === 'RU') ? 'PL' : 'RU';
@@ -786,31 +754,26 @@
             });
         };
 
-        // Render avatars
         avatarGrid.innerHTML = '';
         AVATARS.forEach(av => {
             const b = document.createElement('button');
             b.className = `avatar-btn ${av === myAvatar ? 'selected' : ''}`;
-            b.textContent = av;
+            b.textContent = `#${av}`;
             b.onclick = () => {
                 Audio.tap();
                 myAvatar = av;
-                avatarDisplay.textContent = av;
-                avatarDisplay.classList.add('pop');
-                setTimeout(() => avatarDisplay.classList.remove('pop'), 200);
-
+                if (avatarDisplay) avatarDisplay.textContent = av;
                 avatarGrid.querySelectorAll('.avatar-btn').forEach(btn => btn.classList.remove('selected'));
                 b.classList.add('selected');
             };
             avatarGrid.appendChild(b);
         });
 
-        avatarDisplay.textContent = myAvatar;
+        if (avatarDisplay) avatarDisplay.textContent = myAvatar;
         if (myName) {
             nameInput.value = myName;
         }
 
-        // Join button
         btnJoin.onclick = () => {
             Audio.init();
             Audio.tap();
@@ -838,7 +801,6 @@
             }
         };
 
-        // Create Team
         if (btnCreateTeam && newTeamInput) {
             btnCreateTeam.onclick = () => {
                 Audio.tap();
@@ -861,7 +823,6 @@
             };
         }
 
-        // Leave room button
         if (btnLeaveRoom) {
             btnLeaveRoom.onclick = () => {
                 Audio.tap();
@@ -879,7 +840,6 @@
             };
         }
 
-        // Answer Buttons (0: Red, 1: Blue, 2: Yellow, 3: Green)
         answerButtons.forEach(btn => {
             btn.onclick = () => {
                 const idx = parseInt(btn.getAttribute('data-index'), 10);
@@ -907,7 +867,6 @@
             };
         });
 
-        // Play Again
         if (btnPlayAgain) {
             btnPlayAgain.onclick = () => {
                 Audio.tap();
@@ -918,7 +877,6 @@
         }
     }
 
-    // --- Bootstrap ---
     window.addEventListener('DOMContentLoaded', () => {
         initUI();
         connectSocket();

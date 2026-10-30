@@ -418,7 +418,11 @@ class GameStateMachine(
 
         val question = pack.questions[index]
         val totalPlayers = playersMap.values.count { it.isConnected }
-        val timeLimit = if (roundDurationSeconds > 0) roundDurationSeconds else question.timeLimitSeconds
+        val timeLimit = when {
+            pack.category.equals("ChGK", ignoreCase = true) && roundDurationSeconds <= 20 -> 60
+            roundDurationSeconds > 0 -> roundDurationSeconds
+            else -> question.timeLimitSeconds
+        }
 
         _state.value = GameState.QuestionRound(
             players = playersMap.values.toList(),
@@ -772,7 +776,7 @@ class GameStateMachine(
                 teamId = teamId,
                 name = team?.name ?: (teamPlayers.firstOrNull()?.teamName ?: "Команда"),
                 colorHex = team?.colorHex ?: "#3B82F6",
-                emoji = team?.emoji ?: "👥",
+                emoji = team?.emoji ?: "01",
                 totalScore = teamPlayers.sumOf { it.score },
                 playersCount = teamPlayers.size
             )

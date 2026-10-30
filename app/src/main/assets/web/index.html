@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#070A14">
+    <meta name="theme-color" content="#090B10">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Quiz TV Controller</title>
@@ -17,51 +17,56 @@
         <span id="toast-text">Подключение к ТВ...</span>
     </div>
 
-    <!-- Top Navigation with Language Switcher and Leave Button -->
+    <!-- Top Studio Header Bar -->
     <header class="app-top-bar">
         <div class="logo-badge">QUIZ TV</div>
         <div class="header-actions">
-            <button id="btn-lang-toggle" class="lang-switch-btn" aria-label="Zmień język / Сменить язык">
-                <span id="lang-flag">🇵🇱</span>
-                <span id="lang-label">POLSKI</span>
+            <button id="btn-lang-toggle" class="lang-switch-btn" aria-label="Сменить язык">
+                <span id="lang-label">RU</span>
             </button>
-            <button id="btn-leave-room" class="leave-btn hidden" aria-label="Wyjdź / Выйти" title="Wyjdź z pokoju">
-                <span>🚪</span>
-                <span id="txt-leave-btn">Wyjdź</span>
+            <button id="btn-leave-room" class="leave-btn hidden" aria-label="Выход">
+                <span id="txt-leave-btn">ВЫХОД</span>
             </button>
         </div>
     </header>
 
     <main id="app-container">
-        <!-- 1. Screen: Join (Name & Avatar) -->
+        <!-- 1. Screen: Join -->
         <section id="screen-join" class="screen active">
-            <div class="header-brand">
-                <h1 class="screen-title" id="txt-join-title">Вход в игру</h1>
-                <p class="screen-subtitle" id="txt-join-subtitle">Введи имя и выбери персонажа</p>
-            </div>
-
-            <div class="avatar-selector">
-                <div id="current-avatar" class="avatar-display">🦊</div>
-                <div class="avatar-picker-grid" id="avatar-grid">
-                    <!-- Populated by JS -->
+            <div class="join-card">
+                <div class="header-brand">
+                    <div class="eyebrow-tag" id="txt-join-eyebrow">ПУЛЬТ УЧАСТНИКА</div>
+                    <h1 class="screen-title" id="txt-join-title">Вход в игру</h1>
+                    <p class="screen-subtitle" id="txt-join-subtitle">Введите имя и выберите позывной</p>
                 </div>
-            </div>
 
-            <div class="input-group">
-                <input type="text" id="player-name-input" maxlength="14" placeholder="Твое имя..." autocomplete="off" autocorrect="off" spellcheck="false">
-                <button id="btn-join" class="btn btn-primary btn-large btn-island">
-                    <span class="btn-text" id="txt-btn-join">Войти в игру</span>
-                    <span class="btn-island-icon">➔</span>
+                <div class="input-group">
+                    <label class="field-label" for="player-name-input" id="txt-name-label">ВАШЕ ИМЯ</label>
+                    <input type="text" id="player-name-input" maxlength="16" placeholder="Введите имя..." autocomplete="off" autocorrect="off" spellcheck="false">
+                </div>
+
+                <div class="avatar-selector">
+                    <div class="field-label" id="txt-badge-label">НОМЕР / ЗНАЧОК ИГРОКА</div>
+                    <div id="current-avatar" class="avatar-display hidden">01</div>
+                    <div class="avatar-picker-grid" id="avatar-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <button id="btn-join" class="btn btn-primary btn-island">
+                    <span class="btn-text" id="txt-btn-join">ПОДКЛЮЧИТЬСЯ</span>
+                    <span class="btn-island-icon">OK</span>
                 </button>
             </div>
         </section>
 
-        <!-- 2. Screen: Lobby (Waiting for game to start) -->
+        <!-- 2. Screen: Lobby -->
         <section id="screen-lobby" class="screen">
             <div class="player-card double-bezel">
                 <div class="bezel-inner player-card-inner">
-                    <div id="lobby-player-avatar" class="avatar-medium">🦊</div>
+                    <div id="lobby-player-avatar" class="avatar-badge">01</div>
                     <div class="player-info">
+                        <div class="player-role-tag" id="txt-player-status">ПОДКЛЮЧЕН К СТУДИИ</div>
                         <div id="lobby-player-name" class="player-name">Игрок</div>
                     </div>
                 </div>
@@ -70,20 +75,22 @@
             <!-- Waiting Info -->
             <div id="waiting-panel" class="waiting-box double-bezel">
                 <div class="bezel-inner waiting-box-inner">
-                    <div class="pulse-ring"></div>
-                    <h2 id="txt-waiting-title">Ты в игре!</h2>
-                    <p id="txt-waiting-subtitle">Смотри на экран телевизора.<br>Игра скоро начнется!</p>
+                    <div class="status-radar">
+                        <div class="status-radar-dot"></div>
+                    </div>
+                    <h2 id="txt-waiting-title">Вы в комнате</h2>
+                    <p id="txt-waiting-subtitle">Обратите внимание на экран телевизора.<br>Раунд начнется автоматически.</p>
                 </div>
             </div>
 
-            <!-- Team Selection Box (Shown in TEAMS format, up to 20 teams) -->
+            <!-- Team Selection Box (Shown in TEAMS format) -->
             <div id="team-selector-box" class="team-picker-box double-bezel hidden">
                 <div class="bezel-inner team-picker-inner">
-                    <div class="team-picker-title" id="txt-team-picker-title">Выбор команды:</div>
+                    <div class="team-picker-title" id="txt-team-picker-title">ВЫБОР КОМАНДЫ</div>
                     <div class="create-team-row">
-                        <input type="text" id="new-team-name-input" maxlength="20" placeholder="Имя новой команды..." autocomplete="off">
-                        <button id="btn-create-team" class="btn btn-primary btn-sm">
-                            <span id="txt-btn-create-team">+ Создать</span>
+                        <input type="text" id="new-team-name-input" maxlength="20" placeholder="Название команды..." autocomplete="off">
+                        <button id="btn-create-team" class="btn btn-secondary btn-sm">
+                            <span id="txt-btn-create-team">СОЗДАТЬ</span>
                         </button>
                     </div>
                     <div id="teams-list" class="teams-list">
@@ -94,156 +101,126 @@
 
             <!-- Connected Players Counter -->
             <div class="players-counter">
-                <span id="txt-lobby-counter-label">Игроков в комнате:</span>
+                <span id="txt-lobby-counter-label">Участников в комнате:</span>
                 <strong id="lobby-players-count">1</strong>
             </div>
         </section>
 
-        <!-- 3. Screen: Question (4 Big Colored Answer Buttons) -->
+        <!-- 3. Screen: Question -->
         <section id="screen-question" class="screen">
             <div class="question-header">
-                <div class="round-indicator" id="q-round-label">Вопрос 1 из 10</div>
+                <div class="question-meta-row">
+                    <div class="round-indicator" id="q-round-label">ВОПРОС 1 / 10</div>
+                </div>
                 <div class="timer-container">
                     <div id="timer-bar" class="timer-bar"></div>
                 </div>
             </div>
 
-            <div id="question-text-mobile" class="question-text-box hidden">
-                <!-- Shown optionally for Kids mode -->
+            <div id="question-text-mobile" class="question-text-box">
+                <!-- Displays current question text on mobile -->
             </div>
 
             <div class="answers-grid" id="answers-grid">
                 <button class="answer-btn btn-red" data-index="0">
                     <div class="answer-btn-inner">
-                        <div class="btn-symbol-island">▲</div>
-                        <div class="btn-label" id="opt-label-0">A</div>
+                        <div class="btn-symbol-island">A</div>
+                        <div class="btn-label" id="opt-label-0">Вариант A</div>
                     </div>
                 </button>
                 <button class="answer-btn btn-blue" data-index="1">
                     <div class="answer-btn-inner">
-                        <div class="btn-symbol-island">◆</div>
-                        <div class="btn-label" id="opt-label-1">B</div>
+                        <div class="btn-symbol-island">B</div>
+                        <div class="btn-label" id="opt-label-1">Вариант B</div>
                     </div>
                 </button>
                 <button class="answer-btn btn-yellow" data-index="2">
                     <div class="answer-btn-inner">
-                        <div class="btn-symbol-island">●</div>
-                        <div class="btn-label" id="opt-label-2">C</div>
+                        <div class="btn-symbol-island">C</div>
+                        <div class="btn-label" id="opt-label-2">Вариант C</div>
                     </div>
                 </button>
                 <button class="answer-btn btn-green" data-index="3">
                     <div class="answer-btn-inner">
-                        <div class="btn-symbol-island">■</div>
-                        <div class="btn-label" id="opt-label-3">D</div>
+                        <div class="btn-symbol-island">D</div>
+                        <div class="btn-label" id="opt-label-3">Вариант D</div>
                     </div>
                 </button>
             </div>
 
             <div id="answer-lock-overlay" class="lock-overlay hidden">
                 <div class="check-icon">✓</div>
-                <div class="lock-title" id="txt-lock-title">Ответ принят!</div>
-                <div class="lock-subtitle" id="txt-lock-subtitle">Смотри на телевизор...</div>
+                <div class="lock-title" id="txt-lock-title">Ответ зафиксирован</div>
+                <div class="lock-subtitle" id="txt-lock-subtitle">Ожидайте завершения таймера на ТВ</div>
             </div>
         </section>
 
-        <!-- 4. Screen: Round Reveal (Result of current question) -->
+        <!-- 4. Screen: Round Reveal -->
         <section id="screen-reveal" class="screen">
             <div id="reveal-card" class="reveal-banner correct double-bezel">
                 <div class="bezel-inner reveal-banner-inner">
-                    <div id="reveal-icon" class="result-big-icon">🎉</div>
-                    <h2 id="reveal-title">Верно!</h2>
+                    <div id="reveal-icon" class="result-status-ring">✓</div>
+                    <h2 id="reveal-title">ВЕРНО</h2>
                     <div id="reveal-points" class="points-badge">+180</div>
 
                     <div id="reveal-streak-box" class="streak-pill hidden">
-                        <span id="txt-reveal-streak-label">🔥 Стрик: </span>
-                        <strong id="reveal-streak-val">3</strong>
+                        <span id="txt-reveal-streak-label">СЕРИЯ x</span><strong id="reveal-streak-val">3</strong>
                     </div>
                 </div>
             </div>
 
             <div class="player-standing-bar double-bezel">
                 <div class="bezel-inner player-standing-inner">
-                    <span id="txt-reveal-standing-rank">Твое место: <strong id="reveal-rank">#1</strong></span>
-                    <span id="txt-reveal-standing-score">Всего очков: <strong id="reveal-total-score">640</strong></span>
+                    <div class="standing-stat">
+                        <span class="stat-label" id="txt-reveal-standing-rank">МЕСТО</span>
+                        <strong class="stat-val" id="reveal-rank">#1</strong>
+                    </div>
+                    <div class="standing-divider"></div>
+                    <div class="standing-stat">
+                        <span class="stat-label" id="txt-reveal-standing-score">СЧЕТ</span>
+                        <strong class="stat-val" id="reveal-total-score">640</strong>
+                    </div>
                 </div>
             </div>
 
             <div id="reveal-fact-box" class="fact-card double-bezel hidden">
                 <div class="bezel-inner fact-card-inner">
-                    <div class="fact-title" id="txt-reveal-fact-title">💡 Интересный факт</div>
-                    <p id="reveal-fact-text">Текст факта</p>
+                    <div class="fact-title" id="txt-reveal-fact-title">КОММЕНТАРИЙ К ОТВЕТУ</div>
+                    <p id="reveal-fact-text"></p>
                 </div>
             </div>
         </section>
 
-        <!-- 5. Screen: Leaderboard / Intermission -->
+        <!-- 5. Screen: Leaderboard -->
         <section id="screen-leaderboard" class="screen">
-            <h2 class="screen-title" id="txt-leaderboard-title">Таблица лидеров</h2>
+            <div class="section-header">
+                <h2 class="screen-title" id="txt-leaderboard-title">Турнирная таблица</h2>
+                <p class="intermission-hint" id="txt-intermission-hint">Подготовка следующего вопроса...</p>
+            </div>
             <div id="leaderboard-list" class="leaderboard-cards">
                 <!-- Populated dynamically -->
             </div>
-            <p class="intermission-hint" id="txt-intermission-hint">Следующий вопрос начнется через несколько секунд...</p>
         </section>
 
-        <!-- 6. Screen: Podium / Final -->
+        <!-- 6. Screen: Podium -->
         <section id="screen-podium" class="screen">
-            <div class="podium-trophy">🏆</div>
-            <h1 class="screen-title" id="txt-podium-title">Игра окончена!</h1>
             <div class="podium-rank-box double-bezel">
                 <div class="bezel-inner podium-rank-inner">
-                    <div id="podium-rank-badge" class="rank-medal">🥇</div>
-                    <div class="final-score-title" id="txt-podium-score-title">Твой финальный результат:</div>
+                    <div class="eyebrow-tag" id="txt-podium-title">ИТОГИ ПАРТИИ</div>
+                    <div id="podium-rank-badge" class="rank-medal">01</div>
+                    <div class="final-score-title" id="txt-podium-score-title">ФИНАЛЬНЫЙ СЧЕТ</div>
                     <div id="podium-final-score" class="final-score-val">2450</div>
-                    <div id="podium-winner-text" class="winner-note">Победитель: Алексей</div>
+                    <div id="podium-winner-text" class="winner-note">Победитель: Игрок</div>
                 </div>
             </div>
 
             <div class="again-box">
-                <button id="btn-play-again" class="btn btn-primary btn-large btn-glow btn-island">
-                    <span class="btn-text" id="txt-btn-play-again">Сыграть еще раз</span>
-                    <span class="btn-island-icon">🔄</span>
+                <button id="btn-play-again" class="btn btn-primary btn-island">
+                    <span class="btn-text" id="txt-btn-play-again">НОВАЯ ИГРА</span>
+                    <span class="btn-island-icon">OK</span>
                 </button>
             </div>
         </section>
-
-        <!-- 7. Modal: LLM Pack Generator -->
-        <div id="llm-modal" class="modal-backdrop hidden">
-            <div class="modal-card double-bezel">
-                <div class="bezel-inner modal-card-inner">
-                    <div class="modal-header">
-                        <h3 id="txt-llm-modal-title">✨ Генератор тем ИИ</h3>
-                        <button id="btn-close-llm" class="modal-close">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <label id="txt-llm-topic-label">Тема викторины:</label>
-                        <input type="text" id="llm-topic-input" placeholder="Например: Гарри Поттер, Аниме, Рок-музыка">
-
-                        <label id="txt-llm-provider-label" style="margin-top:10px;">Провайдер:</label>
-                        <select id="llm-provider-select">
-                            <option value="openai">OpenAI / Groq / OpenRouter / DeepSeek</option>
-                            <option value="gemini">Google Gemini</option>
-                        </select>
-
-                        <label id="txt-llm-key-label" style="margin-top:10px;">API Ключ:</label>
-                        <input type="password" id="llm-key-input" placeholder="sk-..." autocomplete="off">
-
-                        <div id="llm-advanced-fields">
-                            <label id="txt-llm-url-label" style="margin-top:10px;">Base URL:</label>
-                            <input type="text" id="llm-url-input" value="https://api.openai.com/v1">
-
-                            <label id="txt-llm-model-label" style="margin-top:10px;">Модель:</label>
-                            <input type="text" id="llm-model-input" value="gpt-4o-mini">
-                        </div>
-
-                        <button id="btn-submit-llm" class="btn btn-primary btn-island" style="margin-top:16px;">
-                            <span class="btn-text" id="txt-btn-llm-submit">Сгенерировать пак (8 вопр.)</span>
-                            <span class="btn-island-icon">⚡</span>
-                        </button>
-                        <div id="llm-status-text" class="llm-status hidden">Генерация... Подождите 10-20 сек.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
     <script src="app.js"></script>

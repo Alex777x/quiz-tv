@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -38,7 +37,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,13 +46,11 @@ import com.clean.quiztv.domain.model.GameMode
 import com.clean.quiztv.domain.model.QuestionPack
 import com.clean.quiztv.domain.model.Strings
 import com.clean.quiztv.game.GameState
-import com.clean.quiztv.ui.components.DoubleBezelCard
 import com.clean.quiztv.ui.theme.BorderFocused
 import com.clean.quiztv.ui.theme.BorderLight
 import com.clean.quiztv.ui.theme.NeonAmber
 import com.clean.quiztv.ui.theme.NeonCyan
 import com.clean.quiztv.ui.theme.NeonEmerald
-import com.clean.quiztv.ui.theme.NeonViolet
 import com.clean.quiztv.ui.theme.TextMuted
 
 @Composable
@@ -88,7 +84,7 @@ fun ThemeSelectScreen(
                 Text(
                     text = Strings.themeSelectTitle(lang),
                     color = Color.White,
-                    fontSize = 32.sp,
+                    fontSize = 30.sp,
                     fontWeight = FontWeight.ExtraBold,
                     letterSpacing = (-0.5).sp
                 )
@@ -96,54 +92,54 @@ fun ThemeSelectScreen(
                 Text(
                     text = Strings.themeSelectSubtitle(lang),
                     color = TextMuted,
-                    fontSize = 15.sp,
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.Medium
                 )
             }
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // Mode Badge
+                val modeColor = if (state.selectedMode == GameMode.KIDS) NeonAmber else NeonCyan
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(
-                            if (state.selectedMode == GameMode.KIDS) NeonAmber.copy(alpha = 0.2f)
-                            else NeonCyan.copy(alpha = 0.2f)
-                        )
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(modeColor.copy(alpha = 0.16f))
+                        .border(1.dp, modeColor.copy(alpha = 0.4f), RoundedCornerShape(6.dp))
                         .padding(horizontal = 12.dp, vertical = 5.dp)
                 ) {
                     Text(
                         text = Strings.modeBadge(state.selectedMode, lang),
-                        color = if (state.selectedMode == GameMode.KIDS) NeonAmber else NeonCyan,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
+                        color = modeColor,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
                     )
                 }
 
                 Spacer(modifier = Modifier.width(10.dp))
 
-                // Players Count Badge
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(Color(0x3338BDF8))
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0x1FFFFFFF))
+                        .border(1.dp, BorderLight, RoundedCornerShape(6.dp))
                         .padding(horizontal = 12.dp, vertical = 5.dp)
                 ) {
                     Text(
-                        text = "👥 ${state.players.size}",
-                        color = NeonCyan,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
+                        text = if (lang == AppLanguage.PL) "GRACZE: ${state.players.size}" else "ИГРОКОВ: ${state.players.size}",
+                        color = Color.White,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
                     )
                 }
             }
         }
 
-        // --- Large Fullscreen Theme Cards Carousel ---
+        // --- Uniform Architectural Package Cards Carousel ---
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(horizontal = 32.dp),
-            horizontalArrangement = Arrangement.spacedBy(20.dp),
+            contentPadding = PaddingValues(horizontal = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(18.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             items(packsForMode, key = { it.id }) { pack ->
@@ -163,17 +159,17 @@ fun ThemeSelectScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Back Button
             var isBackFocused by remember { mutableStateOf(false) }
             Box(
                 modifier = Modifier
-                    .scale(if (isBackFocused) 1.05f else 1.0f)
-                    .clip(RoundedCornerShape(18.dp))
-                    .background(Color(0x331E293B))
+                    .height(52.dp)
+                    .scale(if (isBackFocused) 1.03f else 1.0f)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color(0xFF161B26))
                     .border(
-                        width = if (isBackFocused) 2.5.dp else 1.dp,
-                        color = if (isBackFocused) BorderFocused else Color(0x33FFFFFF),
-                        shape = RoundedCornerShape(18.dp)
+                        width = if (isBackFocused) 2.dp else 1.dp,
+                        color = if (isBackFocused) BorderFocused else BorderLight,
+                        shape = RoundedCornerShape(12.dp)
                     )
                     .onFocusChanged { focusState ->
                         if (focusState.isFocused && !isBackFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -184,17 +180,18 @@ fun ThemeSelectScreen(
                         TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         onBackToLobby()
                     }
-                    .padding(horizontal = 22.dp, vertical = 14.dp)
+                    .padding(horizontal = 24.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = Strings.btnBackToLobby(lang),
                     color = Color.White,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp
                 )
             }
 
-            // Start Quiz Primary Button
             val canStart = currentSelectedId != null && state.players.isNotEmpty()
             val focusRequester = remember { FocusRequester() }
             LaunchedEffect(Unit) {
@@ -203,24 +200,25 @@ fun ThemeSelectScreen(
 
             var isStartFocused by remember { mutableStateOf(false) }
             val startScale by animateFloatAsState(
-                targetValue = if (isStartFocused) 1.06f else 1.0f,
-                animationSpec = tween(durationMillis = 200),
+                targetValue = if (isStartFocused) 1.03f else 1.0f,
+                animationSpec = tween(durationMillis = 180),
                 label = "btnStartQuizScale"
             )
 
             Box(
                 modifier = Modifier
                     .focusRequester(focusRequester)
+                    .height(52.dp)
                     .scale(startScale)
-                    .clip(RoundedCornerShape(20.dp))
+                    .clip(RoundedCornerShape(12.dp))
                     .background(
                         if (canStart) Brush.horizontalGradient(listOf(NeonEmerald, Color(0xFF047857)))
-                        else Brush.horizontalGradient(listOf(Color(0xFF334155), Color(0xFF1E293B)))
+                        else Brush.horizontalGradient(listOf(Color(0xFF1E2638), Color(0xFF161B26)))
                     )
                     .border(
-                        width = if (isStartFocused) 3.dp else 1.dp,
-                        color = if (isStartFocused) BorderFocused else BorderLight,
-                        shape = RoundedCornerShape(20.dp)
+                        width = if (isStartFocused) 2.dp else 1.dp,
+                        color = if (isStartFocused) Color.White else BorderLight,
+                        shape = RoundedCornerShape(12.dp)
                     )
                     .onFocusChanged { focusState ->
                         if (focusState.isFocused && !isStartFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -233,23 +231,32 @@ fun ThemeSelectScreen(
                             onStartGame(currentSelectedId, state.selectedMode)
                         }
                     }
-                    .padding(horizontal = 36.dp, vertical = 15.dp)
+                    .padding(horizontal = 28.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = Strings.btnStartQuizNow(lang),
                         color = Color.White,
-                        fontSize = 18.sp,
+                        fontSize = 15.sp,
                         fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 1.sp
+                        letterSpacing = 1.2.sp
                     )
                     Spacer(modifier = Modifier.width(12.dp))
-                    Text(
-                        text = "[OK]",
-                        color = Color.White.copy(alpha = 0.8f),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(Color(0x33000000))
+                            .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 8.dp, vertical = 3.dp)
+                    ) {
+                        Text(
+                            text = "OK",
+                            color = Color.White,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
                 }
             }
         }
@@ -265,43 +272,59 @@ private fun ThemeCard(
 ) {
     var isFocused by remember { mutableStateOf(false) }
     val animatedScale by animateFloatAsState(
-        targetValue = if (isFocused) 1.03f else if (isSelected) 1.01f else 1.0f,
-        animationSpec = tween(durationMillis = 180),
+        targetValue = if (isFocused) 1.03f else 1.0f,
+        animationSpec = tween(durationMillis = 160),
         label = "themeCardScale"
     )
 
-    // Thematic emoji resolver
-    val emoji = remember(pack.id) {
-        when {
-            pack.id.contains("cinema") -> "🎬"
-            pack.id.contains("melody") || pack.id.contains("music") -> "🎵"
-            pack.id.contains("rebus") -> "🧩"
-            pack.id.contains("geography") || pack.id.contains("poland") -> "🌍"
-            pack.id.contains("90s") || pack.id.contains("popculture") -> "🕹️"
-            pack.id.contains("auto") || pack.id.contains("cars") -> "🏎️"
-            pack.id.contains("game") -> "🎮"
-            pack.id.contains("animals") -> "🦁"
-            pack.id.contains("cartoons") -> "🎈"
-            pack.id.contains("logic") -> "💡"
-            pack.id.contains("random") || pack.id.contains("mix") -> "🎲"
-            else -> "✨"
+    val packAccent = remember(pack.accentColor) {
+        try {
+            Color(android.graphics.Color.parseColor(pack.accentColor))
+        } catch (_: Exception) {
+            NeonCyan
         }
     }
 
+    val categoryTag = remember(pack.id, pack.category, lang) {
+        when {
+            pack.id.contains("chgk") || pack.category.equals("ChGK", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "KLUB ЧГК" else "КЛУБ ЧГК"
+            pack.id.contains("svoya") || pack.category.equals("SvoyaIgra", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "VA BANQUE" else "СВОЯ ИГРА"
+            pack.id.contains("hard") || pack.category.equals("Masters", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "EKSPERT" else "МАСТЕРА"
+            pack.id.contains("millionaire") ->
+                if (lang == AppLanguage.PL) "MILIONERZY" else "МИЛЛИОНЕР"
+            pack.id.contains("cinema") || pack.category.equals("Culture", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "KULTURA + AUDIO" else "КУЛЬТУРА + АУДИО"
+            pack.id.contains("science") || pack.category.equals("Science", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "NAUKA I ŚWIAT" else "НАУКА И МИР"
+            pack.id.contains("encyclopedia") || pack.category.equals("Nature", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "PRZYRODA" else "ЭНЦИКЛОПЕДИЯ"
+            pack.id.contains("stories") || pack.category.equals("Stories", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "BAJKI I KSIĄŻKI" else "СКАЗКИ И КНИГИ"
+            pack.id.contains("random") || pack.category.equals("Mix", ignoreCase = true) ->
+                if (lang == AppLanguage.PL) "SUPER MIX" else "СУПЕР-МИКС"
+            else -> pack.category.uppercase()
+        }
+    }
+
+    val defaultSec = if (pack.id.contains("chgk") || pack.category.equals("ChGK", ignoreCase = true)) 60 else 20
+
     Box(
         modifier = Modifier
-            .width(220.dp)
-            .height(260.dp)
+            .width(248.dp)
+            .height(264.dp)
             .scale(animatedScale)
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(16.dp))
             .background(
-                if (isSelected) Brush.verticalGradient(listOf(Color(0xFF1E293B), Color(0xFF0F172A)))
-                else Brush.verticalGradient(listOf(Color(0x330F172A), Color(0x330B0F19)))
+                if (isSelected) Color(0xFF1A2234)
+                else Color(0xFF121622)
             )
             .border(
                 width = if (isFocused) 2.5.dp else if (isSelected) 2.dp else 1.dp,
-                color = if (isFocused) BorderFocused else if (isSelected) NeonCyan else Color(0x22FFFFFF),
-                shape = RoundedCornerShape(20.dp)
+                color = if (isFocused) BorderFocused else if (isSelected) packAccent else Color(0x1FFFFFFF),
+                shape = RoundedCornerShape(16.dp)
             )
             .onFocusChanged { focusState ->
                 if (focusState.isFocused && !isFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -312,13 +335,13 @@ private fun ThemeCard(
                 TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                 onSelect()
             }
-            .padding(18.dp)
+            .padding(20.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            // Top Row: Emoji & Selection Badge
+            // Top Row: Architectural Category Tag & Active Status
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -326,27 +349,34 @@ private fun ThemeCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .size(46.dp)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(Brush.radialGradient(listOf(Color(0xFF334155), Color(0xFF1E293B)))),
-                    contentAlignment = Alignment.Center
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(packAccent.copy(alpha = 0.16f))
+                        .border(1.dp, packAccent.copy(alpha = 0.45f), RoundedCornerShape(6.dp))
+                        .padding(horizontal = 10.dp, vertical = 4.dp)
                 ) {
-                    Text(text = emoji, fontSize = 24.sp)
+                    Text(
+                        text = categoryTag,
+                        color = packAccent,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        letterSpacing = 1.sp
+                    )
                 }
 
                 if (isSelected) {
                     Box(
                         modifier = Modifier
-                            .clip(RoundedCornerShape(8.dp))
+                            .clip(RoundedCornerShape(6.dp))
                             .background(NeonCyan.copy(alpha = 0.2f))
-                            .border(1.dp, NeonCyan, RoundedCornerShape(8.dp))
+                            .border(1.dp, NeonCyan, RoundedCornerShape(6.dp))
                             .padding(horizontal = 8.dp, vertical = 3.dp)
                     ) {
                         Text(
                             text = Strings.selectedThemeBadge(lang),
                             color = NeonCyan,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Black
+                            fontSize = 9.5.sp,
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = 0.8.sp
                         )
                     }
                 }
@@ -357,24 +387,24 @@ private fun ThemeCard(
                 Text(
                     text = pack.localizedTitle(lang),
                     color = Color.White,
-                    fontSize = 16.sp,
+                    fontSize = 17.sp,
                     fontWeight = FontWeight.ExtraBold,
-                    lineHeight = 20.sp,
+                    lineHeight = 22.sp,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = pack.localizedDescription(lang),
                     color = TextMuted,
-                    fontSize = 11.5.sp,
-                    lineHeight = 15.sp,
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp,
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis
                 )
             }
 
-            // Bottom Badges: Question Count & Timer
+            // Bottom Metadata Row: Question Count & Default Timer
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -382,22 +412,25 @@ private fun ThemeCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(Color(0x33475569))
-                        .padding(horizontal = 7.dp, vertical = 2.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(Color(0x14FFFFFF))
+                        .padding(horizontal = 8.dp, vertical = 3.dp)
                 ) {
                     Text(
-                        text = "${pack.questions.size} ${if (lang == AppLanguage.PL) "pytań" else "вопр."}",
-                        color = Color.White.copy(alpha = 0.8f),
+                        text = "${pack.questions.size} ${if (lang == AppLanguage.PL) "PYTAŃ" else "ВОПР."}",
+                        color = Color.White.copy(alpha = 0.9f),
                         fontSize = 10.5.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 0.6.sp
                     )
                 }
 
                 Text(
-                    text = "⏱️ 20s",
+                    text = "$defaultSec ${Strings.secondsUnit(lang)}",
                     color = TextMuted,
-                    fontSize = 10.5.sp
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.6.sp
                 )
             }
         }

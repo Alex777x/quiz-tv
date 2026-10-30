@@ -17,20 +17,19 @@ import androidx.compose.ui.unit.dp
 import com.clean.quiztv.ui.theme.BorderLight
 
 /**
- * Double-Bezel (Doppelrand) hardware container embodying high-end agency design.
- * Provides an outer shell with hairline specular ring and an inner tactile core.
+ * Architectural Double-Bezel container with crisp hairline border and elevated dark slate surface.
  */
 @Composable
 fun DoubleBezelCard(
     modifier: Modifier = Modifier,
-    outerShape: Shape = RoundedCornerShape(24.dp),
-    innerShape: Shape = RoundedCornerShape(21.dp),
+    outerShape: Shape = RoundedCornerShape(18.dp),
+    innerShape: Shape = RoundedCornerShape(16.dp),
     outerBorderColor: Color = BorderLight,
-    outerPadding: Dp = 3.dp,
+    outerPadding: Dp = 2.dp,
     innerBrush: Brush = Brush.verticalGradient(
         listOf(
-            Color(0xEE1E293B),
-            Color(0xF50F172A)
+            Color(0xF2161B26),
+            Color(0xFA0E121B)
         )
     ),
     content: @Composable BoxScope.() -> Unit
@@ -38,14 +37,7 @@ fun DoubleBezelCard(
     Box(
         modifier = modifier
             .clip(outerShape)
-            .background(
-                Brush.linearGradient(
-                    listOf(
-                        Color(0x1CFFFFFF),
-                        Color(0x08FFFFFF)
-                    )
-                )
-            )
+            .background(Color(0x0DFFFFFF))
             .border(1.dp, outerBorderColor, outerShape)
             .padding(outerPadding)
     ) {
@@ -53,7 +45,7 @@ fun DoubleBezelCard(
             modifier = Modifier
                 .clip(innerShape)
                 .background(innerBrush)
-                .border(0.5.dp, Color(0x24FFFFFF), innerShape)
+                .border(0.5.dp, Color(0x18FFFFFF), innerShape)
         ) {
             content()
         }

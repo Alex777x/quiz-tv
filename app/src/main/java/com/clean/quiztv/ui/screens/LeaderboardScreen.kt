@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,7 +44,6 @@ import com.clean.quiztv.domain.model.AppLanguage
 import com.clean.quiztv.domain.model.GameFormat
 import com.clean.quiztv.domain.model.PlayerStanding
 import com.clean.quiztv.domain.model.Strings
-import com.clean.quiztv.domain.model.TeamStanding
 import com.clean.quiztv.game.GameState
 import com.clean.quiztv.ui.theme.BorderFocused
 import com.clean.quiztv.ui.theme.BorderLight
@@ -82,14 +80,16 @@ fun LeaderboardScreen(
                 Text(
                     text = Strings.leaderboardTitle(lang),
                     color = Color.White,
-                    fontSize = 32.sp,
-                    fontWeight = FontWeight.Black,
-                    letterSpacing = 1.sp
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = (-0.5).sp
                 )
+                Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = Strings.roundOf(state.questionIndex + 1, state.pack.questions.size, lang),
                     color = TextMuted,
-                    fontSize = 16.sp
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
                 )
             }
 
@@ -100,24 +100,24 @@ fun LeaderboardScreen(
 
             var isFocused by remember { mutableStateOf(false) }
             val animatedScale by animateFloatAsState(
-                targetValue = if (isFocused) 1.08f else 1.0f,
-                animationSpec = tween(durationMillis = 200),
+                targetValue = if (isFocused) 1.03f else 1.0f,
+                animationSpec = tween(durationMillis = 180),
                 label = "leaderboardProceedScale"
             )
 
-            // Island CTA Button
             Box(
                 modifier = Modifier
                     .focusRequester(focusRequester)
+                    .height(48.dp)
                     .scale(animatedScale)
-                    .clip(RoundedCornerShape(20.dp))
+                    .clip(RoundedCornerShape(12.dp))
                     .background(
-                        Brush.horizontalGradient(listOf(NeonCyan, Color(0xFF0284C7)))
+                        Brush.horizontalGradient(listOf(Color(0xFF0284C7), Color(0xFF0369A1)))
                     )
                     .border(
-                        width = if (isFocused) 2.5.dp else 1.dp,
-                        color = if (isFocused) BorderFocused else BorderLight,
-                        shape = RoundedCornerShape(20.dp)
+                        width = if (isFocused) 2.dp else 1.dp,
+                        color = if (isFocused) Color.White else BorderLight,
+                        shape = RoundedCornerShape(12.dp)
                     )
                     .onFocusChanged {
                         if (it.isFocused && !isFocused) TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
@@ -128,30 +128,29 @@ fun LeaderboardScreen(
                         TvSoundManager.play(TvSoundManager.SoundEffect.FOCUS_MOVE)
                         onProceed()
                     }
-                    .padding(horizontal = 24.dp, vertical = 13.dp)
+                    .padding(horizontal = 22.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = if (state.isLastQuestion) Strings.toPodiumBtn(lang) else Strings.nextQuestionBtn(lang),
                         color = Color.White,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 0.5.sp
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        letterSpacing = 1.sp
                     )
-
-                    Spacer(modifier = Modifier.width(12.dp))
-
+                    Spacer(modifier = Modifier.width(10.dp))
                     Box(
                         modifier = Modifier
-                            .size(28.dp)
-                            .clip(CircleShape)
-                            .background(Color(0x33000000)),
-                        contentAlignment = Alignment.Center
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(Color(0x33000000))
+                            .border(1.dp, Color(0x40FFFFFF), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 8.dp, vertical = 2.dp)
                     ) {
                         Text(
-                            text = if (state.isLastQuestion) "🏆" else "➔",
+                            text = "OK",
                             color = Color.White,
-                            fontSize = 12.sp,
+                            fontSize = 11.sp,
                             fontWeight = FontWeight.Black
                         )
                     }
@@ -159,13 +158,13 @@ fun LeaderboardScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(18.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         // Team Standings Banner (in TEAMS format)
         if (state.gameFormat == GameFormat.TEAMS && state.teamStandings.isNotEmpty()) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                horizontalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 state.teamStandings.forEach { team ->
                     val color = remember(team.colorHex) {
@@ -178,9 +177,9 @@ fun LeaderboardScreen(
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .clip(RoundedCornerShape(18.dp))
-                            .background(color.copy(alpha = 0.16f))
-                            .border(1.5.dp, color.copy(alpha = 0.5f), RoundedCornerShape(18.dp))
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(Color(0xFF141926))
+                            .border(1.5.dp, color.copy(alpha = 0.55f), RoundedCornerShape(12.dp))
                             .padding(14.dp)
                     ) {
                         Row(
@@ -188,28 +187,18 @@ fun LeaderboardScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(text = team.emoji, fontSize = 24.sp)
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Column {
-                                    Text(
-                                        text = team.name,
-                                        color = Color.White,
-                                        fontSize = 15.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                    Text(
-                                        text = if (team.rank == 1) "👑 #1" else "#${team.rank}",
-                                        color = color,
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Black
-                                    )
-                                }
+                            Column {
+                                Text(
+                                    text = "#${team.rank} • ${team.name}",
+                                    color = Color.White,
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
                             }
                             Text(
                                 text = Strings.pointsSuffix(team.totalScore, lang),
-                                color = Color.White,
-                                fontSize = 18.sp,
+                                color = color,
+                                fontSize = 16.sp,
                                 fontWeight = FontWeight.Black
                             )
                         }
@@ -224,7 +213,7 @@ fun LeaderboardScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(state.standings, key = { it.playerId }) { standing ->
                 StandingRow(standing = standing, lang = lang)
@@ -242,70 +231,82 @@ private fun StandingRow(standing: PlayerStanding, lang: AppLanguage) {
         else -> TextMuted
     }
 
+    val monogram = remember(standing.avatar, standing.name) {
+        val av = standing.avatar.trim()
+        if (av.length in 1..2 && av.all { it.isLetterOrDigit() }) av.uppercase()
+        else standing.name.trim().take(2).uppercase().ifEmpty { "P" }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(Color(0x18FFFFFF))
-            .border(
-                1.dp,
-                if (standing.rank == 1) GoldMedal.copy(alpha = 0.55f) else Color(0x26FFFFFF),
-                RoundedCornerShape(20.dp)
+            .height(60.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(
+                if (standing.rank == 1) Color(0xFF1A2234) else CardDark
             )
-            .padding(2.5.dp)
+            .border(
+                width = 1.dp,
+                color = if (standing.rank == 1) GoldMedal.copy(alpha = 0.55f) else BorderLight,
+                shape = RoundedCornerShape(12.dp)
+            )
+            .padding(horizontal = 20.dp),
+        contentAlignment = Alignment.Center
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(17.dp))
-                .background(
-                    if (standing.rank == 1) {
-                        Brush.horizontalGradient(listOf(Color(0xFF1E293B), Color(0x33F59E0B)))
-                    } else {
-                        Brush.horizontalGradient(listOf(CardDark, Color(0xFF0F172A)))
-                    }
-                )
-                .padding(horizontal = 22.dp, vertical = 13.dp),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = "#${standing.rank}",
+                    text = String.format("%02d", standing.rank),
                     color = rankColor,
-                    fontSize = 24.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Black,
-                    modifier = Modifier.width(48.dp)
+                    modifier = Modifier.width(44.dp)
                 )
 
-                Text(
-                    text = standing.avatar,
-                    fontSize = 30.sp
-                )
+                Box(
+                    modifier = Modifier
+                        .size(34.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color(0xFF1E293B))
+                        .border(1.dp, rankColor.copy(alpha = 0.4f), RoundedCornerShape(8.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = monogram,
+                        color = Color.White,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                }
 
                 Spacer(modifier = Modifier.width(14.dp))
 
                 Text(
                     text = standing.name,
                     color = Color.White,
-                    fontSize = 21.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 if (standing.streak > 1) {
-                    Spacer(modifier = Modifier.width(16.dp))
+                    Spacer(modifier = Modifier.width(14.dp))
                     Box(
                         modifier = Modifier
-                            .clip(CircleShape)
-                            .background(NeonAmber.copy(alpha = 0.22f))
-                            .border(1.dp, NeonAmber.copy(alpha = 0.45f), CircleShape)
-                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(NeonAmber.copy(alpha = 0.16f))
+                            .border(1.dp, NeonAmber.copy(alpha = 0.45f), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 8.dp, vertical = 3.dp)
                     ) {
                         Text(
-                            text = "🔥 x${standing.streak}",
+                            text = "СЕРИЯ x${standing.streak}",
                             color = NeonAmber,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.ExtraBold
+                            fontSize = 10.5.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 0.6.sp
                         )
                     }
                 }
@@ -316,16 +317,16 @@ private fun StandingRow(standing: PlayerStanding, lang: AppLanguage) {
                     Text(
                         text = "+${standing.lastScoreDiff}",
                         color = NeonEmerald,
-                        fontSize = 17.sp,
+                        fontSize = 15.sp,
                         fontWeight = FontWeight.ExtraBold
                     )
-                    Spacer(modifier = Modifier.width(18.dp))
+                    Spacer(modifier = Modifier.width(16.dp))
                 }
 
                 Text(
                     text = Strings.pointsSuffix(standing.score, lang),
                     color = NeonCyan,
-                    fontSize = 22.sp,
+                    fontSize = 19.sp,
                     fontWeight = FontWeight.Black
                 )
             }
