@@ -201,32 +201,22 @@ fun RoomLobbyScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(22.dp),
-                    verticalArrangement = Arrangement.SpaceEvenly,
+                        .padding(horizontal = 24.dp, vertical = 20.dp),
+                    verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = Strings.scanQr(lang),
-                            color = Color.White,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                            textAlign = TextAlign.Center
-                        )
-                        Spacer(modifier = Modifier.height(6.dp))
-                        Text(
-                            text = Strings.orOpenBrowser(lang, serverUrl),
-                            color = NeonCyan,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Center
-                        )
-                    }
+                    Text(
+                        text = Strings.scanQr(lang),
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        textAlign = TextAlign.Center
+                    )
 
                     // Large crisp QR code
                     Box(
                         modifier = Modifier
-                            .size(210.dp)
+                            .size(196.dp)
                             .clip(RoundedCornerShape(14.dp))
                             .background(Color.White)
                             .padding(10.dp),
@@ -241,6 +231,28 @@ fun RoomLobbyScreen(
                         } else {
                             Text("QR", color = Color.Black, fontSize = 14.sp)
                         }
+                    }
+
+                    // Clean high-contrast URL pill at the bottom
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFF111520))
+                            .border(1.dp, NeonCyan.copy(alpha = 0.35f), RoundedCornerShape(10.dp))
+                            .padding(horizontal = 14.dp, vertical = 10.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = serverUrl,
+                            color = NeonCyan,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 0.5.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            textAlign = TextAlign.Center
+                        )
                     }
                 }
             }
